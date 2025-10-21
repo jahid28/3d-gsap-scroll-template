@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FaEnvelope, FaMapPin } from 'react-icons/fa';
+import ContactForm from './ContactForm';
 import { Link } from 'react-router-dom';
 
 export default function ContactPage() {
@@ -56,6 +57,8 @@ export default function ContactPage() {
       </div>
       </div>  
     </section>
+
+    <ContactForm />
 
       {/* Instagram Feed Section */}
       <section className="w-full bg-[#1a1a1a] py-16 px-4">
