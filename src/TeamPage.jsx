@@ -578,6 +578,32 @@ const teamData = {
         schoolYear: "Manager - Student Development, College of Engineering",
       },
     ]
+  },
+  'AY25/26': {
+      Leads : [
+        // Add team members for AY25/26 here
+      ],
+      Hardware : [
+        // Add team members for AY25/26 here
+      ],
+      Software : [
+        // Add team members for AY25/26 here 
+      ], 
+      Electrical : [
+        // Add team members for AY25/26 here
+      ],
+      Business : [
+        // Add team members for AY25/26 here
+      ],
+      Webdev : [
+        // Add team members for AY25/26 here
+      ],
+      Projects : [
+        // Add team members for AY25/26 here
+      ],
+      Advisors : [
+        // Add team members for AY25/26 here
+      ]
   }
 };
 
@@ -611,6 +637,17 @@ export default function TeamPage() {
         <div className="flex flex-col md:flex-row justify-start items-start gap-4 md:gap-8">
           {/* Tab Container */}
           <div className="tab-container mb-4 md:mb-8 flex-shrink-0 w-full md:w-48">
+
+            <input 
+              className="tab tab--3" 
+              id="tabAY25/26" 
+              name="tab" 
+              type="radio" 
+              checked={activeTab === 'AY25/26'}
+              onChange={() => handleTabChange('AY25/26')}
+            />
+            <label htmlFor="tabAY25/26" className="tab_label">AY25/26</label>
+
             <input 
               className="tab tab--2" 
               id="tabAY24/25" 
@@ -653,8 +690,6 @@ export default function TeamPage() {
       </div>
 
       <style jsx>{`
-
-
         .hero-container {
           background-color:rgb(98, 96, 96);
         }
@@ -670,115 +705,11 @@ export default function TeamPage() {
           gap: 20px;
         }
 
-        @media (max-width: 768px) {
-          .tab-container {
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding: 8px;
-            gap: 0;
-            position: relative;
-          }
-          
-          .tab_label {
-            width: 80px;
-            height: 40px;
-            padding: 0;
-            justify-content: flex-start;
-            font-size: 0.875rem;
-            text-align: left;
-            position: relative;
-            margin-bottom: 4px;
-            padding-left: 20px;
-          }
-          
-          .tab_label::after {
-            display: none;
-          }
-          
-          .scroller {
-            content: "";
-            width: 8px;
-            height: 95px;
-            opacity: 0.4;
-            background: #888;
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            border: 0.5px solid rgba(0, 0, 0, 0.04);
-            border-radius: 4px;
-          }
-          
-          .indicator {
-            width: 6px;
-            height: 35px;
-            left: 9px;
-            top: 10px;
-            border-radius: 3px;
-            transition: top 0.2s ease-out;
-          }
-          
-          .tab--2:checked ~ .indicator {
-            top: 10px;
-          }
-
-          .tab--1:checked ~ .indicator {
-            top: 54px;
-          }
-        }
-
-        @media (min-width: 769px) {
-          .tab-container {
-            flex-direction: column;
-            align-items: flex-start;
-            padding-left: 20px;
-            gap: 0;
-          }
-          
-          .tab_label {
-            width: 200px;
-            height: 50px;
-            justify-content: flex-start;
-            padding-left: 20px;
-            font-size: 1rem;
-          }
-          
-          .scroller {
-            content: "";
-            width: 15px;
-            height: 85px;
-            opacity: 0.4;
-            background: #888;
-            position: absolute;
-            top: 5px;
-            left: -17px;
-            border: 0.5px solid rgba(0, 0, 0, 0.04);
-            border-radius: 7px;
-          }
-          
-          .indicator {
-            width: 10px;
-            height: 28px;
-            left: -15px;
-            top: 8px;
-            transform: none;
-            border-radius: 7px;
-            transition: top 0.2s ease-out;
-          }
-          
-          .tab--2:checked ~ .indicator {
-            top: 8px;
-          }
-
-          .tab--1:checked ~ .indicator {
-            top: calc(28px * 2 + 2px);
-          }
-        }
-
+        /* make the scroller fill the tab container so it visually spans all years */
         .scroller {
           content: "";
           width: 15px;
-          height: 85px;
+          height: calc(100% - 10px); /* span container height */
           opacity: 0.4;
           background: #888;
           position: absolute;
@@ -788,19 +719,54 @@ export default function TeamPage() {
           border-radius: 7px;
         }
 
+        /* Indicator uses translateY so we don't need hard-coded top values per breakpoint.
+           Height is one-third of the scroller (3 tabs). If you later add more tabs, update the divisor. */
         .indicator {
           content: "";
           width: 10px;
-          height: 28px;
+          height: calc(100% / 3); /* adjust when number of tabs changes */
           background: #ffa500;
           position: absolute;
-          top: 8px;
+          top: 5px;
           left: -15px;
           z-index: 9;
           border: 0.5px solid rgba(0, 0, 0, 0.04);
           box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
           border-radius: 7px;
-          transition: all 0.2s ease-out;
+          transition: transform 0.2s ease-out;
+          transform: translateY(0%); /* default first tab */
+        }
+
+        /* move indicator by multiples of its own height using :checked sibling selectors */
+        .tab--3:checked ~ .indicator { transform: translateY(0%); }   /* first item (AY25/26) */
+        .tab--2:checked ~ .indicator { transform: translateY(100%); } /* second item (AY24/25) */
+        .tab--1:checked ~ .indicator { transform: translateY(200%); } /* third item (AY23/24) */
+
+        /* responsive overrides keep the scroller behavior consistent */
+        @media (max-width: 768px) {
+          .scroller {
+            left: 8px;
+            top: 8px;
+            height: calc(100% - 16px);
+          }
+          .indicator {
+            left: 9px;
+            top: 8px;
+            height: calc(100% / 3);
+          }
+        }
+
+        @media (min-width: 769px) {
+          .scroller {
+            left: -17px;
+            top: 5px;
+            height: calc(100% - 10px);
+          }
+          .indicator {
+            left: -15px;
+            top: 5px;
+            height: calc(100% / 3);
+          }
         }
 
         .tab {
