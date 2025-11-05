@@ -108,7 +108,9 @@
             console.log('Current location:', window.location.href);
             
             var script = document.createElement('script');
-            script.src = 'BLANK_GAME.js?cachebust=1664111295';
+            var basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            script.src = basePath + 'BLANK_GAME.js?cachebust=' + Date.now();
+            // script.src = '/game/BLANK_x.js?cachebust=1664111295';
             
             script.onload = function() {
                 console.log('GameMaker script loaded successfully');
