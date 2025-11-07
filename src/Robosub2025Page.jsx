@@ -55,7 +55,7 @@ export default function Robosub2025Page() {
         <h2 className="text-4xl font-extrabold text-orange-500 mb-8">Team Video</h2>
       </div>   
 
-      <section className="flex flex-col md:flex-row items-center justify-between pt-10 pb-10 px-8 md:px-20 bg-[#303030]">
+      <section className="flex flex-col md:flex-row items-center md:justify-center pt-10 pb-10 px-8 md:px-20 bg-[#303030]">
         <div className="w-full aspect-video max-w-4xl">
           <iframe
             className="w-full h-full"
