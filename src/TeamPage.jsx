@@ -1,614 +1,9 @@
 import React, { useState } from 'react';
-
-// Team data structure - easy to modify and expand
-const teamData = {
-  'AY23/24': {
-    Members: [
-      {
-        name: "Luc Vu Tien",
-        role: "Executive Lead",
-        image: "/website_member_photos/luc-1.jpg",
-        backImage: "/website_member_photos/luc-2.jpg",
-        schoolYear: "Year 2 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/luc-vu-tien-601138131/",
-        github: "https://github.com/lucvt001", //
-      },
-      {
-        name: "Toh Jia Hao",
-        role: "Software Lead",
-        image: "/website_member_photos/jiahao-2.jpg",
-        backImage: "/website_member_photos/jiahao-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/toh-jia-hao-65bb39229/",
-        github: "https://github.com/Evintjh",
-      },
-      {
-        name: "Arthur Lim",
-        role: "Hardware Lead",
-        image: "/website_member_photos/arthur-1.jpg",
-        backImage: "/website_member_photos/arthur-2.jpg",
-        schoolYear: "Year 2 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/lim-han-zhou-arthur-94215115a/",
-
-      },
-      {
-        name: "Jennifer Goh",
-        role: "Business Lead",
-        image: "/website_member_photos/jen-1.jpg",
-        backImage: "/website_member_photos/jen-2.jpg",
-        schoolYear: "Year 2 Biological Sciences Student",
-        linkedin: "https://linkedin.com/in/kevinzhang",
-        github: "https://github.com/jennifergoh",
-      },
-      {
-        name: "Zach Low",
-        role: "Hardware Member",
-        image: "/website_member_photos/zac-1.jpg",
-        backImage: "/website_member_photos/zac-2.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/zach-low",
-
-      },
-
-      {
-        name: "Rushdan Mikail",
-        role: "Hardware Member",
-        image: "/website_member_photos/rush-1.jpg",
-        backImage: "/website_member_photos/rushdan-2.jpg",
-        schoolYear: "Year 1 Mechanical Engineering Student",
-        linkedin: "https://linkedin.com/in/kevinzhang",
-        github: "https://github.com/rushdan",
-      },
-      {
-        name: "Cheo Le Xian",
-        role: "Software Member",
-        image: "/website_member_photos/lexian-2.jpg",
-        backImage: "/website_member_photos/lexian-1.jpg",
-        schoolYear: "Year 1 Electrical and Electronic Engineering Student",
-        linkedin: "https://www.linkedin.com/in/cheo-le-xian-92305b287/",
-      },
-      {
-        name: "Abdillah Goh",
-        role: "Website Developer",
-        image: "/website_member_photos/abdi-2.jpeg",
-        backImage: "/website_member_photos/abdi-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/abdillah-goh-9440b2198/",
-        github: "https://github.com/gohabdillah",
-      },
-      {
-        name: "Maximus Yeo",
-        role: "Hardware Member",
-        image: "/website_member_photos/max-2.jpg",
-        backImage: "/website_member_photos/max-1.jpg",
-        schoolYear: "Year 2 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/maximus-yeo-0679122bb/",
-
-      },
-      {
-        name: "Fangzhou Liu",
-        role: "Hardware Member",
-        image: "/website_member_photos/fangzhou-2.jpg",
-        backImage: "/website_member_photos/fangzhou-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/fangzhou-liu-83887b28b/",
-      },
-      {
-        name: "Chan Wai Lee",
-        role: "Team Advisor",
-        image: "/website_member_photos/wailee-2.jpg",
-        backImage: "/website_member_photos/wailee-1.jpg",
-        schoolYear: "Assistant Professor, School of Mechanical & Aerospace Engineering",
-        linkedin: "https://www.linkedin.com/in/wai-lee-chan-3b853595/?originalSubdomain=sg",
-      },
-
-    ],
-
-  },
-  'AY24/25': {
-    leads: [
-      {
-        name: "Zach Low",
-        role: "CEO, Team Lead",
-        image: "/website_member_photos/zac-1.jpg",
-        backImage: "/website_member_photos/zac-2.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/zach-low",
-      },
-      {
-        name: "Luc Vu Tien",
-        role: "CTO",
-        image: "/website_member_photos/luc-1.jpg",
-        backImage: "/website_member_photos/luc-2.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/luc-vu-tien-601138131/",
-        github: "https://github.com/lucvt001", // Add this line
-      },
-      {
-        name: "Arthur Lim",
-        role: "CFO",
-        image: "/website_member_photos/arthur-1.jpg",
-        backImage: "/website_member_photos/arthur-2.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/lim-han-zhou-arthur-94215115a/",
-      },
-      {
-        name: "Jennifer Goh",
-        role: "COO CHRO",
-        image: "/website_member_photos/jen-1.jpg",
-        backImage: "/website_member_photos/jen-2.jpg",
-        schoolYear: "Year 3 Biological Sciences Student",
-        linkedin: "https://www.linkedin.com/in/jennifer-zhen-ni-goh/",
-      },
-      {
-        name: "Ong Zheng Kai, Ethan",
-        role: "Software Lead",
-        image: "/website_member_photos/ethanong-2.jpg",
-        backImage: "/website_member_photos/ethanong-1.JPG",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/eozk/",
-        github: "https://github.com/eozkzoe", // Add this line
-
-      },
-      {
-        name: "Scott Cheng",
-        role: "Electrical & Special Projects Lead",
-        image: "/website_member_photos/scott-2.jpeg",
-        backImage: "/website_member_photos/scott.s.jpg",
-        schoolYear: "Year 2 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/scott-cheng-802138154/",
-        github: "https://github.com/scott-cjx", // Add this line
-      },
-      {
-        name: "Wong Wei Ming",
-        role: "Admin Lead",
-        image: "/website_member_photos/weiming-2.jpeg",
-        backImage: "/website_member_photos/weiming-1.webp",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/wongweiming/",
-        github: "https://github.com/Alvin0523", // Add this line
-
-      },
-      {
-        name: "Abdillah Goh",
-        role: "CWO, Webdev Lead",
-        image: "/website_member_photos/abdi-2.jpeg",
-        backImage: "/website_member_photos/abdi-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/abdillah-goh-9440b2198/",
-        github: "https://github.com/gohabdillah", // Add this line
-
-      },
-    ],
-    hardware: [
-      {
-        name: "Zach Low",
-        role: "CEO, Team Lead",
-        image: "/website_member_photos/zac-1.jpg",
-        backImage: "/website_member_photos/zac-2.jpg",
-        schoolYear: "Year 4 Mechanical Student",
-        linkedin: "https://www.linkedin.com/in/zach-low/",
-      },
-      {
-        name: "Arthur Lim",
-        role: "CFO",
-        image: "/website_member_photos/arthur-1.jpg",
-        backImage: "/website_member_photos/arthur-2.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/lim-han-zhou-arthur-94215115a/",
-      },
-      {
-        name: "Maximus Yeo",
-        role: "Hardware Member",
-        image: "/website_member_photos/max-2.jpg",
-        backImage: "/website_member_photos/max-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/maximus-yeo-0679122bb/",
-      },
-      {
-        name: "Fangzhou Liu",
-        role: "Hardware Member",
-        image: "/website_member_photos/fangzhou-2.jpg",
-        backImage: "/website_member_photos/fangzhou-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/fangzhou-liu-83887b28b/",
-      },
-      {
-        name: "Zhang Haozhe",
-        role: "Hardware Member",
-        image: "/website_member_photos/haozhe-2.jpg",
-        backImage: "/website_member_photos/haozhe-1.jpg",
-        schoolYear: "Year 3 Aerospace Engineering Student",
-        linkedin: "https://www.linkedin.com/in/josezhz/",
-        github: "https://github.com/josezhz", // Add this line
-
-      },
-      {
-        name: "Herbian Hokky Prabowo",
-        role: "Hardware Member",
-        image: "/website_member_photos/herbian-2.jpg",
-        backImage: "/website_member_photos/herbian-1.jpg",
-        schoolYear: "Year 4 Environmental Science Student",
-        linkedin: "https://www.linkedin.com/in/herbian-hokky-prabowo-95a069262/",
-      },
-      {
-        name: "Joowan",
-        role: "S. Projects & Hardware Member",
-        image: "/website_member_photos/joowan-2.jpg",
-        backImage: "/website_member_photos/joowan-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/joowan-ryu-9a9424201/",
-      },
-      {
-        name: "Ethan Andersson Tanra",
-        role: "Hardware Member",
-        image: "/website_member_photos/ethan-2.jpg",
-        backImage: "/website_member_photos/ethan-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/ethan-tantra/",
-      },
-      {
-        name: "Timothy",
-        role: "S. Projects & Hardware Member",
-        image: "/website_member_photos/timothy-2.jpg",
-        backImage: "/website_member_photos/timothy-1.jpg",
-        schoolYear: "Year 1 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/truongtimothy0603/",
-      },
-      {
-        name: "S Tiyaneswaren S/O Selvaraj",
-        role: "Hardware Member",
-        image: "/website_member_photos/tiyanes-2.jpg",
-        backImage: "/website_member_photos/tiyanes-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/s-tiyaneswaren-s-o-selvaraj-44120519b/",
-      },
-      {
-        name: "Akil",
-        role: "Hardware Member",
-        image: "/website_member_photos/akil-2.jpg",
-        backImage: "/website_member_photos/akil-1.jpg",
-        schoolYear: "Year 1 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/akilrafid/",
-      },
-      {
-        name: "Yong Han Wen",
-        role: "Hardware Member",
-        image: "/website_member_photos/yonghanwen-2.jpg",
-        backImage: "/website_member_photos/yonghanwen-1.jpg",
-        schoolYear: "Year 2 Electrical and Electronic Engineering Student",
-        linkedin: "https://www.linkedin.com/in/yonghanwen/",
-      },
-      {
-        name: "Jordon Koh",
-        role: "Hardware Member",
-        image: "/website_member_photos/jordon-2.jpg",
-        backImage: "/website_member_photos/jordon-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-      },
-
-    ],
-    software: [
-      {
-        name: "Ong Zheng Kai, Ethan",
-        role: "Software Lead",
-        image: "/website_member_photos/ethanong-2.jpg",
-        backImage: "/website_member_photos/ethanong-1.JPG",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/eozk/",
-      },
-      {
-        name: "Luc Vu Tien",
-        role: "CTO",
-        image: "/website_member_photos/luc-1.jpg",
-        backImage: "/website_member_photos/luc-2.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/luc-vu-tien-601138131/",
-        github: "https://github.com/lucvt001",
-      },
-      {
-        name: "Toh Jia Hao",
-        role: "Software Advisor",
-        image: "/website_member_photos/jiahao-2.jpg",
-        backImage: "/website_member_photos/jiahao-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/toh-jia-hao-65bb39229/",
-        github: "https://github.com/Evintjh",
-      },
-      {
-        name: "Wong Wei Ming",
-        role: "Admin Lead",
-        image: "/website_member_photos/weiming-2.jpeg",
-        backImage: "/website_member_photos/weiming-1.webp",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/wongweiming/",
-      },
-      {
-        name: "Brian Kho Kah Chun",
-        role: "Software Member",
-        image: "/website_member_photos/brian-2.jpeg",
-        backImage: "/website_member_photos/brian-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/kho-kah-chun/",
-      },
-      {
-        name: "Pang Yann Andre",
-        role: "Software Member",
-        image: "/website_member_photos/andre-2.webp",
-        backImage: "/website_member_photos/andre-1.jpeg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/apangyann/",
-      },
-      {
-        name: "Bui Gia Bao",
-        role: "Software Member",
-        image: "/website_member_photos/bao-2.jpeg",
-        backImage: "/website_member_photos/bao-1.jpg",
-        schoolYear: "Year 2 Electrical and Electronic Engineering Student",
-        linkedin: "https://www.linkedin.com/in/gia-bao-bui-562883281/",
-      },
-      {
-        name: "Chew Chern Jin, Aegan",
-        role: "Software Member",
-        image: "/website_member_photos/aegan-2.jpg",
-        backImage: "/website_member_photos/aegan-1.JPG",
-        schoolYear: "Year 1 CEG & Business Student",
-        linkedin: "https://www.linkedin.com/in/chew-chern-jin-aegan-3168402a7/",
-      },
-      {
-        name: "Minh Nhan",
-        role: "Software Member",
-        image: "/website_member_photos/minNhan-2.jpg",
-        backImage: "/website_member_photos/minhNhan-1.jpg",
-        schoolYear: "Year 3 Aerospace Engineering & Economics Student",
-        linkedin: "https://www.linkedin.com/in/minh-nhan01/",
-      },
-      {
-        name: "Matthew Sungho",
-        role: "Software Member",
-        image: "/website_member_photos/matthew-2.jpg",
-        backImage: "/website_member_photos/matthewsungho-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        github: "https://github.com/Mattabyte",
-      },
-      {
-        name: "Nguyen Trung Kien",
-        role: "Software Member",
-        image: "/website_member_photos/trungkien-2.jpeg",
-        backImage: "/website_member_photos/trungkien-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/trungkien001/",
-      },
-      {
-        name: "Chan Jin You",
-        role: "Software Member",
-        image: "/website_member_photos/chanjinyou-2.jpg",
-        backImage: "/website_member_photos/chanjinyou-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/jychan0527/",
-        github: "https://github.com/bk1021",
-
-      },
-      {
-        name: "Pranav Parashar",
-        role: "Software Member",
-        image: "/website_member_photos/pranav-2.jpg",
-        backImage: "/website_member_photos/pranav-1.jpg",
-        schoolYear: "Year 3 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/pranav-parashar-a9b185202?",
-        github: "https://github.com/Pyder3/Pyder3",
-
-      },
-      {
-        name: "Wang Ke",
-        role: "Software Member",
-        image: "/website_member_photos/wangke-2.jpg",
-        backImage: "/website_member_photos/wangke-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/ke-wang-41a2312b3",
-      },
-      {
-        name: "Song Xin",
-        role: "Software Member",
-        image: "/website_member_photos/songxin-2.jpeg",
-        backImage: "/website_member_photos/songxin-1.jpg",
-        schoolYear: "Year 1 Computer Science Student",
-      },
-      {
-        name: "Ray Ying Zhan",
-        role: "S. Projects & Software Member",
-        image: "/website_member_photos/rayyinzhen-2.jpg",
-        backImage: "/website_member_photos/rayyingzhen-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/ray-shao/",
-        github: "https://github.com/frieddeli",
-
-      },
-
-
-    ],
-    electrical: [
-      {
-        name: "Scott Cheng",
-        role: "Electrical & Special Projects Lead",
-        image: "/website_member_photos/scott-2.jpeg",
-        backImage: "/website_member_photos/scott.s.jpg",
-        schoolYear: "Year 2 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/scott-cheng-802138154/",
-        github: "https://github.com/scott-cjx", // Add this line
-      },
-    ],
-    business: [
-      {
-        name: "Jennifer Goh",
-        role: "COO CHRO",
-        image: "/website_member_photos/jen-1.jpg",
-        backImage: "/website_member_photos/jen-2.jpg",
-        schoolYear: "Year 3 Biological Sciences Student",
-        linkedin: "https://www.linkedin.com/in/jennifer-zhen-ni-goh/",
-      },
-      {
-        name: "Shirley Gan Bee Yun",
-        role: "Business Member",
-        image: "/website_member_photos/shirley-2.jpeg",
-        backImage: "/website_member_photos/shirley.jpg",
-        schoolYear: "Year 2 Mechanical Engineering Student",
-      },
-      {
-        name: "Jamie Tan",
-        role: "Business",
-        image: "/website_member_photos/jamie-2.jpeg",
-        backImage: "/website_member_photos/jamie-2.jpg",
-        schoolYear: "Year 2 Mechanical Engineering Student",
-      },
-      {
-        name: "Tang Pei Wen",
-        role: "Business",
-        image: "/website_member_photos/tangpeiwen-2.jpeg",
-        backImage: "/website_member_photos/tangpeiwen-2.jpeg",
-        schoolYear: "Year 1 Mechanical Engineering Student",
-      },
-
-    ],
-    webdev: [
-      {
-        name: "Abdillah Goh",
-        role: "CWO, Webdev Lead",
-        image: "/website_member_photos/abdi-2.jpeg",
-        backImage: "/website_member_photos/abdi-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/abdillah-goh-9440b2198/",
-        github: "https://github.com/gohabdillah", // Add this line
-
-      },
-      {
-        name: "Rohit Kurup",
-        role: "Web Dev Member",
-        image: "/website_member_photos/rohit-2.jpeg",
-        backImage: "/website_member_photos/rohit-1.jpg",
-        schoolYear: "Year 2 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/rohit-kurup-6944b8276/",
-      },
-      {
-        name: "Zi Xuan",
-        role: "Web Dev Member",
-        image: "/website_member_photos/zixuan-2.jpg",
-        backImage: "/website_member_photos/zixuan-1.jpeg",
-        schoolYear: "Year 1 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/tanzixuantzx",
-      },
-      {
-        name: "Tiffany Sajoto",
-        role: "Web Dev Member",
-        image: "/website_member_photos/tiffany-2.jpeg",
-        backImage: "/website_member_photos/tiffany-1.jpg",
-        schoolYear: "Year 3 Computer Engineering Student",
-        linkedin: "https://sg.linkedin.com/in/tiffany-sajoto-673000271",
-      },
-    ],
-    projects: [
-      {
-        name: "Scott Cheng",
-        role: "Electrical & Special Projects Lead",
-        image: "/website_member_photos/scott-2.jpeg",
-        backImage: "/website_member_photos/scott.s.jpg",
-        schoolYear: "Year 2 Computer Science Student",
-        linkedin: "https://www.linkedin.com/in/scott-cheng-802138154/",
-        github: "https://github.com/scott-cjx", // Add this line
-      },
-      {
-        name: "Hao Cheng Jing",
-        role: "Special Projects Member",
-        image: "/website_member_photos/chengjing-2.jpeg",
-        backImage: "/website_member_photos/chengjing-1.s.jpg",
-        schoolYear: "Year 2 Electrical & Electronic Engineering Student",
-        linkedin: "https://www.linkedin.com/in/cheng-jing-hao-74715a30a/",
-      },
-      {
-        name: "Liu Yong Zhang",
-        role: "Special Projects Member",
-        image: "/website_member_photos/yongzhang-2.jpeg",
-        backImage: "/website_member_photos/yongzhang-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/yongzhang-liu-6661ba24a/",
-        github: "https://github.com/YongzhangLiu", // Add this line
-
-      },
-      {
-        name: "Ray Ying Zhan",
-        role: "Special Projects & Software Member",
-        image: "/website_member_photos/rayyinzhen-2.jpg",
-        backImage: "/website_member_photos/rayyingzhen-1.jpg",
-        schoolYear: "Year 2 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/ray-shao/",
-        github: "https://github.com/frieddeli", // Add this line
-
-      },
-      {
-        name: "Joowan",
-        role: "Special Projects & Hardware Member ",
-        image: "/website_member_photos/joowan-2.jpg",
-        backImage: "/website_member_photos/joowan-1.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/joowan-ryu-9a9424201/",
-      },
-      {
-        name: "Timothy",
-        role: "Special Projects & Hardware Member",
-        image: "/website_member_photos/timothy-2.jpg",
-        backImage: "/website_member_photos/timothy-1.jpg",
-        schoolYear: "Year 1 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/truongtimothy0603/",
-      },
-    ],
-    advisors: [
-      {
-        name: "Chan Wai Lee",
-        role: "Team Advisor",
-        image: "/website_member_photos/wailee-2.jpg",
-        backImage: "/website_member_photos/wailee-1.jpg",
-        schoolYear: "Assistant Professor, School of Mechanical & Aerospace Engineering",
-        linkedin: "https://www.linkedin.com/in/wai-lee-chan-3b853595/?originalSubdomain=sg",
-      },
-      {
-        name: "Zheng Shimin, Lillian",
-        role: "Team Advisor",
-        image: "/website_member_photos/lilian-2.jpg",
-        backImage: "/website_member_photos/lilian-1.jpg",
-        schoolYear: "Manager - Student Development, College of Engineering",
-      },
-    ]
-  },
-  'AY25/26': {
-      Leads : [
-        // Add team members for AY25/26 here
-      ],
-      Hardware : [
-        // Add team members for AY25/26 here
-      ],
-      Software : [
-        // Add team members for AY25/26 here 
-      ], 
-      Electrical : [
-        // Add team members for AY25/26 here
-      ],
-      Business : [
-        // Add team members for AY25/26 here
-      ],
-      Webdev : [
-        // Add team members for AY25/26 here
-      ],
-      Projects : [
-        // Add team members for AY25/26 here
-      ],
-      Advisors : [
-        // Add team members for AY25/26 here
-      ]
-  }
-};
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import teamData from './data/teamData.js';
 
 export default function TeamPage() {
-  const [activeTab, setActiveTab] = useState('AY24/25');
+  const [activeTab, setActiveTab] = useState('AY25/26');
 
   const handleTabChange = (year) => {
     setActiveTab(year);
@@ -683,6 +78,12 @@ export default function TeamPage() {
             {activeTab === 'AY24/25' && (
               <div className="text-center w-full">
                 <TeamSubmenu year="AY24/25" />
+              </div>
+            )}
+
+            {activeTab === 'AY25/26' && (
+              <div className="text-center w-full">
+                <TeamSubmenu year="AY25/26" />
               </div>
             )}
           </div>
@@ -1018,18 +419,33 @@ export default function TeamPage() {
 function TeamSubmenu({ year }) {
   const [activeSubmenu, setActiveSubmenu] = useState(year === 'AY23/24' ? 'Members' : 'leads');
 
-  const teams = year === 'AY23/24' ? [
-    { id: 'Members', label: 'Members' }
-  ] : [
-    { id: 'leads', label: 'Leads' },
-    { id: 'hardware', label: 'Hardware' },
-    { id: 'software', label: 'Software' },
-    { id: 'electrical', label: 'Electrical' },
-    { id: 'business', label: 'Business' },
-    { id: 'webdev', label: 'Web Dev' },
-    { id: 'projects', label: 'S. Projects' },
-    { id: 'advisors', label: 'Advisors' }
-  ];
+  let teams = [];
+
+  if (year === "AY23/24") {
+    teams = [{ id: "Members", label: "Members" }];
+  } else if (year === "AY24/25") {
+    teams = [
+      { id: "leads", label: "Leads" },
+      { id: "hardware", label: "Hardware" },
+      { id: "software", label: "Software" },
+      { id: "electrical", label: "Electrical" },
+      { id: "business", label: "Business" },
+      { id: "webdev", label: "Web Dev" },
+      { id: "projects", label: "S. Projects" },
+      { id: "advisors", label: "Advisors" },
+    ];
+  } else if (year === "AY25/26") {
+    teams = [
+      { id: "leads", label: "Leads" },
+      { id: "mechanical", label: "Mechanical" },
+      { id: "software", label: "Software" },
+      { id: "electrical", label: "Electrical" },
+      { id: "business", label: "Business" },
+      { id: "webnapp", label: "Web&App" }, 
+      { id: "rnd", label: "R&D" },
+      { id: "advisors", label: "Advisors" },
+    ];
+  }
 
   const handleSubmenuChange = (teamId) => {
     setActiveSubmenu(teamId);
@@ -1042,7 +458,25 @@ function TeamSubmenu({ year }) {
       return <p>Content coming soon...</p>;
     }
 
-    const teamDescriptions = {
+const teamDescriptions = {
+      'AY25/26': {
+      leads:
+        "Steering the team’s vision, strategy, and cross-functional coordination to drive Mecatron forward.",
+      mechanical:
+        "Designing and building the mechanical systems that bring our autonomous vehicles to life.",
+      software:
+        "Developing the brains behind our AUVs — from navigation algorithms to computer vision and control systems.",
+      electrical:
+        "Engineering the power, circuits, and embedded systems that keep our vehicles running reliably underwater.",
+      business:
+        "Managing sponsorships, partnerships, outreach, and branding to sustain and grow Team Mecatron.",
+      webnapp:
+        "Developing Mecatron’s digital ecosystem — from web platforms to interactive apps that expand outreach and usability.",
+      rnd:
+        "Pioneering experimental subsystems and outreach prototypes with real-world impact.",
+      advisors:
+        "Providing mentorship, technical guidance, and industry insight to elevate the team’s capabilities.",
+    },
       'AY24/25': {
         leads: "Steering the team’s vision, strategy, and cross-functional coordination to drive Mecatron forward.",
         hardware: "Designing and building the mechanical systems that bring our autonomous vehicles to life.",
@@ -1055,10 +489,9 @@ function TeamSubmenu({ year }) {
       },
       'AY23/24': {
         Members: "Our small but dedicated team combines experience and passion to lead Mecatron’s 2024 innovations from concept to completion.",
-
       }
 
-    };
+};
 
     const description = teamDescriptions[year]?.[teamId] || "Meet our team members for the year of AY23/24";
 
@@ -1077,7 +510,7 @@ function TeamSubmenu({ year }) {
   return (
     <div className="w-full mx-auto">
       <div className="submenu-container">
-        {year === 'AY24/25' && (
+        {["AY24/25", "AY25/26"].includes(year) && (
         <div className="submenu-wrap">
           {teams.map((team, index) => (
             <React.Fragment key={team.id}>
@@ -1102,7 +535,7 @@ function TeamSubmenu({ year }) {
       </div>
 
       {/* Submenu Content */}
-      {year === 'AY24/25' && (
+      {["AY24/25", "AY25/26"].includes(year) && (
         <div className="submenu-content mt-4 md:mt-8 p-3 md:p-4 lg:p-6 bg-[#232323] rounded-lg mb-8">
           <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-orange-400 mb-4">
           {teams.find(team => team.id === activeSubmenu)?.label} Team {year}
@@ -1164,48 +597,7 @@ function TeamMemberCard({ member }) {
           
           {/* Show department or company for advisors */}
           {department && <p className="text-xs text-gray-300 mb-4">{department}</p>}
-          {company && <p className="text-xs text-gray-300 mb-4">{company}</p>}
-          
-          {/* Hide social icons on front of card */}
-          {/* <div className="flex justify-center space-x-4 mt-4">
-            {github && (
-              <a 
-                href={github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-            )}
-            {linkedin && (
-              <a 
-                href={linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-            )}
-            {email && (
-              <a 
-                href={`mailto:${email}`} 
-                className="text-gray-400 hover:text-red-400 transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                </svg>
-              </a>
-            )}
-          </div> */}
+          {company && <p className="text-xs text-gray-300 mb-4">{company}</p>}          
         </div>
         
         {/* Back of card */}
@@ -1240,9 +632,7 @@ function TeamMemberCard({ member }) {
                 className="text-gray-400 hover:text-white transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
+              <FaGithub size={22} />
               </a>
             )}
             {linkedin && (
@@ -1253,9 +643,7 @@ function TeamMemberCard({ member }) {
                 className="text-gray-400 hover:text-blue-400 transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
+              <FaLinkedin size={22} />
               </a>
             )}
             {email && (
@@ -1264,9 +652,7 @@ function TeamMemberCard({ member }) {
                 className="text-gray-400 hover:text-red-400 transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                </svg>
+              <FaEnvelope size={22} />
               </a>
             )}
           </div>
