@@ -22,7 +22,7 @@
     "r3f-perf": "^7.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.4.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3",
     "react-toastify": "^11.0.3",
     "three": "^0.172.0"
