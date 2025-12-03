@@ -1,40 +1,30 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
-// import {group_pic} from './group.png'
 
-
-
-
-// return <div className="min-h-screen flex items-center justify-center text-3xl">Robosub 2025 Page</div>;
 export default function Robosub2025Page() {
- 
-  return(
-
+  return (
     <div className="min-h-screen bg-[#181818] text-white font-sans">
-      {/* <div className="flex pt-32 justify-evenly">
-        <h1 className="flex text-lg">October 2025</h1>
-        <h1 className="flex text-5xl text-orange-600">RoboSub 2025</h1>
-      </div>    */}
       <div className="flex flex-col md:flex-row pt-32 items-center md:justify-around text-center">
-        <h1 className="flex text-lg">August 2025</h1>
-        <h1 className="flex text-4xl md:text-5xl text-[#d73a1a] font-bold">RoboSub 2025</h1>
+        <div className="text-lg">August 2025</div>
+        <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">RoboSub 2025</h1>
       </div>
+
       <section className="flex flex-col md:flex-row items-center justify-between pb-5 md:pb-20 px-8 md:px-20 bg-[#181818]">
-      <div className="flex-1 flex items-center justify-center mt-12 md:mt-0 w-full">
-            {/* 3D Kevin model in a circular container */}
-            <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
-              <Optimized3DViewer 
-                showModel={true}
-                scale={[5, 5, 5]}
-                enableTouchControls={true}
-                modelType="kevin"
-              />
-            </div>
+        <div className="flex-1 flex items-center justify-center mt-12 md:mt-0 w-full">
+          <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
+            <Optimized3DViewer 
+              showModel={true}
+              scale={[5, 5, 5]}
+              enableTouchControls={true}
+              modelType="kevin"
+            />
           </div>
+        </div>
       </section>
-      <div className="flex flex-col gap-4 pr-5 pl-5 md:flex-row md:gap-16  justify-center pb-10">
+
+      <div className="flex flex-col gap-4 pr-5 pl-5 md:flex-row md:gap-16 justify-center pb-10">
         <Link
           to="/kevin"
           className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
@@ -51,44 +41,48 @@ export default function Robosub2025Page() {
           Kevin's Technical Paper
         </a>
 
-        <Link
-          to="https://mecatron.notion.site/Robosub-2025-Blog-20c6978f818e80aebb1ec2d603b2cc69"
+        <a
+          href="https://mecatron.notion.site/Robosub-2025-Blog-20c6978f818e80aebb1ec2d603b2cc69"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
         >
           Team's Blog
-        </Link>
+        </a>
       </div>
-      <div className="flex pt-20 justify-center bg-[#303030]">
-        <h1 className="flex text-4xl">Team Video</h1>
+
+      <div className="flex pt-20 justify-center bg-[#303030] w-full">
+        <h2 className="text-4xl font-extrabold text-orange-500 mb-8">Team Video</h2>
       </div>   
-       <section className="flex flex-col md:flex-row items-center justify-between pt-10 pb-10 px-8 md:px-20 bg-[#303030] md:min-h-30">
-       <div className="w-full aspect-video">
-  <iframe
-    className="w-full h-full"
-    src="https://www.youtube.com/embed/stvEZ86dvd4"
-    title="Team Mecatron RoboSub Introduction Video | RoboSub 2025"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerPolicy="strict-origin-when-cross-origin"
-    allowFullScreen
-  ></iframe>
-</div>
+
+      <section className="flex flex-col md:flex-row items-center md:justify-center pt-10 pb-10 px-8 md:px-20 bg-[#303030]">
+        <div className="w-full aspect-video max-w-4xl">
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/stvEZ86dvd4"
+            title="Team Mecatron RoboSub Introduction Video | RoboSub 2025"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
       </section>
 
-      <section className="flex flex-col md:flex-row pt-10 pb-15 px-8 md:px-20 bg-[#181818] min-h-30">
+      <section className="flex flex-col md:flex-row pt-10 pb-15 px-8 md:px-20 bg-[#181818]">
         <div className="relative flex flex-1 mt-12 md:mt-0 pb-10">
           <img 
             src="/images/group.png" 
-            alt="wtv" 
+            alt="team"
             className="w-full h-auto brightness-50"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <p className="text-white text-center md:text-4xl text-sm px-4 pb-10 font-bold">
+            <p className="text-white text-center text-lg sm:text-xl px-4 pb-6 font-bold">
               Click here to view our team members behind Mecatron
             </p>
             <Link
               to="/team"
-              className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200 md:scale-100 scale-x-75"
+              className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
             >
               Members Page
             </Link>
@@ -96,9 +90,5 @@ export default function Robosub2025Page() {
         </div>
       </section>
     </div>
-
   );
-  
-  
-  
-} 
+}

@@ -10,7 +10,6 @@ export default function CompetitionsPage() {
       image: "/competition/images/competition_img_1.jpg",
       status: "completed",
       link:"/robosub2025"
-
     },
     {
       id: 2,
@@ -42,23 +41,21 @@ export default function CompetitionsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#181818]  text-white">
+    <div className="min-h-screen bg-[#181818] text-white">
       {/* Header */}
-
       <section
         className="relative w-full min-h-[70vh] flex flex-col justify-center items-center text-center px-4 sm:px-8 py-24 bg-black text-white"
       >
         <div className="relative z-10">
           <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Competitions</h1>
           <p className="max-w-4xl text-lg sm:text-xl leading-relaxed">
-          These are the competitions that we are preparing or have participated in.
-
+            These are the competitions that we are preparing or have participated in.
           </p>
         </div>
       </section>
 
-      <div className="flex w-full justify-center    ">
-        <p className="text-gray-300 text-lg pt-10 pb-10">
+      <div className="flex w-full justify-center">
+        <p className="text-gray-300 text-lg sm:text-xl pt-10 pb-10">
           Stay tuned for more upcoming competitions!
         </p>
       </div>
@@ -105,34 +102,31 @@ export default function CompetitionsPage() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="flex flex-col p-6 space-y-8">
-                    <h3 className="text-2xl font-bold text-white mb-3">
+                  <div className="flex flex-col p-6 space-y-4">
+                    <h3 className="text-2xl font-bold text-white">
                       {competition.title}
                     </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
                       {competition.description}
                     </p>
-                     <Link
+                    <Link
                       to={competition.link}
                       onClick={() => {
-                        // Small delay to ensure navigation happens first
                         setTimeout(() => {
                           window.scrollTo(0, 0);
                         }, 100);
                       }}
-                      className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200 text-center"
+                      className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200 inline-block w-max"
                     >
                       Learn More
                     </Link>
                   </div>
-                 
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-      
     </div>
   );
-} 
+}

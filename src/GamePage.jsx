@@ -191,7 +191,7 @@ export default function GamePage() {
                     }}
                   >
                     <iframe 
-                      src="/game/index.html" 
+                      src="/gamefiles/index.html" 
                       className="border-0 absolute inset-0"
                       title="Microplastics Game"
                       allowFullScreen

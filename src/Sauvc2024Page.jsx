@@ -1,8 +1,5 @@
-
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 export default function Sauvc2024Page() {
-  // return <div className="min-h-screen flex items-center justify-center text-3xl">SAUVC 2024 Page</div>;
-
   function Carousel() {
     const images = [
       '/sauvc_2024/images/carousel/sauvc_2024_carousel_1.jpeg',
@@ -34,111 +31,80 @@ export default function Sauvc2024Page() {
       </div>
     );
   }
+
   return(
     <div className="min-h-screen bg-[#181818] text-white font-sans">
       <div className="flex flex-col md:flex-row pt-32 items-center md:justify-around text-center">
-        <h1 className="flex text-lg">2024 April</h1>
-        <h1 className="flex text-4xl md:text-5xl text-[#d73a1a] font-bold">Singapore AUV Challenge</h1>
+        <div className="text-lg">2024 April</div>
+        <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Singapore AUV Challenge</h1>
       </div>
       
-      <section className="flex justify-center items-center flex-col md:flex-row pt-10 pb-15 px-8 md:px-20 bg-[#181818]  max-w-30 min-h-30">
+      <section className="flex justify-center items-center flex-col md:flex-row pt-10 pb-15 px-8 md:px-20 bg-[#181818]">
         <div className="pt-20 pb-10 w-full max-w-7xl">
           <img 
             src="/sauvc_2024/images/sauvc_2024_img_1.jpeg" 
-            alt="wtv" 
-            className="w-auto h-auto"
+            alt="sauvc 2024"
+            className="w-full h-auto rounded-lg"
           />
         </div>
       </section>
-      {/* <section className="flex flex-col md:flex-row pt-10 pb-15 px-8 md:px-20 bg-[#303030] min-h-30">
-        <div className="pt-20 pb-10 pl-40 ">
-          <img 
-            src="./src/turtle_boi.jpeg" 
-            alt="wtv" 
-            className="w-auto h-auto"
-          />
-        </div>
-          <div className="pt-20 pl-20"> 
-            <p className="text-lg">
-              The Singapore Autonomous Underwater Vehicle Challenge (SAUVC) 2024, 
-              
-            </p>
-            <p>
-              is an international student competition which required teams globally to design and build Autonomous Underwater Vehicles (AUVs).
-            </p>
-            <p>
-              These AUVs must navigate through controlled environments and perform tasks that mirror real-world offshore applications, 
-            </p>
-            <p>
-              such as navigation, depth control, and underwater acoustics, providing participants with valuable experience in AUV systems engineering​.
-            </p>
-          </div>
-        
-      </section> */}
 
-      <section class="px-8 md:px-20 py-10 bg-[#303030]">
-        <div class="max-w-7xl mx-auto">
+      <section className="px-8 md:px-20 py-10 bg-[#303030]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div className="bg-gray-800 rounded-lg p-4">
+                <img 
+                  src="/sauvc_2024/images/turtle_boi.jpeg" 
+                  alt="Autonomous Underwater Vehicle" 
+                  className="w-full h-auto rounded-lg object-cover"
+                />
+              </div>
+              <div className="space-y-4">
+                <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                  43 teams from all around the world gathered in Singapore for the SAUVC held on 5th – 8th April 2024.
+                </p>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-
-                <div class="space-y-6">
-                    <div class="bg-gray-800 rounded-lg p-4">
-                        <img 
-                            src="/sauvc_2024/images/turtle_boi.jpeg" 
-                            alt="Autonomous Underwater Vehicle" 
-                            class="w-full h-auto rounded-lg object-cover"
-                        />
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <p class="text-gray-300 text-2xl md:text-3xl leading-relaxed ">
-                            43 teams from all around the world gathered in Singapore for the SAUVC held on 5th – 8th April 2024.
-                        </p>
-
-                        <p class="text-gray-300 text-2xl md:text-3xl leading-relaxed">
-                            <span class="font-semibold">Mecatron's AUV had the third fastest qualification timing of 10.53 seconds among</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="space-y-8">
-                    <div class="space-y-4">
-                        <p class="text-gray-300 text-2xl md:text-3xl leading-relaxed">
-                            The Singapore AUV Challenge (SAUVC) is an exciting competition where teams build Autonomous Underwater Vehicles (AUVs).
-                        </p>
-                        
-                        <p class="text-gray-300 text-2xl md:text-3xl leading-relaxed">
-                            These AUVs must navigate through controlled environments and perform tasks that mirror real-world offshore applications, such as navigation, depth control, and underwater acoustics, providing participants with valuable experience in AUV systems engineering.
-                        </p>
-                    </div>
-                    <div className="md:pt-20">
-                      <Carousel/>
-                    </div>
-                </div>
+                <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                  <span className="font-semibold">Mecatron's AUV had the third fastest qualification timing of 10.53 seconds among the qualified teams.</span>
+                </p>
+              </div>
             </div>
-        </div>
-    </section>
-    <section className="flex flex-col md:flex-row items-center justify-between pt-10 pb-10 px-8 bg-[#303030] md:min-h-30">
-      <div className="flex flex-1 flex-col md:flex-row justify-evenly items-center mt-12 md:mt-0 space-y-8 md:space-y-0 text-2xl">
-        <div className="flex flex-col items-center space-y-5">
-          <p className="font-bold">Day 1</p>
-          <video width="300" height="600" src="/sauvc_2024/videos/VID1.mp4" controls></video> 
-        </div>
-        <div className="flex flex-col items-center space-y-5">
-          <p  className="font-bold">Day 2</p>
-          <video width="300" height="600" src="/sauvc_2024/videos/VID4.mp4" controls></video> 
-        </div>
-        
-        <div className="flex flex-col items-center space-y-5">
-          <p  className="font-bold">Day 3</p>
-          <video width="300" height="600" src="/sauvc_2024/videos/VID5.mp4" controls></video> 
-        </div>
-        
-      </div>
-    </section>
-    
 
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                  The Singapore AUV Challenge (SAUVC) is an exciting competition where teams build Autonomous Underwater Vehicles (AUVs).
+                </p>
+                
+                <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                  These AUVs must navigate through controlled environments and perform tasks that mirror real-world offshore applications, such as navigation, depth control, and underwater acoustics, providing participants with valuable experience in AUV systems engineering.
+                </p>
+              </div>
+              <div className="md:pt-20">
+                <Carousel/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col md:flex-row items-center justify-between pt-10 pb-10 px-8 bg-[#303030]">
+        <div className="flex flex-1 flex-col md:flex-row justify-evenly items-center mt-12 md:mt-0 space-y-8 md:space-y-0 text-lg sm:text-xl">
+          <div className="flex flex-col items-center space-y-5">
+            <p className="font-bold">Day 1</p>
+            <video width="300" height="600" src="/sauvc_2024/videos/VID1.mp4" controls></video> 
+          </div>
+          <div className="flex flex-col items-center space-y-5">
+            <p className="font-bold">Day 2</p>
+            <video width="300" height="600" src="/sauvc_2024/videos/VID4.mp4" controls></video> 
+          </div>
+          <div className="flex flex-col items-center space-y-5">
+            <p className="font-bold">Day 3</p>
+            <video width="300" height="600" src="/sauvc_2024/videos/VID5.mp4" controls></video> 
+          </div>
+        </div>
+      </section>
     </div>
-    
   );
-} 
+}
