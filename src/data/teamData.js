@@ -975,7 +975,7 @@ const teamData = {
         name: "Nachiappan Hari Subramanian",
         role: "Software Member",
         image: "/website_member_photos/hari-1.jpg",
-        backImage: "/website_member_photos/hari-1.jpg",
+        backImage: "/website_member_photos/hari-2.jpg",
         schoolYear: "Year 2 Computer Engineering Student",
         linkedin: "https://www.linkedin.com/in/nachiappan-hari-subramanian-63a2ab235/",
         github: "https://github.com/NHS172k3",
