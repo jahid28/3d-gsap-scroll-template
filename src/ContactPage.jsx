@@ -32,7 +32,7 @@ export default function ContactPage() {
         <div className="relative z-10">
           <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Contact Us</h1>
           <p className="max-w-4xl text-lg sm:text-xl leading-relaxed">
-            If you would like more information about our projects, the research and development activities of Mecatron, or have any other questions, please feel free to drop us a message here.
+            If you would like more information about our projects, the research and development activities of Mecatron, or have any other questions, please feel free to drop us a message.
           </p>
         </div>
       </section>
