@@ -64,7 +64,7 @@ export default function ContactPage() {
       <section className="w-full bg-[#1a1a1a] py-16 px-4">
         <div className="max-w-screen-xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-orange-500 mb-6">Latest Happenings</h2>
-          <p className="text-white mb-8">Catch up on what we're doing on Instagram (@ntu_mecatron)!</p>
+          <p className="text-white mb-8">Catch up on what we are doing by following us on Instagram (@ntu_mecatron)!</p>
           <div className="elfsight-app-464a0d58-a8ab-4e30-8545-5edcb53f33d5" data-elfsight-app-lazy></div>
         </div>
       </section>

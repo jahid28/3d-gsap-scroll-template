@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { FaInstagram, FaLinkedinIn, FaDribbble, FaBehance, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaGithub, FaEnvelope } from 'react-icons/fa';
 import mecatronLogo from './assets/logos/mecatronWheelLogo.png';
 
 export default function Footer() {
@@ -45,6 +45,7 @@ export default function Footer() {
         <div className="flex gap-6 mt-6 mb-6 items-center">
           <a href="https://www.instagram.com/ntu_mecatron" className="rounded-full border border-gray-500 p-2 hover:bg-orange-500 hover:text-white transition"><FaInstagram size={22} /></a>
           <a href="https://sg.linkedin.com/company/ntu-mecatron" className="rounded-full border border-gray-500 p-2 hover:bg-orange-500 hover:text-white transition"><FaLinkedinIn size={22} /></a>
+          <a href="https://github.com/ntu-mecatron" className="rounded-full border border-gray-500 p-2 hover:bg-orange-500 hover:text-white transition"><FaGithub size={22} /></a>
 
           {/* Mail icon with chooser */}
           <div className="relative" ref={mailMenuRef}>
@@ -92,8 +93,6 @@ export default function Footer() {
         </div>
         {/* Divider */}
         <hr className="w-full border-gray-600 mb-2" />
-        {/* Designer Credit */}
-        <div className="text-center text-sm text-gray-400">Mecatron NTU</div>
       </div>
     </footer>
   );

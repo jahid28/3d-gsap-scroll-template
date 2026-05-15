@@ -8,6 +8,9 @@ import { Optimized3DViewer } from './components/Optimized3DViewer';
 
 
 
+
+
+
 const sections = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services' },
@@ -15,6 +18,7 @@ const sections = [
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'contact', label: 'Contact me' },
 ];
+
 
 export default function Home() {
   // Refs for scrolling
@@ -27,22 +31,26 @@ export default function Home() {
     competitions: useRef(null),
   };
 
+
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+
   // State for 3D model loading
   const [modelLoaded, setModelLoaded] = useState(false);
   const [showModel, setShowModel] = useState(false);
+
 
   useEffect(() => {
     // Start the 3-second timer immediately
     const timer = setTimeout(() => {
       setShowModel(true);
     }, 3000);
-    
+   
     return () => clearTimeout(timer);
   }, []);
+
 
   return (
     <div className="min-h-screen bg-[#181818] text-white font-sans overflow-x-hidden">
@@ -53,6 +61,7 @@ export default function Home() {
           <div className="flex-1 flex flex-col items-start justify-center space-y-6 w-full">
             <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-orange-500">Meet Kevin</div>
             <div className="text-2xl sm:text-3xl md:text-2xl font-medium text-white">Vehicle for RoboSub 2025</div>
+
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-6 w-full">
             <Link
@@ -74,15 +83,15 @@ export default function Home() {
             <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
               {!showModel && (
                 <div className="absolute inset-0 z-10">
-                  <img 
-                    src="/images/kevin_placeholder.png" 
-                    alt="Kevin - Loading..." 
+                  <img
+                    src="/images/kevin_placeholder.png"
+                    alt="Kevin - Loading..."
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
               )}
               {showModel && (
-                <Optimized3DViewer 
+                <Optimized3DViewer
                   showModel={showModel}
                   scale={[5, 5, 5]}
                   enableTouchControls={true}
@@ -134,6 +143,7 @@ export default function Home() {
           </Link>
         </div>
 
+
         </div>
       </section>
       <section ref={sectionRefs.about} className="min-h-[500px] bg-[#181818] py-16">
@@ -154,27 +164,38 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section ref={sectionRefs.portfolio} className="min-h-[400px] bg-[#AAAAAA] py-16">
-        <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 gap-8">
-        {/* Left: Text */}
-          <div className="flex-1 flex flex-col justify-center items-start py-8 text-black w-full">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">Our Proud Sponsors</h2>
-            <p className="text-sm sm:text-base md:text-lg mb-4">
-              We are grateful to our sponsors for their invaluable support in shaping Mecatron's journey. Their contributions have played a vital role in advancing our projects, research, and outreach efforts.
-          </p>
-            <Link to="/sponsors" className="text-sm sm:text-base font-semibold hover:text-orange-500 transition flex items-center group">
-            To Learn More, Click Here <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </Link>
-        </div>
-        {/* Right: Carousel */}
-          <div className="flex-1 flex justify-center items-center py-8 w-full">
-          <SponsorsCarousel />
-          </div>
-        </div>
-      </section>
+      <section ref={sectionRefs.portfolio} className="min-h-[400px] bg-[#1a1a1a] py-16 px-4 sm:px-8">
+  <div className="w-full max-w-screen-xl mx-auto">
+    <div className="mb-12">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Our Sponsors</h2>
+      <p className="text-base sm:text-lg text-white max-w-2xl">
+        We are grateful to our sponsors for their invaluable support. Their contributions have played a vital role in advancing our projects, research, and outreach efforts.
+      </p>
     </div>
+   
+    {/* The Carousel now sits nicely below the text */}
+    <SponsorsCarousel />
+
+
+    <div className="mt-8">
+       <Link to="/sponsors" className="text-base font-semibold text-white hover:text-orange-500 transition flex items-center group">
+         Learn more about our partnership opportunities <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+       </Link>
+    </div>
+  </div>
+</section>
+    </div>
+
+
+
+
+
+
+
+
   );
 }
+
 
 function TeamCarousel() {
   const images = [
@@ -184,9 +205,11 @@ function TeamCarousel() {
     '/images/team_4.webp',
     '/images/team_5.jpg',
 
-    
+
+   
   ];
   const [idx, setIdx] = useState(0);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -194,6 +217,7 @@ function TeamCarousel() {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
+
 
   const prev = () => setIdx((idx - 1 + images.length) % images.length);
   const next = () => setIdx((idx + 1) % images.length);
@@ -218,6 +242,7 @@ function TeamCarousel() {
     </div>
   );
 }
+
 
 function CompetitionsCarousel() {
   const slides = [
@@ -245,12 +270,14 @@ function CompetitionsCarousel() {
   ];
   const [idx, setIdx] = useState(0);
 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIdx(prev => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
 
   const prev = () => setIdx((idx - 1 + slides.length) % slides.length);
   const next = () => setIdx((idx + 1) % slides.length);
@@ -286,6 +313,7 @@ function CompetitionsCarousel() {
   );
 }
 
+
 function InitiativesCarousel() {
   const slides = [
     {
@@ -309,12 +337,14 @@ function InitiativesCarousel() {
   ];
   const [idx, setIdx] = useState(0);
 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIdx(prev => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
 
   const prev = () => setIdx((idx - 1 + slides.length) % slides.length);
   const next = () => setIdx((idx + 1) % slides.length);
@@ -352,6 +382,7 @@ const useWindowSize = () => {
     height: window.innerHeight,
   });
 
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -360,71 +391,58 @@ const useWindowSize = () => {
       });
     };
 
+
       window.addEventListener('resize', handleResize);
       return () => {
         window.removeEventListener('resize', handleResize);
       };
-    }, []); 
+    }, []);
     return windowSize;
   };
 
+
 function SponsorsCarousel() {
   const sponsors = [
-    { logo: '/images/fstd_logo.png', alt: 'FSTD' },
-    { logo: '/images/smf_transparent.png', alt: 'Singapore Maritime Foundation' },
-    { logo: '/images/jdf_transparent.webp', alt: 'James Dyson Foundation' },
-    { logo: '/images/waterlinked_transparent.svg', alt: 'Waterlinked' },
+    { logo: '/images/fstd_logo.png', alt: 'FSTD', scale: 'scale-125' },
+    { logo: '/images/smf_transparent.png', alt: 'Singapore Maritime Foundation', scale: 'scale-110' },
+    { logo: '/images/jdf_transparent.webp', alt: 'James Dyson Foundation', scale: 'scale-110' },
+    { logo: '/images/dso_logo.png', alt: 'DSO', scale: 'scale-125' },
+    { logo: '/images/vectornav_logo.svg', alt: 'VectorNav', scale: 'scale-110' },
+    { logo: '/images/waterlinked_transparent.svg', alt: 'WaterLinked', scale: 'scale-70' },
+    { logo: '/images/espressif_logo.png', alt: 'Espressif' },
+    { logo: '/images/zen4blue_logo.png', alt: 'Zen4Blue', scale: 'scale-110' },
+    { logo: '/images/aquarian_logo.png', alt: 'Aquarian Audio' },
+    { logo: '/images/dwe_logo.png', alt: 'DWE' },
     { logo: '/images/sonardyne_transparent.svg', alt: 'Sonardyne' },
-    { logo: '/images/zen4blue_logo.png', alt: 'Zen4Blue' },
-    { logo: '/images/rovmaker_round.png', alt: 'ROV Maker' },
+    { logo: '/images/rovmaker_round.png', alt: 'ROV Maker', scale: 'scale-110' },
   ];
 
-  let groupSize = 3;
-  const maxStart = sponsors.length - groupSize;
-  const [startIdx, setStartIdx] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStartIdx(prev => (prev + 1) % (maxStart + 1));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [maxStart]);
-
-  const { width, height } = useWindowSize();
-  if(width<480){
-    groupSize = 1;
-  }
-  const visible = sponsors.slice(startIdx, startIdx + groupSize);
-  while (visible.length < groupSize) visible.push(null);
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 py-6">
-      <div className="w-full flex flex-wrap justify-center items-center gap-6">
-          {visible.map((s, i) =>
-            s ? (
-              <img
-                key={s.alt}
-                src={s.logo}
-                alt={s.alt}
-              className="h-28 sm:h-36 max-w-[10rem] sm:max-w-[14rem] object-contain"
-              />
-            ) : (
-            <div key={i} className="h-28 sm:h-36 max-w-[10rem] sm:max-w-[14rem]" />
-            )
-          )}
-      </div>
-
-      <div className="mt-4 flex justify-center space-x-2">
-        {Array.from({ length: maxStart + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setStartIdx(i)}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-              i === startIdx ? 'bg-orange-500' : 'bg-gray-300'
-            }`}
-          />
-        ))}
+    <div className="w-full overflow-hidden py-4">
+      {/* The "Mask" creates the fade effect on edges */}
+      <div className="relative flex overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+       
+        <div className="flex animate-marquee gap-8 whitespace-nowrap">
+          {/* We render the list twice for a seamless infinite loop */}
+          {[...sponsors, ...sponsors].map((s, i) => (
+  <div 
+    key={`${s.alt}-${i}`}
+    className="min-w-[180px] sm:min-w-[220px] h-28 sm:h-32 bg-white/10 rounded-2xl border border-white/20 flex items-center justify-center p-6 shrink-0 backdrop-blur-md"
+  >
+    <img 
+      src={s.logo} 
+      alt={s.alt} 
+      /* w-4/5 and h-4/5 force it to occupy 80% of the glass box max.
+         This prevents square logos from touching the edges while 
+         letting wide logos stay legible.
+      */
+      className="w-4/5 h-4/5 object-contain filter brightness-110 transition-all duration-300" 
+    />
+  </div>
+))}
+        </div>
       </div>
     </div>
   );
-} 
+}
