@@ -1,85 +1,79 @@
-import { Optimized3DViewer } from './components/Optimized3DViewer';
 import Navbar from './Navbar';
-import { Link } from 'react-router-dom';
+import { VehicleDescription } from './components/VehicleDescription';
 
 export default function VehiclesPage() {
   return (
-    <div className="min-h-screen bg-[#181818] text-white">
+    <div className="min-h-screen bg-[#181818] text-white w-full overflow-x-hidden">
       <Navbar />
-      <div className="pt-20 px-4 sm:px-8">
 
-        <section
+      {/* Hero Header */}
+      <section
         className="relative w-full min-h-[70vh] flex flex-col justify-center items-center text-center px-4 sm:px-8 py-24 bg-cover bg-center text-white"
         style={{ backgroundImage: "url('/images/bot_1.jpeg')" }}
       >
         <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="relative z-10">
-        <h1 className="text-5xl font-bold text-orange-500 mb-8 text-center">Our Vehicles</h1>
-        <p className="text-lg text-center mb-16">Explore our innovative underwater vehicles!</p>
-
+          <h1 className="text-5xl font-bold text-orange-500 mb-8 text-center">Our Vehicles</h1>
+          <p className="text-lg text-center mb-16">Explore our innovative underwater vehicles!</p>
         </div>
       </section>
-        
-        {/* Vehicles Container */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          {/* Kevin Section */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-20 p-4 pt-8 sm:p-0 sm:pt-0">
-            <div className="flex-1 text-center lg:text-left">
-              <Link to="/kevin" className="block hover:scale-105 transition-transform duration-300">
-                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Kevin 2025</h2>
-                <p className="text-lg text-gray-300 mb-6">
-                  Our flagship ROV designed for precision and reliability. Kevin features advanced manoeuvrability 
-                  and energy efficiency, making it perfect for underwater exploration and competition.
-                </p>
-                <div className="space-y-2 text-gray-400">
-                  <p>• Advanced thruster configuration</p>
-                  <p>• Energy-efficient design</p>
-                  <p>• Competition-tested reliability</p>
-                </div>
-              </Link>
-            </div>
-            <div className="flex-1 flex items-center justify-center">
-              {/* Kevin 3D model container */}
-              <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
-                <Optimized3DViewer 
-                  showModel={true}
-                  scale={[5, 5, 5]}
-                  enableTouchControls={true}
-                />
-              </div>
-            </div>
-          </div>
 
-          {/* Lucy Section */}
-          <div className="flex flex-col lg:flex-row-reverse items-center justify-center gap-12">
-            <div className="flex-1 text-center lg:text-left">
-              <Link to="/lucy" className="block hover:scale-105 transition-transform duration-300">
-                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Lucy 2024</h2>
-                <p className="text-lg text-gray-300 mb-6">
-                  Our newest ROV featuring sleek design and enhanced capabilities. Lucy is equipped with 
-                  5 thrusters and stylish pink accents, designed for both performance and aesthetics.
-                </p>
-                <div className="space-y-2 text-gray-400">
-                  <p>• 5-thruster configuration</p>
-                  <p>• 3+ hour battery life</p>
-                  <p>• SAUVC 2025 champion</p>
-                </div>
-              </Link>
-            </div>
-            <div className="flex-1 flex items-center justify-center">
-              {/* Lucy 3D model container */}
-              <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
-                <Optimized3DViewer 
-                  showModel={true}
-                  scale={[4, 4, 4 ]}
-                  enableTouchControls={true}
-                  modelType="lucy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Vehicles Content Container */}
+      <div className="w-full">
+
+        {/* Hydra Section */}
+        <VehicleDescription
+          title="Hydra 2026"
+          description="Hydra 2026 is the direct evolution of our SAUVC Champion bot, Lucy. By maintaining Lucy's signature compact size while introducing major mechanical upgrades, Hydra is engineered to support high-performance dropper and gripper mechanisms."
+          linkTo="/hydra"
+          highlightBg={true}
+          tags={[
+            "Topology Optimization",
+            "Modular Frame Design",
+            "Symmetric 8-thruster configuration"
+          ]}
+        />
+        
+        {/* Kraken Section */}
+        <VehicleDescription
+          title="Kraken 2026"
+          description="Built to push design boundaries, Kraken is our dedicated testbed for experimental hull materials. It is purpose-built to validate advanced actuation systems, including an integrated torpedo deployment setup."
+          linkTo="/kraken"
+          tags={[
+            "Aerodynamic airfoil wing skeleton (Acrylic)",
+            "Precision CNC enclosure",
+            "Upgraded 8-thruster configuration"
+          ]}
+        />
+
+        {/* Kevin Section */}
+        <VehicleDescription
+          title="Kevin 2025"
+          description="Our flagship ROV designed for precision and reliability. Kevin features advanced manoeuvrability and energy efficiency, making it perfect for underwater exploration and competition."
+          linkTo="/kevin"
+          highlightBg={true}
+          tags={[
+            "Advanced thruster configuration",
+            "Energy-efficient design",
+            "Competition-tested reliability"
+          ]}
+        />
+
+        {/* Lucy Section */}
+        <VehicleDescription
+          title="Lucy 2025"
+          description="Our newest ROV featuring sleek design and enhanced capabilities. Lucy is equipped with 5 thrusters and stylish pink accents, designed for both performance and aesthetics."
+          linkTo="/lucy"
+          modelType="lucy"
+          modelScale={[4, 4, 4]}
+          tags={[
+            "SAUVC 2025 Champion",
+            "5-thruster configuration",
+            "3+ hour battery life",
+          ]}
+        />
+
       </div>
     </div>
   );
-} 
+}
