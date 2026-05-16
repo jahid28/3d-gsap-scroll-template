@@ -27,29 +27,42 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#AAAAAA] py-10">
-        <div className="max-w-screen-xl mx-auto px-8 flex flex-col items-center space-y-8">
-          <h2 className="text-4xl font-extrabold text-black text-center">
+      <section className="w-full bg-[#AAAAAA] py-12">
+        <div className="max-w-screen-xl mx-auto px-8">
+          
+          <h2 className="text-4xl font-extrabold text-black text-center mb-6">
             Our Proud Sponsors
           </h2>
-          <div className="w-full flex justify-center py-6">
-            <img
-              src="/images/tiered_sponsors.png"
-              alt="Sponsors by tier"
-              className="w-full max-w-5xl object-contain"
-            />
+
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            
+            {/* Left - Sponsors Image */}
+            <div className="w-full lg:w-1/2 flex justify-center">
+              <img
+                src="/images/tiered_sponsors.png"
+                alt="Sponsors by tier"
+                className="w-full max-w-2xl object-contain"
+              />
+            </div>
+
+            {/* Right - Text + Button */}
+            <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+              
+              <p className="text-lg text-black leading-relaxed">
+                Interested in sponsoring our team? Mecatron provides organizations
+                with the opportunity to inspire and support the development of future
+                engineers while connecting with NTU students. If you’re interested in
+                sponsoring us, contact us with just a click!
+              </p>
+
+              <Link to="/contact">
+                <button className="bg-orange-500 text-white font-extrabold px-8 py-3 rounded-xl transition hover:bg-orange-600">
+                  Contact Us
+                </button>
+              </Link>
+
+            </div>
           </div>
-
-          <p className="text-lg text-black text-center max-w-3xl">
-            Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!
-          </p>
-
-          <Link to="/contact">
-            <button className="bg-orange-500 text-white font-extrabold px-8 py-2 rounded-lg transition hover:bg-white hover:text-black">
-              Contact Us
-            </button>
-          </Link>
-
         </div>
       </section>
 
