@@ -7,14 +7,14 @@ const sections = [
   { id: 'vehicles', label: 'Vehicles', path: '/vehicles',
     submenu: [
       { id: 'vehicles-main', label: 'Vehicles', path: '/vehicles' },
-      { id: 'kevin', label: 'Kevin', path: '/kevin' },
-      { id: 'lucy', label: 'Lucy', path: '/lucy' },
+      { id: 'kevin', label: 'Kevin 2025', path: '/kevin' },
+      { id: 'lucy', label: 'Lucy 2025', path: '/lucy' },
     ]
   },
   { id: 'competitions', label: 'Competitions', path: '/competitions',
     submenu: [
       { id: 'competitions-main', label: 'Competitions', path: '/competitions' },
-      { id: 'robosub2025', label: 'Robosub 2025', path: '/robosub2025' },
+      { id: 'robosub2025', label: 'RoboSub 2025', path: '/robosub2025' },
       { id: 'sauvc2025', label: 'SAUVC 2025', path: '/sauvc2025' },
       { id: 'materov2024', label: 'MATE ROV 2024', path: '/materov2024' },
       { id: 'sauvc2024', label: 'SAUVC 2024', path: '/sauvc2024' },
