@@ -26,7 +26,7 @@ export default function VehiclesPage() {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-20 p-4 pt-8 sm:p-0 sm:pt-0">
             <div className="flex-1 text-center lg:text-left">
               <Link to="/kevin" className="block hover:scale-105 transition-transform duration-300">
-                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Kevin</h2>
+                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Kevin 2025</h2>
                 <p className="text-lg text-gray-300 mb-6">
                   Our flagship ROV designed for precision and reliability. Kevin features advanced manoeuvrability 
                   and energy efficiency, making it perfect for underwater exploration and competition.
@@ -54,7 +54,7 @@ export default function VehiclesPage() {
           <div className="flex flex-col lg:flex-row-reverse items-center justify-center gap-12">
             <div className="flex-1 text-center lg:text-left">
               <Link to="/lucy" className="block hover:scale-105 transition-transform duration-300">
-                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Lucy</h2>
+                <h2 className="text-4xl font-bold text-white mb-4 hover:text-orange-500 transition-colors">Lucy 2024</h2>
                 <p className="text-lg text-gray-300 mb-6">
                   Our newest ROV featuring sleek design and enhanced capabilities. Lucy is equipped with 
                   5 thrusters and stylish pink accents, designed for both performance and aesthetics.

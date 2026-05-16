@@ -53,7 +53,7 @@ function TabNavigation({ sections, onTabClick, visible, onExited, onInteraction 
   );
 }
 
-function KrakenPage() {
+function HydraPage() {
   const mainRef = useRef(null)
   const sceneRef = useRef(null)
   const [progress, setProgress] = useState(0);
@@ -240,7 +240,7 @@ function KrakenPage() {
             <>
               <div className="fixed inset-0 bg-black/50 z-10 pointer-events-none"></div>
               <p className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mx-4 w-fit text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center z-20 pointer-events-none">
-                Kraken
+                Hydra
               </p>
             </>
           )}
@@ -325,4 +325,4 @@ function KrakenPage() {
   );
 }
 
-export default KrakenPage; 
+export default HydraPage; 
