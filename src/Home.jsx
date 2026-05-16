@@ -1,10 +1,12 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Kevin } from './Kevin';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
+import ImageCarousel from "./components/ImageCarousel"; //import two carousels for the different sections
+import ContentCarousel from "./components/ContentCarousel";
 
 const sections = [
   { id: 'home', label: 'Home' },
@@ -112,17 +114,52 @@ export default function Home() {
             Meet The Team <span className="ml-2 group-hover:translate-x-1 transition-transform">&raquo;</span>
           </Link>
         </div>
-        {/* Right: Carousel */}
+        {/* Team Carousel */}
           <div className="flex-1 flex justify-center items-center py-8 w-full">
-          <TeamCarousel />
+          <ImageCarousel
+            images={[
+              '/images/team_1.jpg',
+              '/images/team_2.webp',
+              '/images/team_3.jpg',
+              '/images/team_4.webp',
+              '/images/team_5.jpg',
+            ]}
+            autoPlay={4000}
+          />
           </div>
         </div>
       </section>
+
       <section ref={sectionRefs.competitions} className="min-h-[500px] bg-[#181818] py-16">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 gap-8">
-          {/* Right: Carousel */}
+          {/* Competitions Carousel */}
           <div className="flex-1 flex justify-center items-center py-8 w-full">
-            <CompetitionsCarousel />
+            <ContentCarousel
+              slides={[
+                {
+                  image: '/images/sauvc2025.jpeg',
+                  title: '1st Place',
+                  subtitle: 'SAUVC 2025',
+                  desc: 'Following our successful debut last year, Mecatron proudly clinched 1st place at the Singapore AUV Challenge 2025!',
+                  link: '/sauvc2025',
+                },
+                {
+                  image: '/images/materov2024.webp',
+                  title: 'Finalist',
+                  subtitle: 'MATE ROV 2024',
+                  desc: 'Find out about how we conquered the MATE ROV World Championship with "Guts and Glory"!',
+                  link: '/materov2024',
+                },
+                {
+                  image: '/images/sauvc2024.jpg',
+                  title: '3rd Place',
+                  subtitle: 'SAUVC 2024',
+                  desc: 'Witness the debut of our first autonomous underwater vehicle (AUV) at the Singapore AUV Challenge.',
+                  link: '/sauvc2024',
+                },
+              ]}
+              autoPlay={5000}
+            />
           </div>
         {/* Left: Text */}
           <div className="flex-1 flex flex-col justify-center items-start py-8 w-full">
@@ -141,9 +178,10 @@ export default function Home() {
 
         </div>
       </section>
+
       <section ref={sectionRefs.about} className="min-h-[500px] bg-[#222] py-16">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 gap-8">
-        {/* Right: Text */}
+          {/* Right: Text */}
           <div className="flex-1 flex flex-col justify-center items-start py-8 w-full">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Our Initiatives</h2>
             <p className="text-base sm:text-lg text-white mb-8">
@@ -153,315 +191,159 @@ export default function Home() {
             Click here to view our initiative efforts <span className="ml-2 group-hover:translate-x-1 transition-transform">&raquo;</span>
           </Link>
           </div>
-          {/* Left: Carousel */}
+          {/* Initiatives Carousel */}
           <div className="flex-1 flex justify-center items-center py-8 w-full">
-            <InitiativesCarousel />
+            <ContentCarousel
+              slides={[
+                {
+                  image: '/images/computervision_2.jpg',
+                  title: 'September 2024',
+                  subtitle: 'Computer Vision Workshop',
+                  desc: 'Mecatron organized a computer vision workshop for NTU students, delivering engaging sessions on image processing, neural networks, and real-world AI applications.',
+                  link: '/computervision',
+                },
+                {
+                  image: '/images/marinevehicle_1.jpg',
+                  title: 'April 2025',
+                  subtitle: 'Marine Vehicle Workshop',
+                  desc: 'Held in the iconic Sands Expo & Convention Center, Mecatron was proud to host a hands-on Marine Engineering Workshop aimed to introduce students to the exciting world of marine engineering.',
+                  link: '/marinevehicle',
+                },
+                {
+                  image: '/images/blender3d_7.jpg',
+                  title: 'October 2024',
+                  subtitle: 'Blender 3D Workshop',
+                  desc: 'Mecatron organized a 2 day Blender 3D workshop, providing NTU students with hands-on training in Blender basics and Rendering, Product Design Fundamentals, and Materials and Texturing.',
+                  link: '/blender3d',
+                },
+              ]}
+              autoPlay={6000}
+            />
           </div>
         </div>
       </section>
+
       <section ref={sectionRefs.portfolio} className="min-h-[400px] bg-[#1a1a1a] py-16 px-4 sm:px-8">
-  <div className="w-full max-w-screen-xl mx-auto">
-    <div className="mb-12">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Our Sponsors</h2>
-      <p className="text-base sm:text-lg text-white max-w-2xl">
-        We are grateful to our sponsors for their invaluable support. Their contributions have played a vital role in advancing our projects, research, and outreach efforts.
-      </p>
+          <div className="w-full max-w-screen-xl mx-auto">
+            <div className="mb-12">
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Our Sponsors</h2>
+              <p className="text-base sm:text-lg text-white max-w-2xl">
+                We are grateful to our sponsors for their invaluable support. Their contributions have played a vital role in advancing our projects, research, and outreach efforts.
+              </p>
+            </div>
+      
+              {/* Sponsors Carousel */}
+              <SponsorsCarousel />
+
+
+              <div className="mt-8">
+                <Link to="/sponsors" className="text-base sm:text-lg font-semibold text-white hover:text-orange-500 transition flex items-center group">
+                  Learn more about our partnership opportunities <span className="ml-2 group-hover:translate-x-1 transition-transform">&raquo;</span>
+                </Link>
+              </div>
+          </div>
+      </section>
     </div>
-   
-    {/* The Carousel now sits nicely below the text */}
-    <SponsorsCarousel />
-
-
-    <div className="mt-8">
-       <Link to="/sponsors" className="text-base font-semibold text-white hover:text-orange-500 transition flex items-center group">
-         Learn more about our partnership opportunities <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
-       </Link>
-    </div>
-  </div>
-</section>
-    </div>
-
-
-
-
-
-
-
 
   );
 }
-
-
-function TeamCarousel() {
-  const images = [
-    '/images/team_1.jpg',
-    '/images/team_2.webp',
-    '/images/team_3.jpg',
-    '/images/team_4.webp',
-    '/images/team_5.jpg',
-
-
-   
-  ];
-  const [idx, setIdx] = useState(0);
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIdx(prev => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-
-  const prev = () => setIdx((idx - 1 + images.length) % images.length);
-  const next = () => setIdx((idx + 1) % images.length);
-  return (
-  <div className="relative w-full max-w-lg aspect-[16/9] flex items-center justify-center overflow-hidden rounded-xl">
-    
-    {/* IMAGE WRAPPER */}
-    <div className="absolute inset-0">
-      <img
-        src={images[idx]}
-        alt="Team"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    {/* LEFT BUTTON */}
-    <button
-      onClick={prev}
-      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10"
-    >
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-
-    {/* RIGHT BUTTON */}
-    <button
-      onClick={next}
-      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10"
-    >
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
-
-    {/* DOTS */}
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-      {images.map((_, i) => (
-        <button
-          key={i}
-          onClick={() => setIdx(i)}
-          className={`w-3 h-3 rounded-full ${
-            i === idx ? 'bg-orange-500' : 'bg-white/60'
-          } border border-white`}
-        />
-      ))}
-    </div>
-  </div>
-);
-}
-
-
-function CompetitionsCarousel() {
-  const slides = [
-    {
-      image: '/images/sauvc2025.jpeg',
-      title: '1st Place',
-      subtitle: 'SAUVC 2025',
-      desc: 'Following our successful debut last year, Mecatron proudly clinched 1st place at the Singapore AUV Challenge 2025!',
-      link: '/sauvc2025',
-    },
-    {
-      image: '/images/materov2024.webp',
-      title: 'Finalist',
-      subtitle: 'MATE ROV 2024',
-      desc: 'Find out about how we conquered the MATE ROV World Championship with "Guts and Glory"!',
-      link: '/materov2024',
-    },
-    {
-      image: '/images/sauvc2024.jpg',
-      title: '3rd Place',
-      subtitle: 'SAUVC 2024',
-      desc: 'Witness the debut of our first autonomous underwater vehicle (AUV) at the Singapore AUV Challenge.',
-      link: '/sauvc2024',
-    },
-  ];
-  const [idx, setIdx] = useState(0);
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIdx(prev => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
-
-  const prev = () => setIdx((idx - 1 + slides.length) % slides.length);
-  const next = () => setIdx((idx + 1) % slides.length);
-  return (
-    <div className="relative w-full max-w-lg h-full flex flex-col items-center justify-center">
-      <div className="relative w-full h-2/3 flex items-center justify-center">
-        <img src={slides[idx].image} alt={slides[idx].subtitle} className="rounded-xl object-cover w-full h-full" />
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-        </button>
-      </div>
-      <div className="w-full bg-[#232323] rounded-xl mt-4 p-4 sm:p-6">
-        <div className="text-sm font-bold text-white mb-1">{slides[idx].title}</div>
-        <div className="text-xl sm:text-2xl font-extrabold text-white mb-2">{slides[idx].subtitle}</div>
-        <div className="text-sm sm:text-base text-white mb-2">{slides[idx].desc}</div>
-        <Link to={slides[idx].link} className="text-sm sm:text-base font-semibold text-white hover:text-orange-500 transition flex items-center group">
-          Read More Here <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
-        </Link>
-      </div>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className={`w-3 h-3 rounded-full ${i === idx ? 'bg-orange-500' : 'bg-white/60'} border border-white`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-
-function InitiativesCarousel() {
-  const slides = [
-    {
-      image: '/images/computervision_2.jpg',
-      date: 'September 2024',
-      title: 'Computer Vision Workshop',
-      desc: 'Mecatron organised and held a computer vision workshop for NTU students, delivering engaging sessions on image processing, neural networks, and real-world AI applications. This workshop introduced Roboflow, guiding attendees through data collection, labeling, and training a YOLO (You Only Look Once) model for object detection.',
-    },
-    {
-      image: '/images/marinevehicle_1.jpg',
-      date: 'April 2025',
-      title: 'Marine Vehicle Workshop',
-      desc: 'Held in the iconic Sands Expo & Convention Center, the heart of Singapore\'s celebration of skills, creativity, and innovation, Mecatron was proud to host a hands-on Marine Engineering Workshop aimed to introduce students to the exciting world of marine engineering, highlighting its real-world relevance in fields such as Ocean waste retrieval, Underwater inspection and repair, Marine biodiversity sampling',
-    },
-    {
-      image: '/images/blender3d_7.jpg',
-      date: 'October 2024',
-      title: 'Blender 3D Workshop',
-      desc: 'Mecatron organized a 2 day Blender 3D workshop, providing NTU students with hands-on training in Blender basics, product design fundamentals, Materials and Texturing, Rendering etc. Whether it is for marketing, game asset creation, or simply converting an image from your head to something others can see, creating 3D content is an extremely valuable skill.',
-    },
-  ];
-  const [idx, setIdx] = useState(0);
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIdx(prev => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
-
-  const prev = () => setIdx((idx - 1 + slides.length) % slides.length);
-  const next = () => setIdx((idx + 1) % slides.length);
-  return (
-    <div className="relative w-full max-w-lg h-full flex flex-col items-center justify-center">
-      <div className="relative w-full h-2/3 flex items-center justify-center">
-        <img src={slides[idx].image} alt={slides[idx].title} className="rounded-xl object-cover w-full h-full" />
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-        </button>
-      </div>
-      <div className="w-full bg-[#232323] rounded-xl mt-4 p-4 sm:p-6">
-        <div className="text-sm font-bold text-white mb-1">{slides[idx].date}</div>
-        <div className="text-xl sm:text-2xl font-extrabold text-white mb-2">{slides[idx].title}</div>
-        <div className="text-sm sm:text-base text-white mb-2">{slides[idx].desc}</div>
-      </div>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className={`w-3 h-3 rounded-full ${i === idx ? 'bg-orange-500' : 'bg-white/60'} border border-white`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-    return windowSize;
-  };
 
 
 function SponsorsCarousel() {
-  const sponsors = [
-    { logo: '/images/fstd_logo.png', alt: 'FSTD', scale: 'scale-125' },
-    { logo: '/images/smf_transparent.png', alt: 'Singapore Maritime Foundation', scale: 'scale-110' },
-    { logo: '/images/jdf_transparent.webp', alt: 'James Dyson Foundation', scale: 'scale-110' },
-    { logo: '/images/dso_logo.png', alt: 'DSO', scale: 'scale-125' },
-    { logo: '/images/vectornav_logo.svg', alt: 'VectorNav', scale: 'scale-110' },
-    { logo: '/images/waterlinked_transparent.svg', alt: 'WaterLinked', scale: 'scale-70' },
-    { logo: '/images/espressif_logo.png', alt: 'Espressif' },
-    { logo: '/images/zen4blue_logo.png', alt: 'Zen4Blue', scale: 'scale-110' },
-    { logo: '/images/aquarian_logo.png', alt: 'Aquarian Audio' },
-    { logo: '/images/dwe_logo.png', alt: 'DWE' },
-    { logo: '/images/sonardyne_transparent.svg', alt: 'Sonardyne' },
-    { logo: '/images/rovmaker_round.png', alt: 'ROV Maker', scale: 'scale-110' },
-  ];
+  const sponsors = useMemo(() => [
+    { logo: "/images/logos/fstd_logo.webp", alt: "FSTD" },
+    { logo: "/images/logos/smf_logo.webp", alt: "Singapore Maritime Foundation" },
+    { logo: "/images/logos/jdf_logo.webp", alt: "James Dyson Foundation" },
+    { logo: "/images/logos/dso_logo.webp", alt: "DSO" },
+    { logo: "/images/logos/vectornav_logo.png", alt: "VectorNav" },
+    { logo: "/images/logos/waterlinked_logo.svg", alt: "WaterLinked" },
+    { logo: "/images/logos/espressif_logo.webp", alt: "Espressif" },
+    { logo: "/images/logos/zen4blue_logo.webp", alt: "Zen4Blue" },
+    { logo: "/images/logos/aquarian_logo.webp", alt: "Aquarian Audio" },
+    { logo: "/images/logos/dwe_logo.webp", alt: "DWE" },
+    { logo: "/images/logos/sonardyne_logo.webp", alt: "Sonardyne" },
+    { logo: "/images/logos/rovmaker_round.png", alt: "ROV Maker" },
+  ], []);
 
+  const trackRef = useRef(null);
+  const [width, setWidth] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const scrollStart = useRef(0);
+
+  // Measure width of one full set
+  useEffect(() => {
+    if (!trackRef.current) return;
+
+    const measure = () => {
+      const el = trackRef.current;
+      setWidth(el.scrollWidth / 2);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  // Drag support
+  const handlePointerDown = (e) => {
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+    scrollStart.current = 0;
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDragging || !trackRef.current) return;
+
+    const delta = e.clientX - dragStartX.current;
+    trackRef.current.scrollLeft = scrollStart.current - delta;
+  };
+
+  const handlePointerUp = () => {
+    setIsDragging(false);
+  };
+
+  const doubled = useMemo(() => [...sponsors, ...sponsors], [sponsors]);
 
   return (
-    <div className="w-full overflow-hidden py-4">
-      {/* The "Mask" creates the fade effect on edges */}
-      <div className="relative flex overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-       
-        <div className="flex animate-marquee gap-8 whitespace-nowrap">
-          {/* We render the list twice for a seamless infinite loop */}
-          {[...sponsors, ...sponsors].map((s, i) => (
-  <div 
-    key={`${s.alt}-${i}`}
-    className="min-w-[180px] sm:min-w-[220px] h-28 sm:h-32 bg-white/10 rounded-2xl border border-white/20 flex items-center justify-center p-6 shrink-0 backdrop-blur-md"
-  >
-    <img 
-      src={s.logo} 
-      alt={s.alt} 
-      /* w-4/5 and h-4/5 force it to occupy 80% of the glass box max.
-         This prevents square logos from touching the edges while 
-         letting wide logos stay legible.
-      */
-      className="w-4/5 h-4/5 object-contain filter brightness-110 transition-all duration-300" 
-    />
-  </div>
-))}
+    <div className="w-full overflow-hidden py-6">
+      <div
+        className="relative overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#1a1a1a] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#1a1a1a] to-transparent z-10" />
+
+        {/* Track */}
+        <div
+          ref={trackRef}
+          className={`flex gap-8 w-max will-change-transform ${
+            isPaused ? "animate-none" : "animate-marquee"
+          }`}
+          style={{
+            animationDuration: `${Math.max(width / 80, 20)}s`,
+          }}
+        >
+          {doubled.map((s, i) => (
+            <div
+              key={`${s.alt}-${i}`}
+              className="min-w-[180px] sm:min-w-[220px] h-28 sm:h-32 bg-white/25 border-white/40 backdrop-blur-xl hover:bg-white/35 rounded-2xl flex items-center justify-center p-6 backdrop-blur-md hover:scale-105 transition-transform duration-300"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerLeave={handlePointerUp}
+            >
+              <img
+                src={s.logo}
+                alt={s.alt}
+                className="w-4/5 h-4/5 object-contain transition duration-300"
+                draggable={false}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
