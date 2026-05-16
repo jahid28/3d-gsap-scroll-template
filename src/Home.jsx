@@ -252,7 +252,7 @@ export default function Home() {
 function SponsorsCarousel() {
   const sponsors = useMemo(() => [
     { logo: "/images/logos/fstd_logo.webp", alt: "FSTD" },
-    { logo: "/images/logos/smf_logo.webp", alt: "Singapore Maritime Foundation" },
+    { logo: "/images/logos/smf.webp", alt: "Singapore Maritime Foundation" },
     { logo: "/images/logos/jdf_logo.webp", alt: "James Dyson Foundation" },
     { logo: "/images/logos/dso_logo.webp", alt: "DSO" },
     { logo: "/images/logos/vectornav_logo.png", alt: "VectorNav" },
