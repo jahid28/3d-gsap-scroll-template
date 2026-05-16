@@ -6,11 +6,6 @@ import { OrbitControls } from '@react-three/drei';
 import { Kevin } from './Kevin';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
 
-
-
-
-
-
 const sections = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services' },
@@ -102,11 +97,11 @@ export default function Home() {
         </div>
       </section>
       {/* Placeholder sections for navigation */}
-      <section ref={sectionRefs.services} className="min-h-[500px] bg-[#1a1a1a] py-16">
+      <section ref={sectionRefs.services} className="min-h-[500px] bg-[#222] py-16">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 gap-8">
         {/* Left: Text */}
           <div className="flex-1 flex flex-col justify-center items-start py-8 w-full">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Who are we</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-8">Who we are</h2>
             <p className="text-base sm:text-lg text-white mb-6">
             Founded in 2023, Mecatron is a multidisciplinary student team from Nanyang Technological University, Singapore, driven by a passion for underwater robotics. We specialize in developing autonomous underwater vehicles (AUVs), competing in marine robotics challenges, and advancing research in the field.
           </p>
@@ -146,7 +141,7 @@ export default function Home() {
 
         </div>
       </section>
-      <section ref={sectionRefs.about} className="min-h-[500px] bg-[#181818] py-16">
+      <section ref={sectionRefs.about} className="min-h-[500px] bg-[#222] py-16">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 gap-8">
         {/* Right: Text */}
           <div className="flex-1 flex flex-col justify-center items-start py-8 w-full">
@@ -222,25 +217,51 @@ function TeamCarousel() {
   const prev = () => setIdx((idx - 1 + images.length) % images.length);
   const next = () => setIdx((idx + 1) % images.length);
   return (
-    <div className="relative w-full max-w-lg h-full flex items-center justify-center">
-      <img src={images[idx]} alt="Team" className="rounded-xl object-cover w-full h-full" />
-      <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-      </button>
-      <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-      </button>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className={`w-3 h-3 rounded-full ${i === idx ? 'bg-orange-500' : 'bg-white/60'} border border-white`}
-          />
-        ))}
-      </div>
+  <div className="relative w-full max-w-lg aspect-[16/9] flex items-center justify-center overflow-hidden rounded-xl">
+    
+    {/* IMAGE WRAPPER */}
+    <div className="absolute inset-0">
+      <img
+        src={images[idx]}
+        alt="Team"
+        className="w-full h-full object-cover"
+      />
     </div>
-  );
+
+    {/* LEFT BUTTON */}
+    <button
+      onClick={prev}
+      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10"
+    >
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    {/* RIGHT BUTTON */}
+    <button
+      onClick={next}
+      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-orange-500 text-black hover:text-white rounded-full p-2 shadow transition z-10"
+    >
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    {/* DOTS */}
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      {images.map((_, i) => (
+        <button
+          key={i}
+          onClick={() => setIdx(i)}
+          className={`w-3 h-3 rounded-full ${
+            i === idx ? 'bg-orange-500' : 'bg-white/60'
+          } border border-white`}
+        />
+      ))}
+    </div>
+  </div>
+);
 }
 
 
