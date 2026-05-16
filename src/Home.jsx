@@ -231,16 +231,18 @@ export default function Home() {
                 We are grateful to our sponsors for their invaluable support. Their contributions have played a vital role in advancing our projects, research, and outreach efforts.
               </p>
             </div>
-      
-              {/* Sponsors Carousel */}
-              <SponsorsCarousel />
 
-
-              <div className="mt-8">
-                <Link to="/sponsors" className="text-base sm:text-lg font-semibold text-white hover:text-orange-500 transition flex items-center group">
+            <div className="mt-4">
+              <Link to="/sponsors" className="text-base sm:text-lg font-semibold text-white hover:text-orange-500 transition flex items-center group">
                   Learn more about our partnership opportunities <span className="ml-2 group-hover:translate-x-1 transition-transform">&raquo;</span>
-                </Link>
-              </div>
+              </Link>
+            </div>
+
+            <div className="mt-12">
+            {/* Sponsors Carousel */}
+            <SponsorsCarousel />
+            </div>
+
           </div>
       </section>
     </div>

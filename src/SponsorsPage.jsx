@@ -20,7 +20,7 @@ export default function SponsorsPage() {
       >
         <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="relative z-10">
-          <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Sponsors</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Sponsors and Supporters</h1>
           <p className="max-w-4xl text-lg sm:text-xl leading-relaxed">
             We extend our heartfelt gratitude to our sponsors for placing their trust in Mecatron, a young and passionate team. Their generous support has provided the resources needed to explore new frontiers and push the boundaries of innovation. With their backing, Mecatron has been able to grow, learn, and bring ideas to life. We are deeply grateful for their belief in our journey.
           </p>
@@ -31,7 +31,7 @@ export default function SponsorsPage() {
         <div className="max-w-screen-xl mx-auto px-8">
           
           <h2 className="text-4xl font-extrabold text-black text-center mb-6">
-            Our Proud Sponsors
+            Our Sponsors and Supporters
           </h2>
 
           <div className="flex flex-col lg:flex-row items-center gap-12">

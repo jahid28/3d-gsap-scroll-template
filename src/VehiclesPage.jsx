@@ -1,6 +1,4 @@
-import React from 'react';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
-import { Lucy } from './Lucy';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 

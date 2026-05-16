@@ -7,6 +7,7 @@ const sections = [
   { id: 'vehicles', label: 'Vehicles', path: '/vehicles',
     submenu: [
       { id: 'vehicles-main', label: 'Vehicles', path: '/vehicles' },
+      { id: 'kraken', label: 'Kraken 2026', path: '/kraken' },
       { id: 'kevin', label: 'Kevin 2025', path: '/kevin' },
       { id: 'lucy', label: 'Lucy 2025', path: '/lucy' },
     ]

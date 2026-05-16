@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Home from './Home.jsx'
 import KevinPage from './KevinPage.jsx'
+import KrakenPage from './KrakenPage.jsx';
 import TeamPage from './TeamPage.jsx'
 import VehiclesPage from './VehiclesPage.jsx'
 import CompetitionsPage from './CompetitionsPage.jsx'
@@ -35,6 +36,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="kevin" element={<KevinPage />} />
+          <Route path="kraken" element={<KrakenPage />} />
           <Route path="team" element={<TeamPage />} />
           <Route path="vehicles" element={<VehiclesPage />} />
           <Route path="competitions" element={<CompetitionsPage />} />
