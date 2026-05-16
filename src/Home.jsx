@@ -339,7 +339,7 @@ function SponsorsCarousel() {
               <img
                 src={s.logo}
                 alt={s.alt}
-                className="w-4/5 h-4/5 object-contain transition duration-300"
+                className="max-h-[70%] max-w-[80%] object-contain transition duration-300 mx-auto"
                 draggable={false}
               />
             </div>
