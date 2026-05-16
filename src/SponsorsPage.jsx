@@ -32,9 +32,12 @@ export default function SponsorsPage() {
           <h2 className="text-4xl font-extrabold text-black text-center">
             Our Proud Sponsors
           </h2>
-
-          <div className="w-full flex justify-center">
-            <SponsorsCarousel />
+          <div className="w-full flex justify-center py-6">
+            <img
+              src="/images/tiered_sponsors.png"
+              alt="Sponsors by tier"
+              className="w-full max-w-5xl object-contain"
+            />
           </div>
 
           <p className="text-lg text-black text-center max-w-3xl">
@@ -65,7 +68,7 @@ export default function SponsorsPage() {
 
       <div className="flex-1 flex justify-center items-center py-8">
         <img
-          src="/images/fstd_logo.png"
+          src="/images/logos/fstd_logo.webp"
           alt="Photo"
           className="w-full max-w-3xl rounded-xl object-cover"
         />
@@ -81,7 +84,7 @@ export default function SponsorsPage() {
 
       <div className="flex-1 flex justify-center items-center py-8">
         <img
-          src="/images/smf_transparent.png"
+          src="/images/logos/smf_logo.webp"
           alt="Photo"
           className="w-full max-w-3xl rounded-xl object-cover"
         />
@@ -96,52 +99,144 @@ export default function SponsorsPage() {
       </div>  
     </section>
 
-    {/* TJDF Section */}
+        {/* DSO Section */}
     <section ref={sectionRefs.services}
-      className="min-h-[500px] w-full bg-[#FFFFFF] flex flex-col md:flex-row items-center justify-center py-12">
+      className="min-h-[500px] w-full bg-[#E2F4FD] flex flex-col md:flex-row items-center justify-center py-12">
     <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
     
       <div className="flex-1 flex flex-col justify-center items-start py-8">
-        <h2 className="text-4xl font-extrabold text-black mb-8">The James Dyson Foundation</h2>
+        <h2 className="text-4xl font-extrabold text-black mb-8">DSO National Laboratories</h2>
         <p className="text-lg text-black mb-6">
-          Mecatron is housed in the Dyson-NTU Studio. We fully utilize the lab space for team meetings and lab equipment (i.e. 3D printers) for building our underwater vehicle! We are grateful for the support of the James Dyson Foundation as we strive to design robust underwater vehicles with potential real-life applications in mind, such as marine sampling.      
+          We are especially grateful to DSO National Laboratories, Singapore’s largest defence research and development organisation, for their generous monetary sponsorship and the trust they have placed in Mecatron. Their support has provided us with valuable opportunities to innovate, strengthen our autonomous systems, and better prepare for international underwater robotics competitions.    
         </p>
       </div>
 
       <div className="flex-1 flex justify-center items-center py-8">
         <img
-          src="/images/jdf_logo.jpg"
+          src="/images/logos/dso_colour_logo.png"
           alt="Photo"
-          className="w-full max-w-3xl rounded-xl object-cover"
+          className="w-full max-w-3xl object-cover"
         />
       </div>
 
       </div>  
     </section>
 
-    {/* Waterlinked Section */}
+    {/* VectorNav Section */}
     <section ref={sectionRefs.services}
-      className="min-h-[500px] w-full bg-[#1F3654] flex flex-col md:flex-row items-center justify-center py-12">
+      className="min-h-[500px] w-full bg-[#000000] flex flex-col md:flex-row items-center justify-center py-12">
     <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
+    
+      <div className="flex-1 flex flex-col justify-center items-start py-8">
+        <h2 className="text-4xl font-extrabold text-white mb-8">VectorNav</h2>
+        <p className="text-lg text-white mb-6">
+          We are deeply grateful to VectorNav for their generous equipment sponsorship to Mecatron. Their sponsorship of two VN-100 IMU units, along with lifetime technical support, has significantly strengthened our navigation and sensing capabilities. The reliability and precision of their inertial navigation technology have been invaluable in supporting the development and testing of our autonomous underwater vehicle systems.
+        </p>
+      </div>
 
       <div className="flex-1 flex justify-center items-center py-8">
         <img
-          src="/images/waterlinked_logo.png"
+          src="/images/logos/vectornav_logo.png"
           alt="Photo"
-          className="w-full max-w-3xl rounded-xl object-cover"
+          className="w-full max-w-3xl object-cover"
+        />
+      </div>
+
+      </div>  
+    </section>
+
+        {/* Waterlinked Section */}
+    <section ref={sectionRefs.services}
+      className="min-h-[500px] w-full bg-[#1F3654] flex flex-col md:flex-row items-center justify-center py-12">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-20">
+
+      <div className="flex-1 flex justify-center items-center py-8">
+        <img
+          src="/images/logos/waterlinked2.svg"
+          alt="Photo"
+          className="w-full max-w-3xl object-cover"
         />
       </div>
     
       <div className="flex-1 flex flex-col justify-center items-start py-8">
         <h2 className="text-4xl font-extrabold text-white mb-8">WaterLinked</h2>
         <p className="text-lg text-white mb-6">
-          WaterLinked develops cutting-edge underwater sensors that enhance autonomy, positioning, and communication for divers and robotic systems. Their technology enables Mecatron NTU’s AUVs to operate with greater spatial awareness and precision — pushing the limits of underwater exploration and innovation.
+          We are deeply grateful to Water Linked for their ongoing support and for championing student innovation in the marine robotics community. Specifically, the Water Linked Doppler Velocity Log DVL A50 integrates seamlessly with our compact autonomous underwater vehicle (AUV) design, providing reliable, low-drift positioning data that is central to our AUV's autonomous performance.
         </p>
       </div>
       </div>  
     </section>
 
-    {/* Sonardyne Section */}
+    {/* Espressif Section */}
+    <section ref={sectionRefs.services}
+      className="min-h-[500px] w-full bg-[#FFFFFF] flex flex-col md:flex-row items-center justify-center py-12">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
+    
+      <div className="flex-1 flex flex-col justify-center items-start py-8">
+        <h2 className="text-4xl font-extrabold text-black mb-8">Espressif Systems</h2>
+        <p className="text-lg text-black mb-6">
+          Extremely grateful to Espressif Systems for their generous sponsorship of development boards and embedded hardware modules, including the ESP32-S3-EYE V2.2, ESP32-S3-Korvo-2 V3.1, and ESP32-P4-EYE platforms. Their support provided our electronics team with access to advanced embedded systems and development tools, helping us explore new possibilities in onboard computing and system integration for our autonomous underwater vehicle projects.
+        </p>
+      </div>
+
+      <div className="flex-1 flex justify-center items-center py-8">
+        <img
+          src="/images/logos/espressif_stacked.svg"
+          alt="Photo"
+          className="w-full max-w-md object-contain"
+        />
+      </div>
+
+      </div>  
+    </section>
+
+    {/* Aquarian Audio Section */}
+    <section ref={sectionRefs.services}
+      className="min-h-[500px] w-full bg-[#143E7A] flex flex-col md:flex-row items-center justify-center py-12">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
+    
+      <div className="flex-1 flex flex-col justify-center items-start py-8">
+        <h2 className="text-4xl font-extrabold text-white mb-8">Aquarian Audio</h2>
+        <p className="text-lg text-white mb-6">
+          Our team would like to express our sincere appreciation to Aquarian Audio for their support. Their AS-1 Hydrophones have greatly aided our acoustic sensing and underwater signal processing efforts, essential for our competition success. 
+        </p>
+      </div>
+
+      <div className="flex-1 flex justify-center items-center py-8">
+        <img
+          src="/images/logos/aquarian_logo.webp"
+          alt="Photo"
+          className="w-full max-w-md object-contain"
+        />
+      </div>
+
+      </div>  
+    </section>
+
+    {/* DWE Section */}
+    <section ref={sectionRefs.services}
+      className="min-h-[500px] w-full bg-[#FFFFFF] flex flex-col md:flex-row items-center justify-center py-12">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
+    
+      <div className="flex-1 flex flex-col justify-center items-start py-8">
+        <h2 className="text-4xl font-extrabold text-black mb-8">DeepWater Exploration Inc.</h2>
+        <p className="text-lg text-black mb-6">
+          We are especially grateful to DWE for their generous support! Their exploreHD 3.0 underwater cameras have played a key role in advancing our AUV perception capabilities, enabling our team to develop robust underwater robotic systems for competition and research applications.
+        </p>
+      </div>
+
+      <div className="flex-1 flex justify-center items-center py-8">
+        <img
+          src="/images/logos/dwe_dark_logo.svg"
+          alt="Photo"
+          className="w-full max-w-md object-contain"
+        />
+      </div>
+
+      </div>  
+    </section>
+
+        {/* Sonardyne Section */}
     <section
         ref={sectionRefs.services}
         className="relative min-h-[500px] w-full bg-[url('/images/sonardyne_bg.jpg')] bg-cover bg-center flex items-center justify-center py-12"
@@ -163,13 +258,36 @@ export default function SponsorsPage() {
 
           <div className="flex-1 flex justify-center items-center">
             <img
-              src="/images/sonardyne_logo.webp"
-              alt="SMF Logo"
+              src="/images/logos/sonardyne-logo-white.svg"
+              alt="Sonardyne Logo"
               className="w-full max-w-3xl rounded-xl object-cover"
             />
           </div>
         </div>
       </section>
+
+    {/* TJDF Section */}
+    <section ref={sectionRefs.services}
+      className="min-h-[500px] w-full bg-[#FFFFFF] flex flex-col md:flex-row items-center justify-center py-12">
+    <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center px-8 gap-8">
+    
+      <div className="flex-1 flex flex-col justify-center items-start py-8">
+        <h2 className="text-4xl font-extrabold text-black mb-8">The James Dyson Foundation</h2>
+        <p className="text-lg text-black mb-6">
+          Mecatron is housed in the Dyson-NTU Studio. We fully utilize the lab space for team meetings and lab equipment (i.e. 3D printers) for building our underwater vehicle! We are grateful for the support of the James Dyson Foundation as we strive to design robust underwater vehicles with potential real-life applications in mind, such as marine sampling.      
+        </p>
+      </div>
+
+      <div className="flex-1 flex justify-center items-center py-8">
+        <img
+          src="/images/logos/jdf_clear.png"
+          alt="Photo"
+          className="w-full max-w-3xl object-cover"
+        />
+      </div>
+
+      </div>  
+    </section>
 
     {/* Zen4Blue Section */}
     <section ref={sectionRefs.services}
@@ -178,7 +296,7 @@ export default function SponsorsPage() {
 
        <div className="flex-1 flex justify-center items-center py-8">
         <img
-          src="/images/zen4blue_logo.png"
+          src="/images/logos/zen4blue_logo.webp"
           alt="Photo"
           className="w-full max-w-3xl rounded-xl object-cover"
         />
@@ -218,7 +336,6 @@ export default function SponsorsPage() {
       </div>  
     </section>
 
-
     {/* ROV MAKER Section */}
     <section ref={sectionRefs.services}
       className="min-h-[500px] w-full bg-[#FFFFFF] flex flex-col md:flex-row items-center justify-center py-12">
@@ -245,87 +362,6 @@ export default function SponsorsPage() {
       </div>  
     </section>
 
-    </div>
-  );
-}
-
-const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []); 
-    return windowSize;
-  };
-function SponsorsCarousel() {
-  const sponsors = [
-    { logo: '/images/fstd_logo.png', alt: 'FSTD' },
-    { logo: '/images/smf_transparent.png', alt: 'Singapore Maritime Foundation' },
-    { logo: '/images/jdf_transparent.webp', alt: 'James Dyson Foundation' },
-    { logo: '/images/waterlinked_transparent.svg', alt: 'Waterlinked' },
-    { logo: '/images/sonardyne_transparent.svg', alt: 'Sonardyne' },
-    { logo: '/images/zen4blue_logo.png', alt: 'Zen4Blue' },
-    { logo: '/images/rovmaker_round.png', alt: 'ROV Maker' },
-  ];
-
-  let groupSize = 3;
-  const maxStart = sponsors.length - groupSize;
-  const [startIdx, setStartIdx] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStartIdx(prev => (prev + 1) % (maxStart + 1));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [maxStart]);
-  const { width } = useWindowSize();
-  if(width<480){
-    groupSize = 1;
-  }
-  const visible = sponsors.slice(startIdx, startIdx + groupSize);
-  while (visible.length < groupSize) visible.push(null);
-
-  return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 py-6">
-      <div className="w-full flex flex-wrap justify-center items-center gap-6">
-        {visible.map((s, i) =>
-          s ? (
-            <img
-              key={s.alt}
-              src={s.logo}
-              alt={s.alt}
-              className="h-28 sm:h-36 max-w-[10rem] sm:max-w-[14rem] object-contain"
-            />
-          ) : (
-            <div key={i} className="h-28 sm:h-36 max-w-[10rem] sm:max-w-[14rem]" />
-          )
-        )}
-      </div>
-
-      <div className="mt-4 flex justify-center space-x-2">
-        {Array.from({ length: maxStart + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setStartIdx(i)}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-              i === startIdx ? 'bg-orange-500' : 'bg-gray-300'
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 }
