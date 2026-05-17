@@ -137,6 +137,13 @@ export default function Home() {
             <ContentCarousel
               slides={[
                 {
+                  image: '/images/robosub2025-team.jpg',
+                  title: 'Best New All Rounder & City of Irvine Award',
+                  subtitle: 'RoboSub 2025',
+                  desc: 'Mecatron won the Best New All Rounder & City of Irvine Award for our exceptional collaboration and outstanding rookie performance.',
+                  link: '/robosub2025',
+                },
+                {
                   image: '/images/sauvc2025.jpeg',
                   title: '1st Place',
                   subtitle: 'SAUVC 2025',
