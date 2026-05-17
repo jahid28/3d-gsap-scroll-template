@@ -4,6 +4,24 @@ export default function CompetitionsPage() {
   const competitions = [
     {
       id: 1,
+      title: "ROBOSUB 2026",
+      date: "JULY 2026",
+      description: "Hydra & Kraken - Next Generation AUVs coming soon!",
+      image: "/competition/images/robosub2026-bots.jpg",
+      status: "upcoming",
+      link:"/robosub2026"
+    },
+    {
+      id: 2,
+      title: "SAUVC 2026",
+      date: "MAY 2026",
+      description: "Hydra is ready for action!",
+      image: "/competition/images/sauvc2026-bot.jpg",
+      status: "upcoming",
+      link:"/sauvc2026"
+    },
+    {
+      id: 3,
       title: "ROBOSUB 2025",
       date: "AUGUST 2025",
       description: "Presenting our latest AUV: Kevin!",
@@ -12,7 +30,7 @@ export default function CompetitionsPage() {
       link:"/robosub2025"
     },
     {
-      id: 2,
+      id: 4,
       title: "SAUVC 2025",
       date: "MARCH 2025",
       description: "After our third-place win in 2024, Mecatron made a strong comeback and clinched 1st Place at SAUVC 2025.",
@@ -21,7 +39,7 @@ export default function CompetitionsPage() {
       link:"/sauvc2025"
     },
     {
-      id:3,
+      id:5,
       title: "MATE ROV 2024",
       date: "MAY 2024",
       description: "Among 82 teams from 17 countries that qualified to compete in the 2024 MATE ROV World Championship, Mecatron was selected for a special award – the Guts and Glory award.",
@@ -30,7 +48,7 @@ export default function CompetitionsPage() {
       link:"/materov2024"
     },
     {
-      id:4,
+      id:6,
       title: "SAUVC 2024",
       date: "APRIL 2024",
       description: "Mecatron’s AUV had the third fastest qualification timing of 10.53 seconds among the 21 qualified teams, then we proceeded to clinch the 3rd Prize in the final round!",
@@ -44,12 +62,14 @@ export default function CompetitionsPage() {
     <div className="min-h-screen bg-[#181818] text-white">
       {/* Header */}
       <section
-        className="relative w-full min-h-[70vh] flex flex-col justify-center items-center text-center px-4 sm:px-8 py-24 bg-black text-white"
+        className="relative w-full min-h-[70vh] flex flex-col justify-center items-center text-center px-4 sm:px-8 py-24 bg-cover bg-center text-white"
+        style={{ backgroundImage: "url('/images/robosub2025-team.jpg')" }}
       >
+        <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="relative z-10">
           <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Competitions</h1>
           <p className="max-w-4xl text-lg sm:text-xl leading-relaxed">
-            These are the competitions that we are preparing or have participated in.
+            Here's a glimpse of our journey through various competitions, showcasing our dedication, innovation, and achievements in the field of underwater robotics. We are proud of our accomplishments and excited for the future challenges ahead!
           </p>
         </div>
       </section>
@@ -90,7 +110,7 @@ export default function CompetitionsPage() {
                       className="w-full h-full object-cover"
                     />
                     {competition.status === 'upcoming' && (
-                      <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                         Upcoming
                       </div>
                     )}
