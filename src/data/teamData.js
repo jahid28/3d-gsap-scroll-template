@@ -1251,21 +1251,6 @@ const teamData = {
       },
       ],
       advisors : [
-        {
-        name: "Chan Wai Lee",
-        role: "Team Advisor",
-        image: "/website_member_photos/wailee-2.jpg",
-        backImage: "/website_member_photos/wailee-1.jpg",
-        schoolYear: "Assistant Professor, School of Mechanical & Aerospace Engineering",
-        linkedin: "https://www.linkedin.com/in/wai-lee-chan-3b853595/?originalSubdomain=sg",
-      },
-      {
-        name: "Zheng Shimin, Lillian",
-        role: "Team Advisor",
-        image: "/website_member_photos/lilian-2.jpg",
-        backImage: "/website_member_photos/lilian-1.jpg",
-        schoolYear: "Manager - Student Development, College of Engineering",
-      },
       {
         name: "Zach Low",
         role: "AY24/25 Lead",
