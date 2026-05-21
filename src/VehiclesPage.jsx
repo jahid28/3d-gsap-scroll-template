@@ -27,10 +27,12 @@ export default function VehiclesPage() {
           description="Hydra 2026 is the direct evolution of our SAUVC Champion bot, Lucy. By maintaining Lucy's signature compact size while introducing major mechanical upgrades, Hydra is engineered to support high-performance dropper and gripper mechanisms."
           linkTo="/hydra"
           highlightBg={true}
+          modelType="hydra"
+          modelScale={[4,4,4]}
           tags={[
             "Topology Optimization",
             "Modular Frame Design",
-            "Symmetric 8-thruster configuration"
+            "Symmetric 8-thruster Configuration"
           ]}
         />
         
@@ -39,10 +41,12 @@ export default function VehiclesPage() {
           title="Kraken 2026"
           description="Built to push design boundaries, Kraken is our dedicated testbed for experimental hull materials. It is purpose-built to validate advanced actuation systems, including an integrated torpedo deployment setup."
           linkTo="/kraken"
+          modelType="kraken"
+          modelScale={[4,4,4]}
           tags={[
-            "Aerodynamic airfoil wing skeleton (Acrylic)",
-            "Precision CNC enclosure",
-            "Upgraded 8-thruster configuration"
+            "Aerodynamic Airfoil Wing Skeleton (Acrylic)",
+            "Precision CNC Enclosure",
+            "Upgraded 8-thruster Configuration"
           ]}
         />
 
@@ -53,9 +57,9 @@ export default function VehiclesPage() {
           linkTo="/kevin"
           highlightBg={true}
           tags={[
-            "Advanced thruster configuration",
-            "Energy-efficient design",
-            "Competition-tested reliability"
+            "Advanced Thruster Configuration",
+            "Energy-efficient Design",
+            "Competition-tested Reliability"
           ]}
         />
 
@@ -68,8 +72,8 @@ export default function VehiclesPage() {
           modelScale={[4, 4, 4]}
           tags={[
             "SAUVC 2025 Champion",
-            "5-thruster configuration",
-            "3+ hour battery life",
+            "5-thruster Configuration",
+            "3+ hour Battery Life",
           ]}
         />
 
