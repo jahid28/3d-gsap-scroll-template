@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { KevinOptimized } from '../KevinOptimized';
 import { LucyOptimized } from '../LucyOptimized';
+import { HydraOptimized } from '../HydraOptimized';
+import { KrakenOptimized } from '../KrakenOptimized';
 
 export function AdaptiveModel({ capability, scale = [5, 5, 5], modelType = 'kevin', ...props }) {
   // For now, we'll use the same model but with different optimizations
@@ -13,14 +15,14 @@ export function AdaptiveModel({ capability, scale = [5, 5, 5], modelType = 'kevi
   const modelUrl = useMemo(() => {
     switch (capability) {
       case 'fallback':
-        return modelType === 'lucy' ? '/lucysmalloutput.glb' : '/kevinfix.glb';
+        return getModelUrl(modelType);
       case 'mobile':
-        return modelType === 'lucy' ? '/lucysmalloutput.glb' : '/kevinfix.glb';
+        return getModelUrl(modelType);
       case 'medium':
-        return modelType === 'lucy' ? '/lucysmalloutput.glb' : '/kevinfix.glb';
+        return getModelUrl(modelType);
       case 'full':
       default:
-        return modelType === 'lucy' ? '/lucysmalloutput.glb' : '/kevinfix.glb';
+        return getModelUrl(modelType);
     }
   }, [capability, modelType]);
 
@@ -47,13 +49,31 @@ export function AdaptiveModel({ capability, scale = [5, 5, 5], modelType = 'kevi
   }, [scale, capability, modelType]);
 
   // Preload the model
-  useGLTF.preload(modelUrl);
+  useGLTF.preload(modelUrl, getDracoPath(modelType));
 
   // Return the appropriate optimized model
   if (modelType === 'lucy') {
     return (
       <LucyOptimized 
         scale={optimizedScale} 
+        {...props}
+      />
+    );
+  }
+
+  if (modelType === 'hydra') {
+    return (
+      <HydraOptimized
+        scale={optimizedScale}
+        {...props}
+      />
+    );
+  }
+
+  if (modelType === 'kraken') {
+    return (
+      <KrakenOptimized
+        scale={optimizedScale}
         {...props}
       />
     );
@@ -66,3 +86,21 @@ export function AdaptiveModel({ capability, scale = [5, 5, 5], modelType = 'kevi
     />
   );
 } 
+
+function getModelUrl(modelType) {
+  switch (modelType) {
+    case 'lucy':
+      return '/lucysmalloutput.glb';
+    case 'hydra':
+      return '/hydrasmalloutput.glb';
+    case 'kraken':
+      return '/krakensmalloutput.glb';
+    case 'kevin':
+    default:
+      return '/kevinfix.glb';
+  }
+}
+
+function getDracoPath(modelType) {
+  return modelType === 'hydra' || modelType === 'kraken' ? '/draco/' : undefined;
+}

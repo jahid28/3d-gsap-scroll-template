@@ -229,7 +229,7 @@ function HydraPage() {
         <section className="relative grid place-items-center h-[100vh]">
           <div ref={sceneRef} className="h-[100vh] w-[100vw] text-white z-0">
             <Canvas>
-              <Scene progress={progress} />
+              <Scene progress={progress} modelType="hydra" />
             </Canvas>
           </div>
         </section>
