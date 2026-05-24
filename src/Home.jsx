@@ -1,9 +1,6 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { Kevin } from './Kevin';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
 import ImageCarousel from "./components/ImageCarousel"; //import two carousels for the different sections
 import ContentCarousel from "./components/ContentCarousel";
@@ -33,67 +30,54 @@ export default function Home() {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-
-  // State for 3D model loading
-  const [modelLoaded, setModelLoaded] = useState(false);
-  const [showModel, setShowModel] = useState(false);
-
-
-  useEffect(() => {
-    // Start the 3-second timer immediately
-    const timer = setTimeout(() => {
-      setShowModel(true);
-    }, 3000);
-   
-    return () => clearTimeout(timer);
-  }, []);
-
-
   return (
     <div className="min-h-screen bg-[#181818] text-white font-sans overflow-x-hidden">
       <Navbar scrollToSection={scrollToSection} />
       {/* Hero Section */}
-      <section ref={sectionRefs.home} className="flex flex-col md:flex-row items-center justify-between pt-32 pb-4 md:pb-16 px-4 sm:px-8 md:px-20 min-h-screen bg-[#181818]">
-        <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="flex-1 flex flex-col items-start justify-center space-y-6 w-full">
-            <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-orange-500">Meet Kevin</div>
-            <div className="text-2xl sm:text-3xl md:text-2xl font-medium text-white">Vehicle for RoboSub 2025</div>
+      <section ref={sectionRefs.home} className="pt-28 pb-10 md:pt-32 md:pb-16 px-4 sm:px-8 md:px-12 min-h-screen bg-[#181818] flex items-center">
+        <div className="w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(19rem,0.9fr)_minmax(0,1fr)] items-center gap-4 md:gap-8">
+          <div className="flex items-center justify-center w-full order-2 lg:order-1">
+            <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
+              <Optimized3DViewer
+                showModel={true}
+                scale={[5.5, 5.5, 5.5]}
+                enableTouchControls={true}
+                modelType="hydra"
+                modelRotation={[0, 0.35, 0]}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center space-y-6 w-full text-center order-1 lg:order-2">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-orange-500">Meet Hydra & Kraken</div>
+            <div className="text-2xl sm:text-3xl md:text-2xl font-medium text-white">Vehicles for RoboSub 2026</div>
 
 
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-6 w-full">
+            <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full justify-center">
             <Link
-              to="/kevin"
+              to="/vehicles"
                 className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 sm:px-8 py-2 text-sm sm:text-base rounded-lg shadow transition-all duration-200 text-center"
             >
-              Meet Kevin
+              Meet Hydra & Kraken
             </Link>
               <Link
-                to="/robosub2025"
+                to="/robosub2026"
                 className="border border-gray-400 text-gray-200 font-semibold px-4 sm:px-8 py-2 text-sm sm:text-base rounded-lg shadow transition-all duration-200 hover:bg-gray-700 text-center"
               >
-              Robosub 2025
+              RoboSub 2026
               </Link>
             </div>
           </div>
-          <div className="flex-1 flex items-center justify-center mt-12 md:mt-0 w-full">
-          {/* 3D Kevin model in a circular container */}
-            <div className="w-[24rem] h-[24rem] sm:w-[24rem] sm:h-[24rem] md:w-[32rem] md:h-[32rem] lg:w-[44rem] lg:h-[44rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
-              {!showModel && (
-                <div className="absolute inset-0 z-10">
-                  <img
-                    src="/images/kevin_placeholder.png"
-                    alt="Kevin - Loading..."
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-              )}
-              {showModel && (
-                <Optimized3DViewer
-                  showModel={showModel}
-                  scale={[5, 5, 5]}
-                  enableTouchControls={true}
-                />
-              )}
+
+          <div className="flex items-center justify-center w-full order-3">
+            <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
+              <Optimized3DViewer
+                showModel={true}
+                scale={[5.5, 5.5, 5.5]}
+                enableTouchControls={true}
+                modelType="kraken"
+                modelRotation={[0, -0.35, 0]}
+              />
             </div>
           </div>
         </div>

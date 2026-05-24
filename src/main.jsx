@@ -16,6 +16,7 @@ import ContactPage from './ContactPage.jsx'
 import LucyPage from './LucyPage.jsx';
 // import FocusPage from './FocusPage.jsx';
 import Robosub2025Page from './Robosub2025Page.jsx';
+import Robosub2026Page from './Robosub2026Page.jsx';
 import Sauvc2025Page from './Sauvc2025Page.jsx';
 import Materov2024Page from './Materov2024Page.jsx';
 import Sauvc2024Page from './Sauvc2024Page.jsx';
@@ -49,6 +50,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="lucy" element={<LucyPage />} />
           {/* <Route path="focus" element={<FocusPage />} /> */}
           <Route path="robosub2025" element={<Robosub2025Page />} />
+          <Route path="robosub2026" element={<Robosub2026Page />} />
           <Route path="sauvc2025" element={<Sauvc2025Page />} />
           <Route path="materov2024" element={<Materov2024Page />} />
           <Route path="sauvc2024" element={<Sauvc2024Page />} />
