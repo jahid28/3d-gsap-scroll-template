@@ -53,6 +53,57 @@ function TabNavigation({ sections, onTabClick, visible, onExited, onInteraction 
   );
 }
 
+const krakenSpecifications = [
+  {
+    title: "Vehicle Dimensions",
+    bullets: ["Experimental AUV footprint", "Designed for RoboSub task spaces", "Balanced around enclosure and frame geometry"]
+  },
+  {
+    title: "Frame Architecture",
+    bullets: ["Acrylic skeleton frame concept", "Open structure for rapid iteration", "Accessible mounting points for test hardware"]
+  },
+  {
+    title: "Thruster Layout",
+    bullets: ["Upgraded 8-thruster configuration", "Full 6-DOF movement support", "Designed for responsive control testing"]
+  },
+  {
+    title: "Hull Materials",
+    bullets: ["Experimental material validation", "Airfoil-inspired skeleton profile", "Built for structural and drag testing"]
+  },
+  {
+    title: "Power System",
+    bullets: ["Competition-ready battery integration", "Protected electronics power routing", "Accessible service layout"]
+  },
+  {
+    title: "Compute Stack",
+    bullets: ["Onboard autonomy computer", "Control and perception integration", "Designed for repeated field testing"]
+  },
+  {
+    title: "Vision System",
+    bullets: ["Camera mounting provisions", "Task perception support", "Underwater target detection workflow"]
+  },
+  {
+    title: "Torpedo System",
+    bullets: ["Integrated torpedo deployment setup", "Mechanism validation platform", "Designed for precision mission tasks"]
+  },
+  {
+    title: "Waterproofing",
+    bullets: ["Precision CNC enclosure concept", "Sealed electronics protection", "Serviceable cable routing"]
+  },
+  {
+    title: "Software Autonomy",
+    bullets: ["Behavior-tree mission planning", "Reusable control modules", "Simulation-supported testing process"]
+  },
+  {
+    title: "Manufacturing",
+    bullets: ["CNC enclosure development", "Laser-cut or machined frame elements", "Rapid prototype-friendly assembly"]
+  },
+  {
+    title: "Competition Role",
+    bullets: ["RoboSub 2026 experimental platform", "Testbed for new actuation systems", "Designed to push vehicle design boundaries"]
+  }
+];
+
 function KrakenPage() {
   const mainRef = useRef(null)
   const sceneRef = useRef(null)
@@ -84,8 +135,8 @@ function KrakenPage() {
       'controller': 0.99    // Ardusub Controller section
     };
     const targetProgress = sectionMap[sectionId];
-    const totalHeight = mainRef.current?.scrollHeight - window.innerHeight;
-    const targetScrollY = totalHeight * targetProgress;
+    const storyHeight = window.innerHeight * 6;
+    const targetScrollY = storyHeight * targetProgress;
     window.scrollTo({
       top: targetScrollY,
       behavior: 'smooth'
@@ -149,7 +200,7 @@ function KrakenPage() {
       scrollTrigger: {
         trigger: mainRef.current,
         start: "top top",
-        end: "bottom bottom",
+        end: () => `+=${window.innerHeight * 6}`,
         scrub: 1,
         onUpdate: (self) => {
           setProgress(self.progress)
@@ -318,6 +369,36 @@ function KrakenPage() {
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
               An extension of the traditional quadcopter controller, Ardusub allows us to control our custom thruster design and integrate additional sensors with ease and reliability.
             </p>
+          </div>
+        </section>
+        <section className="relative z-10 min-h-screen bg-[#171717] px-4 sm:px-8 lg:px-16 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-orange-500 mb-4">
+                Vehicle Specifications
+              </h2>
+              <p className="mx-auto max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                Kraken is built as an experimental platform for validating new hull materials, actuation systems, and RoboSub-ready autonomy.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {krakenSpecifications.map((spec) => (
+                <article
+                  key={spec.title}
+                  className="min-h-[13rem] rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 p-5 sm:p-6"
+                >
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+                    {spec.title}
+                  </h3>
+                  <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
+                    {spec.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </Suspense>
