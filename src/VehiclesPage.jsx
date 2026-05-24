@@ -28,7 +28,7 @@ export default function VehiclesPage() {
           linkTo="/hydra"
           highlightBg={true}
           modelType="hydra"
-          modelScale={[4,4,4]}
+          modelScale={[5.5, 5.5, 5.5]}
           tags={[
             "Topology Optimization",
             "Modular Frame Design",
@@ -42,7 +42,7 @@ export default function VehiclesPage() {
           description="Built to push design boundaries, Kraken is our dedicated testbed for experimental hull materials. It is purpose-built to validate advanced actuation systems, including an integrated torpedo deployment setup."
           linkTo="/kraken"
           modelType="kraken"
-          modelScale={[4,4,4]}
+          modelScale={[5.5, 5.5, 5.5]}
           tags={[
             "Aerodynamic Airfoil Wing Skeleton (Acrylic)",
             "Precision CNC Enclosure",

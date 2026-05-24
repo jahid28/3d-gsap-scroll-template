@@ -4,12 +4,14 @@ import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { KevinOptimized } from './KevinOptimized.jsx';
+import { HydraOptimized } from './HydraOptimized.jsx';
+import { KrakenOptimized } from './KrakenOptimized.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
 import { div } from 'three/tsl';
 
-const Scene = ({ progress }) => {
+const Scene = ({ progress, modelType = 'kevin' }) => {
     const cameraRef = useRef(null);
     useFrame(() => {
         // console.log("Camera position:", cameraRef.current.position);
@@ -77,7 +79,13 @@ const Scene = ({ progress }) => {
             <pointLight position={[-10, -10, -10]} intensity={0.4} />
             <pointLight position={[0, 10, 0]} intensity={0.3} />
 
-            <KevinOptimized scale={[2.5, 2.5, 2.5]} />
+            {modelType === 'hydra' ? (
+                <HydraOptimized scale={[2.5, 2.5, 2.5]} />
+            ) : modelType === 'kraken' ? (
+                <KrakenOptimized scale={[2.5, 2.5, 2.5]} />
+            ) : (
+                <KevinOptimized scale={[2.5, 2.5, 2.5]} />
+            )}
             {/* <axesHelper args={[500]} /> */}
 
         </>
