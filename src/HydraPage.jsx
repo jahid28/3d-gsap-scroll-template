@@ -53,6 +53,57 @@ function TabNavigation({ sections, onTabClick, visible, onExited, onInteraction 
   );
 }
 
+const hydraSpecifications = [
+  {
+    title: "Vehicle Dimensions",
+    bullets: ["Compact AUV footprint", "Designed for RoboSub course constraints", "Optimized for transport and maintenance"]
+  },
+  {
+    title: "Frame Architecture",
+    bullets: ["Modular structural frame", "Serviceable payload bay", "Rigid mounting points for sensors"]
+  },
+  {
+    title: "Thruster Layout",
+    bullets: ["Symmetric 8-thruster configuration", "Full 6-DOF control authority", "Improved station keeping response"]
+  },
+  {
+    title: "Power System",
+    bullets: ["Competition-ready battery payload", "Centralized power distribution", "Protected high-current routing"]
+  },
+  {
+    title: "Compute Stack",
+    bullets: ["Onboard autonomy computer", "Low-latency control pipeline", "Mission software integration"]
+  },
+  {
+    title: "Vision System",
+    bullets: ["Forward-facing perception setup", "Task target detection support", "Tuned for underwater lighting"]
+  },
+  {
+    title: "Navigation Sensors",
+    bullets: ["Depth and attitude feedback", "Localization-ready sensor mounts", "Stable feedback for closed-loop control"]
+  },
+  {
+    title: "Manipulator Support",
+    bullets: ["Gripper mechanism provisions", "Dropper mechanism provisions", "Payload modules designed for fast swaps"]
+  },
+  {
+    title: "Waterproofing",
+    bullets: ["Sealed electronics enclosure", "Cable routing strain relief", "Service-friendly access points"]
+  },
+  {
+    title: "Software Autonomy",
+    bullets: ["Behavior-tree mission planning", "Reusable task modules", "Simulation-driven testing workflow"]
+  },
+  {
+    title: "Manufacturing",
+    bullets: ["Topology-optimized printed parts", "CNC-compatible mounting surfaces", "Rapid iteration design approach"]
+  },
+  {
+    title: "Competition Role",
+    bullets: ["Primary RoboSub 2026 platform", "Built for autonomous mission tasks", "Successor to the SAUVC champion bot"]
+  }
+];
+
 function HydraPage() {
   const mainRef = useRef(null)
   const sceneRef = useRef(null)
@@ -84,8 +135,8 @@ function HydraPage() {
       'controller': 0.99    // Ardusub Controller section
     };
     const targetProgress = sectionMap[sectionId];
-    const totalHeight = mainRef.current?.scrollHeight - window.innerHeight;
-    const targetScrollY = totalHeight * targetProgress;
+    const storyHeight = window.innerHeight * 6;
+    const targetScrollY = storyHeight * targetProgress;
     window.scrollTo({
       top: targetScrollY,
       behavior: 'smooth'
@@ -149,7 +200,7 @@ function HydraPage() {
       scrollTrigger: {
         trigger: mainRef.current,
         start: "top top",
-        end: "bottom bottom",
+        end: () => `+=${window.innerHeight * 6}`,
         scrub: 1,
         onUpdate: (self) => {
           setProgress(self.progress)
@@ -318,6 +369,36 @@ function HydraPage() {
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
               An extension of the traditional quadcopter controller, Ardusub allows us to control our custom thruster design and integrate additional sensors with ease and reliability.
             </p>
+          </div>
+        </section>
+        <section className="relative z-10 min-h-screen bg-[#171717] px-4 sm:px-8 lg:px-16 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-orange-500 mb-4">
+                Vehicle Specifications
+              </h2>
+              <p className="mx-auto max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                Hydra's hardware and autonomy stack are organized around reliability, modularity, and competition-ready underwater performance.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {hydraSpecifications.map((spec) => (
+                <article
+                  key={spec.title}
+                  className="min-h-[13rem] rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 p-5 sm:p-6"
+                >
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+                    {spec.title}
+                  </h3>
+                  <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
+                    {spec.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </Suspense>
