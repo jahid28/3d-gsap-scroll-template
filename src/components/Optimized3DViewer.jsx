@@ -14,7 +14,8 @@ export function Optimized3DViewer({
   showModel = true, 
   scale = [5, 5, 5],
   enableTouchControls = true,
-  modelType = 'kevin'
+  modelType = 'kevin',
+  modelRotation = [0, 0, 0]
 }) {
   const { capability, isLoading } = useProgressiveEnhancement();
   const { targetFPS } = useAdaptiveFrameRate(capability);
@@ -76,6 +77,7 @@ export function Optimized3DViewer({
             capability={capability} 
             scale={scale}
             modelType={modelType}
+            rotation={modelRotation}
           />
 
           {/* Adaptive Controls */}
