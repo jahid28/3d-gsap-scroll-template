@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Scene from "./scene";
@@ -373,7 +374,7 @@ function KrakenPage() {
         </section>
         <section className="relative z-10 min-h-screen bg-[#171717] px-4 sm:px-8 lg:px-16 py-20 sm:py-24">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-12 text-center">
+          <div className="mb-12 text-center">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-orange-500 mb-4">
                 Vehicle Specifications
               </h2>
@@ -382,25 +383,35 @@ function KrakenPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-              {krakenSpecifications.map((spec) => (
-                <article
-                  key={spec.title}
-                  className="min-h-[13rem] rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 p-5 sm:p-6"
-                >
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
-                    {spec.title}
-                  </h3>
+            <div className="rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 py-6 px-8 sm:px-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {krakenSpecifications.map((spec) => (
+              <div key={spec.title}>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+                  {spec.title}
+                </h3>
+
                   <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
                     {spec.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                </article>
+                </div>
               ))}
             </div>
           </div>
+
+          <div className="flex justify-center mt-10">
+          <Link
+          to="/robosub2026"
+          className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200"
+          >
+          View our RoboSub 2026 Development
+          </Link>
+          </div>
+          </div>
         </section>
+
       </Suspense>
     </main>
   );
