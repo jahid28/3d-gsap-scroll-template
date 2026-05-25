@@ -70,10 +70,10 @@ export default function Home() {
           </div>
 
           <div className="flex items-center justify-center w-full order-3">
-            <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
+            <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] flex items-center justify-center overflow-hidden relative bg-transparent">
               <Optimized3DViewer
                 showModel={true}
-                scale={[5.5, 5.5, 5.5]}
+                scale={[3.5, 3.5, 3.5]}
                 enableTouchControls={true}
                 modelType="kraken"
                 modelRotation={[0, -0.35, 0]}
