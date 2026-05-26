@@ -40,7 +40,7 @@ export default function Home() {
             <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
               <Optimized3DViewer
                 showModel={true}
-                scale={[5.5, 5.5, 5.5]}
+                scale={[4.5, 4.5, 4.5]}
                 enableTouchControls={true}
                 modelType="hydra"
                 modelRotation={[0, 0.35, 0]}
@@ -244,18 +244,18 @@ export default function Home() {
 
 function SponsorsCarousel() {
   const sponsors = useMemo(() => [
-    { logo: "/images/logos/fstd_logo.webp", alt: "FSTD" },
-    { logo: "/images/logos/smf.webp", alt: "Singapore Maritime Foundation" },
-    { logo: "/images/logos/jdf_logo.webp", alt: "James Dyson Foundation" },
-    { logo: "/images/logos/dso_logo.webp", alt: "DSO" },
-    { logo: "/images/logos/vectornav_logo.png", alt: "VectorNav" },
-    { logo: "/images/logos/waterlinked_logo.svg", alt: "WaterLinked" },
-    { logo: "/images/logos/espressif_logo.webp", alt: "Espressif" },
-    { logo: "/images/logos/zen4blue_logo.webp", alt: "Zen4Blue" },
-    { logo: "/images/logos/aquarian_logo.webp", alt: "Aquarian Audio" },
-    { logo: "/images/logos/dwe_logo.webp", alt: "DWE" },
-    { logo: "/images/logos/sonardyne_logo.webp", alt: "Sonardyne" },
-    { logo: "/images/logos/rovmaker_round.png", alt: "ROV Maker" },
+    { logo: "/images/logos/fstd_logo.webp", alt: "FSTD", logoClass: "max-h-16 max-w-44" },
+    { logo: "/images/logos/smf.webp", alt: "Singapore Maritime Foundation", logoClass: "max-h-14 max-w-40" },
+    { logo: "/images/logos/jdf_logo.webp", alt: "James Dyson Foundation", logoClass: "max-h-14 max-w-36" },
+    { logo: "/images/logos/dso_logo.webp", alt: "DSO", logoClass: "max-h-14 max-w-36" },
+    { logo: "/images/logos/vectornav_logo.png", alt: "VectorNav", logoClass: "max-h-12 max-w-44" },
+    { logo: "/images/logos/waterlinked_logo.svg", alt: "WaterLinked", logoClass: "max-h-12 max-w-44" },
+    { logo: "/images/logos/espressif_logo.webp", alt: "Espressif", logoClass: "max-h-12 max-w-44" },
+    { logo: "/images/logos/zen4blue_logo.webp", alt: "Zen4Blue", logoClass: "max-h-14 max-w-40" },
+    { logo: "/images/logos/aquarian_logo.webp", alt: "Aquarian Audio", logoClass: "max-h-12 max-w-44" },
+    { logo: "/images/logos/dwe_logo.webp", alt: "DWE", logoClass: "max-h-9 max-w-36" },
+    { logo: "/images/logos/sonardyne_logo.webp", alt: "Sonardyne", logoClass: "max-h-12 max-w-44" },
+    { logo: "/images/logos/rovmaker_round.png", alt: "ROV Maker", logoClass: "max-h-20 max-w-32" },
   ], []);
 
   const trackRef = useRef(null);
@@ -323,18 +323,20 @@ function SponsorsCarousel() {
           {doubled.map((s, i) => (
             <div
               key={`${s.alt}-${i}`}
-              className="min-w-[180px] sm:min-w-[220px] h-28 sm:h-32 bg-white/25 border-white/40 backdrop-blur-xl hover:bg-white/35 rounded-2xl flex items-center justify-center p-6 backdrop-blur-md hover:scale-105 transition-transform duration-300"
+              className="min-w-[180px] sm:min-w-[220px] h-28 sm:h-32 bg-white/25 border-white/40 backdrop-blur-xl hover:bg-white/35 rounded-lg flex items-center justify-center p-5 backdrop-blur-md hover:scale-105 transition-transform duration-300"
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerLeave={handlePointerUp}
             >
-              <img
-                src={s.logo}
-                alt={s.alt}
-                className="max-h-[70%] max-w-[80%] object-contain transition duration-300 mx-auto"
-                draggable={false}
-              />
+              <div className="flex h-20 w-44 items-center justify-center">
+                <img
+                  src={s.logo}
+                  alt={s.alt}
+                  className={`${s.logoClass} h-auto w-auto object-contain transition duration-300 mx-auto`}
+                  draggable={false}
+                />
+              </div>
             </div>
           ))}
         </div>
