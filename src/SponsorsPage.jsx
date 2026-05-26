@@ -236,26 +236,37 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#AAAAAA] py-12">
+      <section className="w-full bg-[#1a1a1a] py-12">
         <div className="max-w-screen-xl mx-auto px-8 flex flex-col items-center text-center">
-          <h2 className="text-4xl font-extrabold text-black text-center mb-6">
+          <h2 className="text-4xl font-extrabold text-white text-center mb-14">
             Our Sponsors and Supporters
           </h2>
 
           <img
             src={yearData.tierImage}
             alt={`${activeYear} sponsors by tier`}
-            className="w-full max-w-3xl object-contain"
+            className="w-full max-w-3xl object-contain bg-white/60 rounded-lg shadow-lg"
           />
 
-          <p className="max-w-4xl text-black sm:text-xl leading-relaxed pt-4 pb-10">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
+          <p className="max-w-4xl text-white sm:text-xl leading-relaxed pt-14 pb-20">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
 
-          <Link
+        <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-8">
+        <Link
             to="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 sm:px-8 py-2 text-sm sm:text-base rounded-lg shadow transition-all duration-200 text-center"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
           >
-            Contact Us
+            View Sponsorship Deck
           </Link>
+        <a
+          href="/contact"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+        >
+          Contact Us
+        </a>
+        
+      </div>
         </div>
       </section>
 
