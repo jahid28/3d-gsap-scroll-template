@@ -251,12 +251,16 @@ export default function SponsorsPage() {
           <p className="max-w-4xl text-white sm:text-xl leading-relaxed pt-14 pb-20">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
 
         <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-8">
-        <Link
-            to="/contact"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
-          >
-            View Sponsorship Deck
-          </Link>
+        <a
+          href="/sponsorship_deck/Sponsorship-Deck-2026.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+
+        >
+          View Sponsorship Deck
+        </a>
+
         <a
           href="/contact"
           target="_blank"
