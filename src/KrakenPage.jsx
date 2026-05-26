@@ -55,53 +55,78 @@ function TabNavigation({ sections, onTabClick, visible, onExited, onInteraction 
 }
 
 const krakenSpecifications = [
-  {
-    title: "Vehicle Dimensions",
-    bullets: ["Experimental AUV footprint", "Designed for RoboSub task spaces", "Balanced around enclosure and frame geometry"]
+    {
+    title: "Vehicle's Dimensions",
+    bullets: ["Length: 0.61m","Width: 0.61m", "Height: 0.27m"]
   },
   {
-    title: "Frame Architecture",
-    bullets: ["Acrylic skeleton frame concept", "Open structure for rapid iteration", "Accessible mounting points for test hardware"]
+    title: "Mass of Vehicle",
+    bullets: ["21kg in Air"]
   },
   {
-    title: "Thruster Layout",
-    bullets: ["Upgraded 8-thruster configuration", "Full 6-DOF movement support", "Designed for responsive control testing"]
+    title: "Top Speed",
+    bullets: ["1 m/s"]
   },
   {
-    title: "Hull Materials",
-    bullets: ["Experimental material validation", "Airfoil-inspired skeleton profile", "Built for structural and drag testing"]
+    title: "Degrees of Freedom",
+    bullets: ["6 (Surge, Sway, Heave, Roll, Pitch, Yaw)"]
+  },
+  {
+    title: "Computer Stack",
+    bullets: ["16GB RAM", "512GB M.2SATA3 SSD", "NVIDIA Jetson Orin NX Super"]
+  },
+  {
+    title: "Acoustics System",
+    bullets: ["Aquarian AS-1 Hydrophones (x3)",
+        "Custom-Designed Filter Board",
+        "Teensy 4.1 Microcontroller",
+        "Aquarian PA-4 Pre-Amplifier", 
+        "ROVMAKER 60mm Acrylic Underwater Electronic Enclosure",
+        ]
+  },
+  {
+    title: "Control System",
+    bullets: ["BlueRobotics T200 Thrusters (x8)",
+    "ROVMAKER 35A ESC (x8)",
+    "Holybro Pixhawk 6C Controller"
+]
+  },
+  {
+    title: "Navigation Suite",
+    bullets: ["Water Linked A50 DVL", "VectorNav VN-100 IMU",
+    ]
+  },
+  {
+    title: "Sensors",
+    bullets: ["ROVMAKER Bar30 Pressure Sensor","DWE exploreHD Camera (forward facing)"]
+  },
+  {
+    title: "Actuators",
+    bullets: [
+      "15 Kg Electromagnet (30mm x 30mm x 20mm) (x2) - Torpedo",
+      "ROVMAKER 60mm Acrylic Underwater Electronic Enclosure",
+    ]
   },
   {
     title: "Power System",
-    bullets: ["Competition-ready battery integration", "Protected electronics power routing", "Accessible service layout"]
+    bullets: [
+      "4S 88.8Wh LiPo Battery (x2)",
+      "Custom-Designed Power Distribution Unit (x2)",
+      "ROVMAKER 90mm Acrylic Underwater Electronic Enclosure (x2)"
+    ]
   },
   {
-    title: "Compute Stack",
-    bullets: ["Onboard autonomy computer", "Control and perception integration", "Designed for repeated field testing"]
-  },
-  {
-    title: "Vision System",
-    bullets: ["Camera mounting provisions", "Task perception support", "Underwater target detection workflow"]
-  },
-  {
-    title: "Torpedo System",
-    bullets: ["Integrated torpedo deployment setup", "Mechanism validation platform", "Designed for precision mission tasks"]
+    title: "Software Architecture",
+    bullets: ["Robot Operating System 2 (ROS 2)","Ubuntu 24.04 LTS"]
   },
   {
     title: "Waterproofing",
-    bullets: ["Precision CNC enclosure concept", "Sealed electronics protection", "Serviceable cable routing"]
-  },
-  {
-    title: "Software Autonomy",
-    bullets: ["Behavior-tree mission planning", "Reusable control modules", "Simulation-supported testing process"]
-  },
-  {
-    title: "Manufacturing",
-    bullets: ["CNC enclosure development", "Laser-cut or machined frame elements", "Rapid prototype-friendly assembly"]
-  },
-  {
-    title: "Competition Role",
-    bullets: ["RoboSub 2026 experimental platform", "Testbed for new actuation systems", "Designed to push vehicle design boundaries"]
+    bullets: [
+      "CNC Aluminum Electronics Enclosure (300 x 150 x 150 mm)",
+      "ROVMAKER M10 Cable Penetrators",
+      "ROVMAKER Underwater Connectors",
+      "Blue Trail Engineering Cobalt Series"
+    ]
   }
 ];
 
