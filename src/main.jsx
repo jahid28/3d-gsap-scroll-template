@@ -29,6 +29,8 @@ import ComputerVisionPage from './ComputerVisionPage.jsx';
 import Blender3DPage from './Blender3DPage.jsx';
 import JoinUsPage from './JoinUsPage.jsx';
 import GamePage from './GamePage.jsx';
+import TeamBlogPage from './TeamBlogPage.jsx';
+import TeamBlogPostPage from './TeamBlogPostPage.jsx';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -71,6 +73,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="blender3d" element={<Blender3DPage />} />
           <Route path="joinus" element={<JoinUsPage />} />
           <Route path="game" element={<GamePage />} />
+          <Route path="blog" element={<TeamBlogPage />} />
+          <Route path="blog/:slug" element={<TeamBlogPostPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

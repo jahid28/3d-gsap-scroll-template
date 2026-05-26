@@ -230,7 +230,7 @@ export default function SponsorsPage() {
         <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="relative z-10">
           <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-8">Sponsors and Supporters</h1>
-          <p className="max-w-4xl text-lg sm:text-xl leading-relaxed">
+          <p className="max-w-4xl text-justify text-lg sm:text-xl leading-relaxed">
             We extend our heartfelt gratitude to our sponsors and supporters for placing their trust in Mecatron. Their generous support has provided the resources needed to explore new frontiers, strengthen our engineering work, and bring ambitious underwater robotics projects to life.
           </p>
         </div>
@@ -248,15 +248,19 @@ export default function SponsorsPage() {
             className="w-full max-w-3xl object-contain bg-white/60 rounded-lg shadow-lg"
           />
 
-          <p className="max-w-4xl text-white sm:text-xl leading-relaxed pt-14 pb-20">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
+          <p className="max-w-4xl text-justify text-white sm:text-xl leading-relaxed pt-14 pb-20">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
 
         <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-8">
-        <Link
-            to="/contact"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
-          >
-            View Sponsorship Deck
-          </Link>
+        <a
+          href="/sponsorship_deck/Mecatron-Sponsorship-Deck-2026.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+
+        >
+          View Sponsorship Deck
+        </a>
+
         <a
           href="/contact"
           target="_blank"
@@ -366,7 +370,7 @@ function SupportersCard({ supporterIds }) {
 
         <div className="mt-8 border-t border-black/10 pt-6 text-center">
           {supporterWriteup.map((paragraph) => (
-            <p key={paragraph} className="mx-auto max-w-4xl text-base sm:text-lg leading-relaxed text-gray-800">
+            <p key={paragraph} className="mx-auto max-w-4xl text-justify text-base sm:text-lg leading-relaxed text-gray-800">
               {paragraph}
             </p>
           ))}
@@ -416,7 +420,7 @@ function PartnerCard({ id, partner, isOpen, onToggle, showTier = false }) {
         <div className="overflow-hidden">
           <div className="border-t border-current/15 bg-black/15 px-6 py-5">
             {partner.description.map((paragraph) => (
-              <p key={paragraph} className="text-base leading-relaxed mb-4 last:mb-0">
+              <p key={paragraph} className="text-justify text-base leading-relaxed mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}

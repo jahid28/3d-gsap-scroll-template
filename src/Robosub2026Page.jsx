@@ -99,35 +99,55 @@ const tagStyles = {
 const journeyTimeline = [
   {
     phase: 'Phase 1',
-    title: 'Concept & Requirements',
-    period: 'May - June 2026',
+    title: 'Exploration & Experimentation',
+    period: 'Nov 2025 - Jan 2026',
     details: [
-      'Define RoboSub 2026 task requirements and vehicle roles',
-      'Split development focus between Hydra and Kraken',
-      'Align mechanical, electrical, and software subsystem goals'
+      'Acoustics & Hardware Evaluation:',
+      'Vehicle Frame Optimization:',
+      'Software Prototyping:'
+    ],
+    subpoints: [
+      'Conducted baseline hydrophone and speaker testing. This year, we are determined to develop and deploy in-house acoustic capabilities.',
+      'Designed initial hull and frame iterations for two underwater vehicles, with a focus on modularity, improved hydrodynamics, and a reconfigured thruster layout for enhanced maneuverability.',
+      'Explored and benchmarked various spatial navigation and perception packages to establish a robust foundation for an improved software stack.'
     ]
   },
   {
     phase: 'Phase 2',
-    title: 'Design & Integration',
-    period: 'June - July 2026',
+    title: 'Systems Integration & Baseline Validation',
+    period: 'Feb 2026 - Apr 2026',
     details: [
-      'Finalize subsystem architecture and mounting layouts',
-      'Integrate sensors, actuators, and vehicle electronics',
-      'Bring software modules onto the vehicle hardware stack'
+      'Electrical Integration: Gradual integration of the Power Distribution Unit (PDU), incorporating CAN-bus communications, voltage/current sensing, and upgraded compute capabilities.',
+      'Software Fusion: Integrated navigation and perception modules to establish a functional operational baseline.',
+      'Regression Testing: Performed the previous year’s Gate task to validate that the new software stack meets or exceeds prior performance benchmarks.'
     ]
   },
   {
     phase: 'Phase 3',
-    title: 'Testing & Competition Prep',
-    period: 'July 2026',
+    title: 'Mission-Specific Testing & Reliability',
+    period: 'May 2026 - Jul 2026',
     details: [
-      'Tune controls through repeated pool testing',
-      'Validate mission behaviors under RoboSub-style task conditions',
-      'Refine reliability, service workflow, and competition readiness'
+      'Full System Pool Tests: Transitioned to intensive pool testing with fully assembled vehicles and the validated software stack.',
+      'Task-Specific Optimization: Conducted individual testing for both vehicles on their assigned competition tasks to bridge the sim-to-real domain gap.',
+      'Operational Validation: Focused on ensuring the reliability, repeatability, and robustness of autonomous behaviors in a physical environment in preparation for RoboSub 2026.'
     ]
   }
 ];
+
+function TimelineDetail({ detail }) {
+  const colonIndex = detail.indexOf(':');
+
+  if (colonIndex === -1) {
+    return <>{detail}</>;
+  }
+
+  return (
+    <>
+      <strong>{detail.slice(0, colonIndex + 1)}</strong>
+      {detail.slice(colonIndex + 1)}
+    </>
+  );
+}
 
 export default function Robosub2026Page() {
   const [activeVehicle, setActiveVehicle] = useState('hydra');
@@ -189,7 +209,7 @@ export default function Robosub2026Page() {
       <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-10">
         <Link
             to={vehicle.linkTo}
-            className="inline-block bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+            className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
           >
             View {vehicle.label}
           </Link>
@@ -197,22 +217,19 @@ export default function Robosub2026Page() {
           href="/robosub_2025/Technical-Documentation.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+          className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
         >
           Technical Paper 2026
         </a>
 
-        <a
-          href="https://mecatron.notion.site/Robosub-2025-Blog-20c6978f818e80aebb1ec2d603b2cc69"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+        <Link
+          to="/blog"
+          className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
         >
-          Team's Blog
-        </a>
-
-        
+          RoboSub Blog
+        </Link>
       </div>
+        
 
       <section className="bg-[#202020] px-4 sm:px-8 md:px-20 py-20">
         <div className="max-w-7xl mx-auto">
@@ -278,31 +295,45 @@ export default function Robosub2026Page() {
         </div>
       </section>
 
-      <div className="flex pt-20 justify-center bg-[#303030] w-full">
-        <h2 className="text-4xl font-extrabold text-orange-500">RoboSub 2026 Team Video</h2>
-      </div>
-
-      <section className="flex flex-col md:flex-row items-center md:justify-center pt-10 pb-10 px-8 md:px-20 bg-[#303030]">
-        <div className="w-full aspect-video max-w-4xl">
-          <iframe
-            className="w-full h-full"
-            src="https://www.youtube.com/embed/mK8vjsBc7f4"
-            title="Team Mecatron RoboSub Introduction Video | RoboSub 2026"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+      <section className="px-8 md:px-20 py-16 bg-[#1a1a1a]">
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl font-extrabold text-orange-500 mb-10">RoboSub 2026 Team Video</h2>
+          <div className="w-full aspect-video max-w-4xl">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/mK8vjsBc7f4"
+              title="Team Mecatron RoboSub Introduction Video | RoboSub 2026"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </section>
 
-      <section className="px-4 sm:px-8 md:px-20 py-20 bg-[#181818]">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative overflow-hidden px-4 sm:px-8 md:px-20 py-20">
+        <div
+          className="absolute inset-0 scale-110 bg-cover bg-center blur-sm"
+          style={{ backgroundImage: "url('/images/robosub2026-team-photo.jpg')" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/80" aria-hidden="true" />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-4xl font-extrabold text-orange-500 mb-8">RoboSub 2026 Developmental Timeline</h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto">
               From early task planning to pool validation, Hydra and Kraken move through one shared development path.
             </p>
+            <div className="mt-6">
+              <Link
+                to="/blog"
+                className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+              >
+                View RoboSub 2026 Blog
+              </Link>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -343,9 +374,17 @@ export default function Robosub2026Page() {
                     <div className="overflow-hidden">
                       <div className="border-t border-white/10 bg-black/20 px-6 py-5">
                         <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
-                          {item.details.map((detail) => (
-                            <li key={detail}>{detail}</li>
-                          ))}
+                          {item.details.map((detail, detailIndex) => {
+                            const detailText = item.subpoints?.[detailIndex]
+                              ? `${detail} ${item.subpoints[detailIndex]}`
+                              : detail;
+
+                            return (
+                              <li key={detail}>
+                                <TimelineDetail detail={detailText} />
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>

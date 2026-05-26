@@ -56,52 +56,75 @@ function TabNavigation({ sections, onTabClick, visible, onExited, onInteraction 
 
 const hydraSpecifications = [
   {
-    title: "Vehicle Dimensions",
-    bullets: ["Compact AUV footprint", "Designed for RoboSub course constraints", "Optimized for transport and maintenance"]
+    title: "Vehicle's Dimensions",
+    bullets: ["Length: 0.54m", "Height: 0.34m", "Width: 0.51m"]
   },
   {
-    title: "Frame Architecture",
-    bullets: ["Modular structural frame", "Serviceable payload bay", "Rigid mounting points for sensors"]
+    title: "Mass of Vehicle",
+    bullets: ["23kg in Air"]
   },
   {
-    title: "Thruster Layout",
-    bullets: ["Symmetric 8-thruster configuration", "Full 6-DOF control authority", "Improved station keeping response"]
+    title: "Degrees of Freedom",
+    bullets: ["6 (Surge, Sway, Heave, Roll, Pitch, Yaw)"]
+  },
+  {
+    title: "Computer Stack",
+    bullets: ["16GB RAM", "512GB M.2SATA3 SSD", "NVIDIA Jetson Orin NX Super"]
+  },
+  {
+    title: "Acoustics System",
+    bullets: ["Aquarian AS-1 Hydrophones (x3)",
+        "Custom-Designed Filter Board",
+        "Teensy 4.1 Microcontroller",
+        "Aquarian PA-4 Pre-Amplifier", 
+        "ROVMAKER 60mm Acrylic Underwater Electronic Enclosure",
+        ]
+  },
+  {
+    title: "Control System",
+    bullets: ["BlueRobotics T200 Thrusters (x8)",
+    "ROVMAKER 35A ESC (x8)",
+    "Holybro Pixhawk 6C Controller"
+]
+  },
+  {
+    title: "Navigation Suite",
+    bullets: ["Water Linked A50 DVL", "VectorNav VN-100 IMU",
+    ]
+  },
+  {
+    title: "Sensors",
+    bullets: ["ROVMAKER Bar30 Pressure Sensor","DWE exploreHD Camera (downward facing)","DWE exploreHD Camera (forward facing)"]
+  },
+  {
+    title: "Actuators",
+    bullets: [
+      "15 Kg Electromagnet (30mm x 30mm x 20mm) (x2) - Dropper",
+      "ROVMAKER Positional Underwater Servo - Gripper",
+      "ROVMAKER 60mm Acrylic Underwater Electronic Enclosure",
+    ]
   },
   {
     title: "Power System",
-    bullets: ["Competition-ready battery payload", "Centralized power distribution", "Protected high-current routing"]
+    bullets: [
+      "4S 88.8Wh LiPo Battery (x2)",
+      "Custom-Designed LV Power Distribution Unit",
+      "Custom-Designed HV Power Distribution Unit",
+      "ROVMAKER 90mm Acrylic Underwater Electronic Enclosure (x2)"
+    ]
   },
   {
-    title: "Compute Stack",
-    bullets: ["Onboard autonomy computer", "Low-latency control pipeline", "Mission software integration"]
-  },
-  {
-    title: "Vision System",
-    bullets: ["Forward-facing perception setup", "Task target detection support", "Tuned for underwater lighting"]
-  },
-  {
-    title: "Navigation Sensors",
-    bullets: ["Depth and attitude feedback", "Localization-ready sensor mounts", "Stable feedback for closed-loop control"]
-  },
-  {
-    title: "Manipulator Support",
-    bullets: ["Gripper mechanism provisions", "Dropper mechanism provisions", "Payload modules designed for fast swaps"]
+    title: "Software Architecture",
+    bullets: ["Robot Operating System 2 (ROS 2)","Ubuntu 24.04 LTS"]
   },
   {
     title: "Waterproofing",
-    bullets: ["Sealed electronics enclosure", "Cable routing strain relief", "Service-friendly access points"]
-  },
-  {
-    title: "Software Autonomy",
-    bullets: ["Behavior-tree mission planning", "Reusable task modules", "Simulation-driven testing workflow"]
-  },
-  {
-    title: "Manufacturing",
-    bullets: ["Topology-optimized printed parts", "CNC-compatible mounting surfaces", "Rapid iteration design approach"]
-  },
-  {
-    title: "Competition Role",
-    bullets: ["Primary RoboSub 2026 platform", "Built for autonomous mission tasks", "Successor to the SAUVC champion bot"]
+    bullets: [
+      "CNC Aluminum Electronics Enclosure (D=130mm)",
+      "ROVMAKER M10 Cable Penetrators",
+      "ROVMAKER Underwater Connectors",
+      "Blue Trail Engineering Cobalt Series"
+    ]
   }
 ];
 
@@ -392,11 +415,11 @@ function HydraPage() {
                   {spec.title}
                 </h3>
 
-                  <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
                     {spec.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                      <p key={bullet} className="text-sm sm:text-base leading-relaxed text-gray-200">
+                        {bullet}
+                      </p>
                     ))}
-                  </ul>
                 </div>
               ))}
             </div>

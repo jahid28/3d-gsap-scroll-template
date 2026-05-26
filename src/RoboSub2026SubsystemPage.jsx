@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ImageCarousel from './components/ImageCarousel';
 
 const subsystemPages = {
   hydra: {
@@ -6,6 +8,20 @@ const subsystemPages = {
     overview:
       'Hydra is the compact competition vehicle, focused on serviceable packaging, reliable autonomy, and tightly integrated task mechanisms.',
     image: '/competition/images/robosub2026-bots.jpg',
+    carouselImages: [
+      {
+        src: '/competition/images/competition_img_2.jpg',
+        caption: 'Previous simple 2D bounding box.'
+      },
+      {
+        src: '/competition/images/competition_img_2.jpg',
+        caption: 'Improved perception for this year'
+      },
+      {
+        src: '/competition/images/competition_img_2.jpg',
+        caption: 'Testing and iteration notes from the RoboSub development cycle.'
+      }
+    ],
     subsystems: {
       mechanical: {
         label: 'Mechanical',
@@ -13,10 +29,6 @@ const subsystemPages = {
         summary:
           'Hydra keeps the compact character of Lucy while making the frame easier to build, access, and adapt for RoboSub task hardware.',
         highlights: [
-          'Compact frame layout for easier transport, handling, and pool testing',
-          'Modular mounting interfaces for dropper and gripper mechanisms',
-          'Improved service access for inspections and mechanism swaps',
-          'Packaging choices that preserve stability while adding new payloads'
         ],
         development: [
           'Refine frame geometry around the new payload envelope',
@@ -30,15 +42,8 @@ const subsystemPages = {
         summary:
           'Hydra software development focuses on reusable mission behaviors, tighter control, and faster iteration from simulation to pool testing.',
         highlights: [
-          'Reusable autonomy modules for RoboSub mission tasks',
-          'Cleaner handoff between perception, planning, and control',
-          'Simulation-first testing workflow before pool deployment',
-          'Control tuning aimed at stable task alignment and repeatability'
         ],
         development: [
-          'Build task behaviors as reusable mission blocks',
-          'Test perception and control changes in simulation',
-          'Validate mission flow during progressive pool trials'
         ]
       },
       electrical: {
@@ -65,6 +70,20 @@ const subsystemPages = {
     overview:
       'Kraken is the experimental platform, built to test new hull ideas, actuation systems, and autonomy behavior before they move into competition flow.',
     image: '/competition/images/robosub2026-bots.jpg',
+    carouselImages: [
+      {
+        src: '/competition/images/robosub2026-bots.jpg',
+        caption: 'Kraken alongside Hydra as part of the RoboSub 2026 vehicle lineup.'
+      },
+      {
+        src: '/competition/images/competition_img_3.jpg',
+        caption: 'Experimental validation work for Kraken subsystems and layout.'
+      },
+      {
+        src: '/competition/images/competition_img_4.jpg',
+        caption: 'Competition preparation and subsystem review in progress.'
+      }
+    ],
     subsystems: {
       mechanical: {
         label: 'Mechanical',
@@ -86,8 +105,7 @@ const subsystemPages = {
       software: {
         label: 'Software',
         title: 'Software Subsystems',
-        summary:
-          'Kraken software is used to isolate and validate experimental perception, planning, and control ideas under RoboSub-style tasks.',
+        summary: '',
         highlights: [
           'Mission testing platform for experimental task behaviors',
           'Perception pipeline validation before competition integration',
@@ -123,12 +141,254 @@ const subsystemPages = {
 
 const navItems = ['mechanical', 'software', 'electrical'];
 
+const featureCarouselImages = {
+  UnitySim: [
+    {
+      src: '/images/robosub2026/software-subsystems/unitysim.png',
+      caption: 'UnitySim supported dry testing before vehicle assembly.'
+    },
+  ],
+  Perception: [
+    {
+      src: '/images/robosub2026/software-subsystems/old-bounding-box.png',
+      caption: 'Previous simple 2D bounding box.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/new-bounding-box.png',
+      caption: 'New improved perception pipeline.'
+    }
+  ],
+  'Mission Planning': [
+    {
+      src: '/images/robosub2026/software-subsystems/nav-rect-animation.gif',
+      caption: 'Mission planning flow built around reusable behavior tree actions.'
+    },
+  ],
+  Localisation: [
+    {
+      src: '/images/robosub2026/software-subsystems/ekf.png',
+      caption: 'EKF localisation fuses DVL and IMU data for stable odometry.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/corecont.png',
+      caption: 'Foxglove monitoring supported real-time localisation review.'
+    },
+  ],
+  'Containerisation for Multi-Vehicle Deployment': [
+    {
+      src: '/images/robosub2026/software-subsystems/ros2.png',
+      caption: 'ROS2'
+    },
+    {
+      src: '/competition/images/competition_img_1.jpg',
+      caption: 'Composable nodes reduce CPU overhead through zero-copy sharing.'
+    },
+    {
+      src: '/competition/images/competition_img_2.jpg',
+      caption: 'Efficient deployment keeps perception and navigation pipelines running together.'
+    }
+  ]
+};
+
+function getContentSections(vehicle, subsystem) {
+  return [
+    {
+      title: 'UnitySim',
+      description: `We leveraged Unity to develop a high-fidelity digital twin of the competition environment. This allowed for extensive “dry” testing of our new algorithms and mission logic before vehicle design was finalized and parts were manufactured. ROS2 packages were individually validated within the simulation environment to assess operational suitability and isolate software bugs before integration into the full autonomy stack. Upon completion of vehicle assembly, the UnityMDS simulation setup complemented semiweekly in-person pool tests, for a final systems validation of our competition vehicle within pseudo-deployment environments.`,
+      bullets: subsystem.highlights
+    },
+    {
+      title: 'Perception',
+      description: `This year, our perception pipeline moves beyond basic object detection. Instead of relying on simple 2D bounding boxes with vision-based, reactive approaches, we fused depth data with semantic segmentation. By utilising 3D pose estimation of competition elements, this approach enables prior path planning and dynamic replanning, providing our vehicle with critical spatial awareness for fine-tuned manoeuvres especially required in Torpedo and Picking tasks.`,
+      bullets: subsystem.highlights,
+      imageLayout: 'comparison'
+    },
+    {
+      title: 'Mission Planning',
+      description: 'Similar to last year’s iterations, the Behavior Tree (BT) framework remains the core of our mission planning system. This year, we improved modularity by encapsulating complex tasks into higher-level actions, which simplifies debugging and results in a more intuitive monitoring interface.To translate these high-level mission goals into physical motion, we transitioned to the Nav2 stack. Nav2 leverages our new spatial perception data to handle dynamic path planning and obstacle avoidance, providing the vehicle with the agility required for complex, multi-objective maneuvers.',
+      bullets: subsystem.development
+    },
+    {
+      title: 'Localisation',
+      description: 'To achieve greater navigation precision with reduced drift, we implemented an Extended Kalman Filter (EKF) to fuse data from our DVL and a new external IMU. Real-time monitoring via Foxglove Studio during pool tests confirmed that this results in a highly stable odometry stack, even during complex movements.',
+      bullets: subsystem.development
+    },
+    {
+      title: 'Containerisation to Facilitate Multi-Vehicle Deployment',
+      description: '',
+      subsections: [
+        {
+          title: 'Docker Containerisation',
+          body: "To facilitate long-term development and seamless cross-platform testing, our entire software stack is containerized using Docker. This architecture abstracts dependencies away from individual host systems, ensuring a consistent environment whether code is running on a developer's laptop, a simulation machine, or the vehicle's onboard computer. Crucially, this containerized model enables simultaneous, seamless deployment across both of our physical vehicles. Because the core software stack remains completely identical, we can deploy the exact same container to either robot without modifying the underlying codebase.",
+          image: {
+            src: '/images/robosub2026/software-subsystems/docker-containerisation-dark.svg',
+            caption: 'Docker containerisation keeps the same software environment across machines and vehicles.'
+          }
+        },
+        {
+          title: 'Process Optimization',
+          body: 'To maximize onboard efficiency, we utilize ROS 2 Composable Nodes within our containers. By loading multiple nodes into a single process, we enable zero-copy memory sharing, which removes the CPU overhead of traditional message serialization. This reduction in computational load ensures our vehicles can run complex perception and navigation pipelines concurrently without hitting hardware bottlenecks.',
+          image: {
+            src: '/images/robosub2026/software-subsystems/ros2.png',
+            caption: 'Composable nodes reduce overhead while running perception and navigation together.'
+          }
+        }
+      ],
+      imageLayout: 'subsectionComparison',
+      bullets: []
+    }
+  ].map((section) => ({
+    ...section,
+    images: featureCarouselImages[section.title] ?? vehicle.carouselImages
+  }));
+}
+
+function isVideoMedia(media) {
+  return media.type === 'video' || /\.(mp4|webm|ogg)$/i.test(media.src);
+}
+
+function MediaModal({ media, onClose }) {
+  if (!media) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-4 py-6"
+      role="dialog"
+      aria-modal="true"
+      onClick={onClose}
+    >
+      <div className="relative w-full max-w-6xl" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute -top-12 right-0 rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20"
+        >
+          Close
+        </button>
+
+        <div className="overflow-hidden rounded-xl border border-white/15 bg-black">
+          <div className="flex max-h-[80vh] items-center justify-center">
+            {isVideoMedia(media) ? (
+              <video
+                src={media.src}
+                className="max-h-[80vh] w-full object-contain"
+                controls
+                autoPlay
+              />
+            ) : (
+              <img
+                src={media.src}
+                alt={media.alt ?? media.caption ?? 'Expanded media'}
+                className="max-h-[80vh] w-full object-contain"
+              />
+            )}
+          </div>
+          {media.caption && (
+            <div className="bg-black/80 px-5 py-4 text-center text-sm sm:text-base text-white">
+              {media.caption}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MediaPreview({ media }) {
+  if (isVideoMedia(media)) {
+    return (
+      <video
+        src={media.src}
+        className="w-full h-full object-contain"
+        muted
+        playsInline
+      />
+    );
+  }
+
+  return (
+    <img
+      src={media.src}
+      alt={media.alt ?? media.caption}
+      className="w-full h-full object-contain"
+    />
+  );
+}
+
+function ComparisonCaptionImages({ images, onMediaClick }) {
+  return (
+    <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-2">
+      {images.map((image) => (
+        <figure key={image.src} className="overflow-hidden rounded-xl border border-white/15 bg-black/30">
+          <div className="aspect-video bg-black/30">
+            <button
+              type="button"
+              onClick={() => onMediaClick(image)}
+              className="h-full w-full cursor-zoom-in"
+              aria-label={`Open ${image.caption ?? 'media'}`}
+            >
+              <MediaPreview media={image} />
+            </button>
+          </div>
+          {image.caption && (
+            <figcaption className="bg-black/65 px-4 py-3 text-center text-sm sm:text-base text-white">
+              {image.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+function SubsectionComparison({ subsections, onMediaClick }) {
+  return (
+    <div className="flex w-full flex-col gap-10">
+      {subsections.map((subsection) => (
+        <section key={subsection.title} className="grid grid-cols-1 gap-24 lg:grid-cols-[1fr_20rem] xl:grid-cols-[1fr_24rem] lg:items-center">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold text-orange-200 mb-4">
+              {subsection.title}
+            </h3>
+            <p className="text-justify text-sm sm:text-base text-gray-200 leading-relaxed">
+              {subsection.body}
+            </p>
+          </div>
+          {subsection.image && (
+            <figure className="w-full overflow-hidden rounded-xl border border-white/15 bg-black/30">
+              <div className="aspect-video bg-black/30">
+                <button
+                  type="button"
+                  onClick={() => onMediaClick(subsection.image)}
+                  className="h-full w-full cursor-zoom-in"
+                  aria-label={`Open ${subsection.image.caption ?? 'media'}`}
+                >
+                  <MediaPreview media={subsection.image} />
+                </button>
+              </div>
+              {subsection.image.caption && (
+                <figcaption className="bg-black/65 px-4 py-3 text-center text-sm sm:text-base text-white">
+                  {subsection.image.caption}
+                </figcaption>
+              )}
+            </figure>
+          )}
+        </section>
+      ))}
+    </div>
+  );
+}
+
 export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
   const vehicle = subsystemPages[vehicleId] ?? subsystemPages.hydra;
   const subsystem = vehicle.subsystems[subsystemId] ?? vehicle.subsystems.mechanical;
+  const contentSections = getContentSections(vehicle, subsystem);
+  const [expandedMedia, setExpandedMedia] = useState(null);
 
   return (
     <div className="min-h-screen bg-[#181818] text-white">
+      <MediaModal media={expandedMedia} onClose={() => setExpandedMedia(null)} />
+
       <section className="px-4 sm:px-8 lg:px-20 pt-32 pb-16 bg-[#181818]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 items-center">
           <div>
@@ -176,58 +436,81 @@ export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
       </section>
 
       <section className="px-4 sm:px-8 lg:px-20 py-16 bg-[#181818]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8">
-          <article className="rounded-lg border border-white/15 bg-white/10 p-6 sm:p-8 shadow-xl shadow-black/20">
-            <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-6">
-              Development Focus
-            </h2>
-            <p className="text-gray-200 leading-relaxed">{vehicle.overview}</p>
-            <div className="mt-8">
-              <Link
-                to={vehicleId === 'hydra' ? '/kraken/mechanical' : '/hydra/mechanical'}
-                className="inline-block bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200"
-              >
-                View {vehicleId === 'hydra' ? 'Kraken' : 'Hydra'} Development
-              </Link>
-            </div>
-          </article>
+        <div className="max-w-7xl mx-auto space-y-10">
+          {contentSections.map((section) => (
+            <article
+              key={section.title}
+              className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8"
+            >
+              {section.imageLayout === 'comparison' ? (
+                <div>
+                  <div className="mx-auto mb-8 max-w-4xl text-center">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-6">
+                      {section.title}
+                    </h2>
+                    <p className="text-justify text-base sm:text-lg text-gray-200 leading-relaxed">
+                      {section.description}
+                    </p>
+                    {section.bullets.length > 0 && (
+                      <ul className="mt-5 inline-block space-y-2 text-left text-sm sm:text-base text-gray-200 list-disc pl-5">
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
 
-          <article className="rounded-lg border border-white/15 bg-white/10 p-6 sm:p-8 shadow-xl shadow-black/20">
-            <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-6">
-              Key Workstreams
-            </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {subsystem.highlights.map((highlight) => (
-                <li
-                  key={highlight}
-                  className="rounded-lg border border-white/10 bg-black/20 p-4 text-gray-100"
-                >
-                  {highlight}
-                </li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </section>
+                  <ComparisonCaptionImages images={section.images} onMediaClick={setExpandedMedia} />
+                </div>
+              ) : section.imageLayout === 'subsectionComparison' ? (
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-8 text-center">
+                    {section.title}
+                  </h2>
+                  <SubsectionComparison subsections={section.subsections} onMediaClick={setExpandedMedia} />
+                </div>
+              ) : (
 
-      <section className="px-4 sm:px-8 lg:px-20 py-16 bg-[#202020]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-orange-500 mb-8 text-center">
-            Next Development Steps
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {subsystem.development.map((step, index) => (
-              <article
-                key={step}
-                className="rounded-lg border border-white/15 bg-white/10 p-6 shadow-xl shadow-black/20"
-              >
-                <p className="text-sm font-bold text-orange-300 mb-3">
-                  Step {index + 1}
-                </p>
-                <p className="text-gray-100">{step}</p>
-              </article>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="flex justify-center">
+                  <ImageCarousel images={section.images} onMediaClick={setExpandedMedia} />
+                </div>
+
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-6 text-center">
+                    {section.title}
+                  </h2>
+                  {section.description && (
+                    <p className="text-justify text-base sm:text-lg text-gray-200 leading-relaxed mb-5">
+                      {section.description}
+                    </p>
+                  )}
+                  {section.subsections && (
+                    <div className="space-y-5">
+                      {section.subsections.map((subsection) => (
+                        <section key={subsection.title}>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                            {subsection.title}
+                          </h3>
+                          <p className="text-justify text-sm sm:text-base text-gray-200 leading-relaxed">
+                            {subsection.body}
+                          </p>
+                        </section>
+                      ))}
+                    </div>
+                  )}
+                  {section.bullets.length > 0 && (
+                    <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+              )}
+            </article>
+          ))}
         </div>
       </section>
     </div>
