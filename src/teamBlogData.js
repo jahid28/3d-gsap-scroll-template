@@ -80,24 +80,141 @@ const posts = [
   },
   {
     slug: 'kraken-frame',
-    title: 'Kraken Frame Iterations',
+    title: 'Kraken Frame Development',
     tag: 'Mechanical',
-    authors: 'Isaac',
-    date: 'Jan 2026',
-    image: '/competition/images/robosub2026-bots.jpg',
+    authors: 'Yi Liang',
+    date: 'Sep 2025 - May 2026',
+    image: '/images/robosub2026/mechanical-subsystems/blog2-18.png',
     description: "Development notes for Kraken's experimental frame and structural concept.",
     sections: [
       {
-        heading: 'Overview',
-        body: 'Kraken Frame overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Kraken Frame development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Kraken Frame next steps here.'
+        heading: 'Kraken Frame Development',
+        layout: 'subsectionImageGrid',
+        subsections: [
+          {
+            title: 'First Assignment for Our Second Vehicle',
+            period: 'Sep 2025',
+            collapsible: true,
+            imagePosition: 'aboveHighlights',
+            body: 'The first design assignment explored the overall visual and structural direction for Mecatron’s second vehicle.',
+            highlights: [
+              {
+                label: 'Design Inspiration: The Diplocaulus',
+                body: 'The bot’s profile is inspired by a prehistoric amphibian called Diplocaulus—the head shape is almost identical. Since I’m a fan of dinosaur games and this is one of my favorite ancient creatures, it felt like the perfect starting point for the aesthetic.'
+              },
+              {
+                label: 'Conceptual Views',
+                body: 'Included are some sketches of isometric and orthogonal (top-down) views that illustrate the basic concept.'
+              }
+            ],
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-1.png', caption: 'Task assigned to Mechanical Members.' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-2.jpg', caption: '"Student\'s Response" - Sketch of the skeletal frames.' }
+            ]
+          },
+          {
+            title: 'Design Evolution',
+            period: 'Sep 2025',
+            collapsible: true,
+            body: 'After some discussion, we decided to pivot toward a more "squarish" design for our second vehicle. We realized that a curved body would make the internal skeleton significantly harder to manufacture, so the boxier frame is a more practical approach for production.',
+          },
+          {
+            title: 'First CAD Iteration of the Bot',
+            period: 'Oct 2025',
+            collapsible: true,
+            body: 'The whole bot was modeled as a single part to demonstrate the overall shape of the vehicle.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-3.png' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-4.png' }
+            ]
+          },
+          {
+            title: 'First Iteration of Bot Skeleton',
+            period: 'Nov 2025',
+            collapsible: true,
+            body: 'Arthur developed the initial prototype of the skeletal frame. Upon review, the design was deemed oversized for our requirements, and the bottom compartment was found to be redundant. This led the team to streamline the skeletal frame for the next iteration.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-5.png' }
+            ]
+          },
+          {
+            title: 'Second Iteration of Bot Skeleton',
+            period: 'Dec 2025',
+            collapsible: true,
+            imageGrid: 'twoByTwo',
+            body: [
+              'A new skeletal frame iteration set the current design direction. It featured significantly extended wings while maintaining the original body size. After discussion, the team decided the overall width was still too large and should be reduced to achieve a more compact form factor.',
+              'Acrylic was chosen for the skeletal frame because it offers superior structural integrity while remaining easy to modify in-house for highly cost-effective and rapid prototyping cycles, compared to previous 3D-printed load-bearing structures.'
+            ],
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-6.png', caption: 'Second iteration of Kraken’s skeletal frame.' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-7.jpg', caption: 'Discussions on making the vehicle body more compact without modifying the vehicle’s wing dimensions.' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-8.jpg', caption: 'Conceptual positioning of a pair of bot legs, which should contain two battery cylinders.' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-9.jpg', caption: 'View showing the electrical enclosure within the bot frames.' }
+            ]
+          },
+          {
+            title: 'First Design for Kraken’s Nose',
+            period: 'Jan 2026',
+            collapsible: true,
+            body: 'The nose will be equipped with a forward-facing camera.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-10.jpg' }
+            ]
+          },
+          {
+            title: 'Iterative Adjustments to Kraken’s Skeletal Frame',
+            period: 'Feb - Mar 2026',
+            collapsible: true,
+            body: 'Following iterative adjustments to the acrylic skeletal frame, the current design features a narrowed chassis with the electrical enclosure centrally positioned.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-11.jpg' }
+            ]
+          },
+          {
+            title: 'Extensive Design Iterations on the Bot’s Shell',
+            period: 'Mar - Apr 2026',
+            collapsible: true,
+            blocks: [
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog2-12.png', caption: 'Isometric view.' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog2-13.png', caption: 'Orthogonal view.' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog2-14.png', caption: 'Electrical enclosure within the bot frame.' },
+                ],
+                body: 'To optimize hydrodynamic performance, the skeletal frame will be enveloped by a streamlined, 3D-printed shell for improved hydrodynamic movement. The current model, shown in the isometric view below, is not yet the final version; subsequent refinements will focus on reducing the wing thickness and lowering the height of the main body.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog2-15.png' }
+                ],
+                body: 'By mid-April, the nose design changed slightly. The team settled on the main body final dimensions, decreasing the height by around 30%, and the wing became significantly thinner compared to the earlier version.'
+              },
+              {
+                body: 'The CAD model above illustrates the bot without its external hull to highlight the integrated electrical enclosure; by mounting the enclosure through the primary skeleton, we have optimized access to internal components while simultaneously redesigning the upper frame to accommodate this new configuration.'
+              }
+            ]
+          },
+          {
+            title: 'Finalized Frame and Mounted Legs',
+            period: 'End Apr 2026',
+            collapsible: true,
+            body: 'The team finalized the frame design and mounted a pair of legs, with the battery enclosure positioned below the main body.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-16.png' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-17.png' }
+            ]
+          },
+          {
+            title: 'Bot is officially named Kraken!',
+            period: 'May 2026',
+            collapsible: true,
+            body: 'Current work ongoing involve only minor adjustments  to the bot, such as modifying the bot’s nose to accommodate the placement the torpedo launcher.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog2-18.png' }
+            ]
+          }
+        ]
       }
     ]
   },

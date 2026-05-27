@@ -8,11 +8,11 @@ const sharedSoftwareFeature = {
   tag: 'Software',
   description: 'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead.',
   details: [
-    'UnitySim',
+    'UnityMDS',
     'Perception',
     'Mission Planning',
-    'Localisation',
-    'Containerization for Multi-Vehicle Deployment'
+    'Localization',
+    'Containerization'
   ]
 };
 
@@ -201,7 +201,7 @@ export default function Robosub2026Page() {
             {vehicle.title}
           </h2>
           <p className="text-base sm:text-lg text-gray-300 mb-5 max-w-xl mx-auto md:mx-0">
-            Select a vehicle to preview its RoboSub 2026 improvements across mechanical, electrical, and software development.
+            Interact with the 3D model on the left to explore a 360° view of the vehicle!
           </p>
         </div>
 

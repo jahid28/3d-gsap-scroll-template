@@ -59,15 +59,19 @@ function SectionImagePanel({ images, hideCaption = false, fill = false }) {
   );
 }
 
-function CaptionedImageGrid({ images = [], alignToText = false }) {
+function CaptionedImageGrid({ images = [], alignToText = false, variant }) {
   if (!images.length) return null;
 
-  const columnClass = images.length === 1
+  const columnClass = variant === 'twoByTwo'
+    ? 'grid-cols-1 md:grid-cols-2'
+    : images.length === 1
     ? 'grid-cols-1'
     : images.length === 2
       ? 'grid-cols-1 md:grid-cols-2'
       : 'grid-cols-1 md:grid-cols-3';
-  const widthClass = alignToText
+  const widthClass = variant === 'twoByTwo'
+    ? 'max-w-5xl'
+    : alignToText
     ? 'max-w-4xl'
     : images.length === 1
       ? 'max-w-3xl'
@@ -545,47 +549,50 @@ export default function TeamBlogPostPage() {
                       {section.subsections.map((subsection) => {
                         const subsectionKey = `${section.heading}-${subsection.title}`;
                         const isOpen = !subsection.collapsible || Boolean(openPanels[subsectionKey]);
+                        const highlights = subsection.highlights && (
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            {subsection.highlights.map((highlight) => (
+                              <div key={highlight.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
+                                <h4 className="text-base font-bold text-orange-200">
+                                  {highlight.label}
+                                </h4>
+                                <p className="mt-2 text-justify text-sm sm:text-base leading-relaxed text-gray-200">
+                                  {highlight.body}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        );
                         const content = subsection.images?.length === 1 ? (
                           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_26rem] lg:items-center">
                             <div>
                               <SubsectionContent subsection={subsection} />
-                              {subsection.highlights && (
-                                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                  {subsection.highlights.map((highlight) => (
-                                    <div key={highlight.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
-                                      <h4 className="text-base font-bold text-orange-200">
-                                        {highlight.label}
-                                      </h4>
-                                      <p className="mt-2 text-justify text-sm sm:text-base leading-relaxed text-gray-200">
-                                        {highlight.body}
-                                      </p>
-                                    </div>
-                                  ))}
+                              {highlights && (
+                                <div className="mt-5">
+                                  {highlights}
                                 </div>
                               )}
                             </div>
-                            <CaptionedImageGrid images={subsection.images} />
+                            <CaptionedImageGrid images={subsection.images} variant={subsection.imageGrid} />
                           </div>
                         ) : (
                           <>
                             <div className="mb-6">
                               <SubsectionContent subsection={subsection} />
                             </div>
-                            {subsection.highlights && (
-                              <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                {subsection.highlights.map((highlight) => (
-                                  <div key={highlight.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
-                                    <h4 className="text-base font-bold text-orange-200">
-                                      {highlight.label}
-                                    </h4>
-                                    <p className="mt-2 text-justify text-sm sm:text-base leading-relaxed text-gray-200">
-                                      {highlight.body}
-                                    </p>
-                                  </div>
-                                ))}
+                            {subsection.imagePosition === 'aboveHighlights' && (
+                              <div className="mb-6">
+                                <CaptionedImageGrid images={subsection.images} variant={subsection.imageGrid} />
                               </div>
                             )}
-                            <CaptionedImageGrid images={subsection.images} />
+                            {highlights && (
+                              <div className="mb-6">
+                                {highlights}
+                              </div>
+                            )}
+                            {subsection.imagePosition !== 'aboveHighlights' && (
+                              <CaptionedImageGrid images={subsection.images} variant={subsection.imageGrid} />
+                            )}
                           </>
                         );
 
