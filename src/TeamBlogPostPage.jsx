@@ -1,8 +1,27 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FaChevronDown, FaChevronLeft, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronLeft, FaChevronRight, FaChevronUp, FaCloud, FaCloudRain, FaSun } from 'react-icons/fa';
 import ImageCarousel from './components/ImageCarousel';
 import { blogPosts, tagStyles } from './teamBlogData';
+
+function WeatherIcon({ weather }) {
+  const normalizedWeather = weather?.toLowerCase();
+  const iconClassName = 'text-base text-orange-200';
+
+  if (normalizedWeather === 'sunny') {
+    return <FaSun className={iconClassName} aria-label="Sunny" title="Sunny" />;
+  }
+
+  if (normalizedWeather === 'cloudy') {
+    return <FaCloud className={iconClassName} aria-label="Cloudy" title="Cloudy" />;
+  }
+
+  if (normalizedWeather === 'rainy') {
+    return <FaCloudRain className={iconClassName} aria-label="Rainy" title="Rainy" />;
+  }
+
+  return <span className="text-sm font-semibold text-gray-300">{weather}</span>;
+}
 
 function getSectionImages(post, section) {
   return section.images ?? [
@@ -40,12 +59,40 @@ export default function TeamBlogPostPage() {
   const { slug } = useParams();
   const post = blogPosts.find((item) => item.slug === slug) ?? blogPosts[0];
   const [openPanels, setOpenPanels] = useState({});
+  const [activeDiaryEntry, setActiveDiaryEntry] = useState(0);
 
   const togglePanel = (key) => {
     setOpenPanels((current) => ({
       ...current,
       [key]: !current[key]
     }));
+  };
+
+  const handleDiaryScroll = (event) => {
+    const pageWidth = event.currentTarget.clientWidth;
+    if (!pageWidth) return;
+
+    setActiveDiaryEntry(Math.round(event.currentTarget.scrollLeft / pageWidth));
+  };
+
+  const goToDiaryEntry = (index) => {
+    const diaryScroller = document.getElementById('diary-pages');
+    if (!diaryScroller) return;
+
+    diaryScroller.scrollTo({
+      left: diaryScroller.clientWidth * index,
+      behavior: 'smooth'
+    });
+    setActiveDiaryEntry(index);
+  };
+
+  const moveDiaryEntry = (direction, totalEntries) => {
+    const nextIndex = Math.min(
+      Math.max(activeDiaryEntry + direction, 0),
+      totalEntries - 1
+    );
+
+    goToDiaryEntry(nextIndex);
   };
 
   const renderItemDropdowns = (section, className = 'mt-6 space-y-3') => (
@@ -268,6 +315,94 @@ export default function TeamBlogPostPage() {
                             <ImageCarousel images={version.images} />
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              );
+            }
+
+            if (section.layout === 'diaryPages') {
+              return (
+                <section
+                  key={section.heading}
+                  className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8 shadow-xl shadow-black/20"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <h2 className="text-center text-2xl sm:text-3xl font-bold text-orange-500 mb-8">
+                      {section.heading}
+                    </h2>
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => moveDiaryEntry(-1, section.entries.length)}
+                        disabled={activeDiaryEntry === 0}
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
+                        aria-label="Previous diary entry"
+                      >
+                        <FaChevronLeft aria-hidden="true" />
+                      </button>
+
+                      <div
+                        id="diary-pages"
+                        className="flex min-w-0 flex-1 snap-x snap-mandatory gap-6 overflow-x-hidden pb-4"
+                        onScroll={handleDiaryScroll}
+                      >
+                        {section.entries.map((entry, index) => (
+                          <article
+                            key={`${entry.date}-${entry.shortTitle}`}
+                            className="grid w-full shrink-0 snap-center grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 lg:grid-cols-[1fr_26rem] lg:items-center"
+                          >
+                          <div>
+                            <div className="mb-5 flex flex-wrap items-center gap-3">
+                              <span className="rounded-full border border-orange-300/40 bg-orange-400/15 px-3 py-1 text-xs font-semibold text-orange-100">
+                                Entry {index + 1}
+                              </span>
+                              <span className="text-sm font-semibold text-orange-300">
+                                {entry.date}
+                              </span>
+                              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/10 px-3 py-1">
+                                <WeatherIcon weather={entry.weather} />
+                              </span>
+                            </div>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-orange-200">
+                              {entry.shortTitle}
+                            </h3>
+                            <p className="mt-4 text-justify text-base sm:text-lg leading-relaxed text-gray-200">
+                              {entry.body}
+                            </p>
+                          </div>
+
+                          <div className="flex justify-center lg:justify-end">
+                            <ImageCarousel images={entry.images} />
+                          </div>
+                          </article>
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => moveDiaryEntry(1, section.entries.length)}
+                        disabled={activeDiaryEntry === section.entries.length - 1}
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
+                        aria-label="Next diary entry"
+                      >
+                        <FaChevronRight aria-hidden="true" />
+                      </button>
+                    </div>
+                    <div className="mt-4 flex justify-center gap-2">
+                      {section.entries.map((entry, index) => (
+                        <button
+                          key={`${entry.date}-${entry.shortTitle}-indicator`}
+                          type="button"
+                          onClick={() => goToDiaryEntry(index)}
+                          className={`h-1.5 rounded-full transition-all duration-200 ${
+                            activeDiaryEntry === index
+                              ? 'w-10 bg-orange-500'
+                              : 'w-7 bg-white/35 hover:bg-white/60'
+                          }`}
+                          aria-label={`Go to diary entry ${index + 1}`}
+                        />
                       ))}
                     </div>
                   </div>
