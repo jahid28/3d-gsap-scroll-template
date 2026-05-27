@@ -143,11 +143,11 @@ const featureCarouselImages = {
     },
     {
       src: '/images/robosub2026/software-subsystems/mds-1st-perspective.png',
-      caption: '1st Perspective Preview of the vehicle.'
+      caption: 'Vehicle\'s perspective.'
     },
     {
       src: '/images/robosub2026/software-subsystems/mds-3rd-perspective.png',
-      caption: '3rd Perspective Preview of the vehicle.'
+      caption: 'Third-person\'s perspective.'
     },
   ],
   Perception: [
@@ -163,17 +163,25 @@ const featureCarouselImages = {
   'Mission Planning': [
     {
       src: '/images/robosub2026/software-subsystems/nav-rect-animation.gif',
-      caption: 'Mission planning flow built around reusable behavior tree actions.'
+      caption: 'Flow built around reusable BT actions.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/bt-simple.png',
+      caption: 'A typical BT for a given task.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/spatial1.png',
+      caption: 'Spatial perception and navigation.'
     },
   ],
-  Localisation: [
+  Localization: [
     {
       src: '/images/robosub2026/software-subsystems/corecont.png',
-      caption: 'EKF localisation fuses DVL and IMU data for stable odometry.'
+      caption: 'EKF localization fuses DVL and IMU data for stable odometry.'
     },
     {
       src: '/images/robosub2026/software-subsystems/ekf.png',
-      caption: 'Foxglove monitoring supported real-time localisation review.'
+      caption: 'Foxglove monitoring supported real-time localization review.'
     },
   ],
   'Containerisation for Multi-Vehicle Deployment': [
@@ -209,10 +217,11 @@ function getSharedSoftwareSections(subsystem) {
     {
       title: 'Mission Planning',
       description: 'Similar to last year’s iterations, the Behavior Tree (BT) framework remains the core of our mission planning system. This year, we improved modularity by encapsulating complex tasks into higher-level actions, which simplifies debugging and results in a more intuitive monitoring interface.To translate these high-level mission goals into physical motion, we transitioned to the Nav2 stack. Nav2 leverages our new spatial perception data to handle dynamic path planning and obstacle avoidance, providing the vehicle with the agility required for complex, multi-objective maneuvers.',
-      bullets: subsystem.development
+      bullets: subsystem.development,
+      imageLayout: 'comparison'
     },
     {
-      title: 'Localisation',
+      title: 'Localization',
       description: 'To achieve greater navigation precision with reduced drift, we implemented an Extended Kalman Filter (EKF) to fuse data from our DVL and a new external IMU. Real-time monitoring via Foxglove Studio during pool tests confirmed that this results in a highly stable odometry stack, even during complex movements.',
       bullets: subsystem.development
     },
