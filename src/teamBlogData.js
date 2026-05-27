@@ -19,6 +19,7 @@ const posts = [
     title: 'Hydra Frame',
     tag: 'Mechanical',
     authors: 'Tim',
+    date: 'Jan 2026',
     image: '/competition/images/robosub2026-bots.jpg',
     description: "Design and build notes for Hydra's frame, packaging, and structural layout.",
     sections: [
@@ -41,6 +42,7 @@ const posts = [
     title: 'Kraken Frame',
     tag: 'Mechanical',
     authors: 'Isaac',
+    date: 'Jan 2026',
     image: '/competition/images/robosub2026-bots.jpg',
     description: "Development notes for Kraken's experimental frame and structural concept.",
     sections: [
@@ -63,6 +65,7 @@ const posts = [
     title: 'Electronics Enclosure CNC Box',
     tag: 'Mechanical',
     authors: 'Max, Akil',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_1.jpg',
     description: 'Internal notes on the CNC electronics enclosure design, manufacturing, and fit checks.',
     sections: [
@@ -85,6 +88,7 @@ const posts = [
     title: 'Gripper',
     tag: 'Mechanical',
     authors: 'Arthur',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_2.jpg',
     description: 'Design notes for the gripper mechanism and its vehicle integration.',
     sections: [
@@ -107,6 +111,7 @@ const posts = [
     title: 'Acoustics',
     tag: 'Electrical',
     authors: 'Arthur',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_3.jpg',
     description: 'Acoustics subsystem notes covering sensing, signal flow, and integration plans.',
     sections: [
@@ -129,26 +134,27 @@ const posts = [
     title: 'Electromagnetic Dropper Iterations',
     tag: 'Mechanical',
     authors: 'Gerardo',
+    date: 'Nov 2025 - Jun 2026',
     image: '/images/robosub2026/mechanical-subsystems/dropper1.png',
     description: 'Development notes for the dropper mechanism, mounting, and testing workflow.',
     sections: [
       {
-        heading: 'Dropper Design Considerations',
+        heading: 'Final Dropper Design',
         body: 'Hydra integrates an electromagnetic marker delivery system to ensure reliable actuation. For operational safety and power efficiency, the 12V electromagnet is kept in an unpowered state. Deployment is achieved by activating the circuit to electromagnetically repel the marker. The electromagnet is housed within a custom 3D-printed encasing and directly attached to the main body of Hydra. A PVC tube routes the electromagnet cables to the actuator cylinder while maintaining strain relief and waterproofing. Finally, the dropper housing is entirely filled with epoxy, providing absolute waterproofing for the electromagnet and improving longevity and reliability.',
         images: [
           {
-            src: '/images/robosub2026/mechanical-subsystems/dropper1.png',
-            caption: 'Dropper mechanism design placeholder.'
+            src: '/images/robosub2026/mechanical-subsystems/dropper2.png',
+            caption: ''
           }
         ]
       },
       {
-        heading: 'Marker Design Considerations',
+        heading: 'Final Marker Design',
         body: 'To optimize aerodynamic stability and reduce unintended pitch or roll during descent, the marker uses a torpedo shape with a low center of gravity. This is achieved through an integrated cavity and strategically placed tungsten weights, improving trajectory precision. The marker also includes 2 mm deep helical grooves and protruding wings to create axial spin, helping it travel straight during deployment. A high-strength neodymium magnet is embedded within the marker to enable secure passive magnetic coupling with the AUV’s unpowered electromagnet.',
         images: [
           {
-            src: '/images/robosub2026/mechanical-subsystems/dropper2.png',
-            caption: 'Marker design placeholder.'
+            src: '/images/robosub2026/mechanical-subsystems/marker-red.png',
+            caption: ''
           }
         ]
       },
@@ -240,8 +246,8 @@ const posts = [
         body: 'To ensure an accurate and consistent release, the physical properties of the marker and the magnetic distance were tested and optimized.',
         images: [
           {
-            src: '/images/robosub2026/software-subsystems/ekf.png',
-            caption: 'Marker parameter tuning placeholder.'
+            src: '/images/robosub2026/mechanical-subsystems/marker2.jpg',
+            caption: ''
           }
         ],
         items: [
@@ -310,23 +316,74 @@ const posts = [
   },
   {
     slug: 'torpedo',
-    title: 'Torpedo',
+    title: 'Torpedo Design Progress',
     tag: 'Mechanical',
     authors: 'Akil',
-    image: '/competition/images/robosub2026-bots.jpg',
-    description: 'Design and validation notes for the torpedo mechanism and deployment setup.',
+    date: 'Jan 2026',
+    image: '/images/robosub2026/mechanical-subsystems/torpedo1.png',
+    description: 'Design progress notes for the torpedo launcher, moving from friction-based retention toward a mechanical lock.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Torpedo overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Torpedo development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Torpedo next steps here.'
+        heading: 'Torpedo Design Progress',
+        layout: 'versionedRows',
+        versions: [
+          {
+            title: '2025 Version',
+            subtitle: 'For RoboSub 2025',
+            body: 'Used frictional fit to hold the torpedo in place and prevent it from being released when unactivated. The propeller was also placed at the front.',
+            details: [
+              {
+                label: 'Problem',
+                body: 'The torpedo launcher held the torpedo in place by pure friction. Over several uses, the plastic 3D print would deform and the friction force would decrease, potentially allowing the torpedo to launch prematurely.'
+              },
+              {
+                label: 'Solution',
+                body: 'Try a 3D printed arc spring based friction approach, so that even when the spring deforms it provides a minimum friction force.'
+              }
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/torpedo2025.png',
+              }
+            ]
+          },
+          {
+            title: 'Version 1',
+            subtitle: 'March 2026',
+            body: 'Developed a 3D printed friction fit mechanism aimed to provide enough friction force to hold the torpedo in place when unactivated, while remaining low enough to allow the torpedo to overcome it during launch.',
+            details: [
+              {
+                label: 'Problem',
+                body: 'The 3D printed spring had flexibility issues as the print was too rigid and brittle. Not suitable for friction lock.'
+              },
+              {
+                label: 'Solution',
+                body: 'Try a mechanical lock method instead of a friction fit mechanism to hold the torpedo in place inside the launcher.'
+              }
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/torpedo-v1.png',
+              }
+            ]
+          },
+          {
+            title: 'Version 2',
+            subtitle: 'May 2026',
+            body: 'Developed a mechanical lock using a T8 nut and T8 lead screw to securely hold the torpedo in place.',
+            details: [
+              {
+                label: 'Mechanism',
+                body: 'The propeller is placed at the back of the torpedo. The T8 nut is attached to the propeller and the T8 lead screw is attached to the launcher. When the torpedo is activated, the propeller rotates the nut and unscrews it from the screw first. Once unscrewed, the propeller drives the torpedo forward towards the target.'
+              }
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/torpedo1.png'
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -335,6 +392,7 @@ const posts = [
     title: 'Elec PCB1: PDU',
     tag: 'Electrical',
     authors: 'Scott',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_1.jpg',
     description: 'Power distribution unit PCB notes, including design intent, bring-up, and testing.',
     sections: [
@@ -357,6 +415,7 @@ const posts = [
     title: 'Elec PCB2: Acoustics',
     tag: 'Electrical',
     authors: 'Scott',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_3.jpg',
     description: 'Acoustics PCB notes covering board design, signal handling, and subsystem testing.',
     sections: [
@@ -379,6 +438,7 @@ const posts = [
     title: 'SW Experiment With Different Stack',
     tag: 'Software',
     authors: 'Bao',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_2.jpg',
     description: 'Software experiment notes comparing stack choices and development tradeoffs.',
     sections: [
@@ -401,6 +461,7 @@ const posts = [
     title: 'SW Operator POV Screens',
     tag: 'Software',
     authors: 'PH',
+    date: 'Jan 2026',
     image: '/competition/images/competition_img_4.jpg',
     description: 'Annotated operator POV screenshots showing the software interface and runtime context.',
     sections: [
@@ -421,7 +482,6 @@ const posts = [
 ];
 
 export const blogPosts = posts.map((post) => ({
-  date: 'Jan 2026',
   details: [
     `${post.tag} workstream`,
     'Reusable post template ready for detailed write-up'

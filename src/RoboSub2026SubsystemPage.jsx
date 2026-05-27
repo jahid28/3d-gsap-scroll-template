@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft } from 'react-icons/fa';
 import ImageCarousel from './components/ImageCarousel';
 
 const subsystemPages = {
@@ -25,7 +26,7 @@ const subsystemPages = {
     subsystems: {
       mechanical: {
         label: 'Mechanical',
-        title: 'Mechanical Subsystems',
+        title: 'Mechanical Subsystem',
         summary:
           'Hydra 2026 is an upgraded version of Lucy 2025, with an updated thruster configuration, improved frame through topology optimization, and greater design modularity.',
         highlights: [
@@ -38,9 +39,9 @@ const subsystemPages = {
       },
       software: {
         label: 'Software',
-        title: 'Software Subsystems',
+        title: 'Software Subsystem',
         summary:
-          'Hydra software development focuses on reusable mission behaviors, tighter control, and faster iteration from simulation to pool testing.',
+          'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead. These optimizations, paired with new 3D spatial perception, enable advanced path planning and autonomous navigation.',
         highlights: [
         ],
         development: [
@@ -48,9 +49,9 @@ const subsystemPages = {
       },
       electrical: {
         label: 'Electrical',
-        title: 'Electrical Subsystems',
+        title: 'Electrical Subsystem',
         summary:
-          'Hydra electrical work centers on clean power distribution, sensor routing, and maintainable electronics inside a smaller vehicle envelope.',
+          'This year’s electrical power distribution is engineered to deliver more power, greater intelligence, and flexibility. A higher power budget supports our latest applications demands, smart capabilities enable advanced monitoring and precise control, and a modular design allows seamless customization and scalability as system needs evolve.',
         highlights: [
           'Organized signal and power paths to reduce service confusion',
           'Sensor placement planned around cameras, navigation, and task payloads',
@@ -87,9 +88,9 @@ const subsystemPages = {
     subsystems: {
       mechanical: {
         label: 'Mechanical',
-        title: 'Mechanical Subsystems',
+        title: 'Mechanical Subsystem',
         summary:
-          'Kraken mechanical work explores an experimental skeleton hull concept for rapid inspection, iteration, and validation.',
+          'Kraken is an experimental platform for Mecatron to develop more mature manufacturing processes. Featuring an acrylic skeleton and a metal electrical box, Kraken aims to be more durable and maneuverable than our previous vehicles.',
         highlights: [
           'Airfoil-inspired frame geometry for drag and stiffness studies',
           'Acrylic skeleton concept for direct visual inspection',
@@ -104,9 +105,9 @@ const subsystemPages = {
       },
       software: {
         label: 'Software',
-        title: 'Software Subsystems',
+        title: 'Software Subsystem',
         summary:
-          'Hydra software development focuses on reusable mission behaviors, tighter control, and faster iteration from simulation to pool testing.',
+          'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead. These optimizations, paired with new 3D spatial perception, enable advanced path planning and autonomous navigation.',
         highlights: [
         ],
         development: [
@@ -114,9 +115,9 @@ const subsystemPages = {
       },
       electrical: {
         label: 'Electrical',
-        title: 'Electrical Subsystems',
+        title: 'Electrical Subsystem',
         summary:
-          'Hydra electrical work centers on clean power distribution, sensor routing, and maintainable electronics inside a smaller vehicle envelope.',
+          'This year’s electrical power distribution is engineered to deliver more power, greater intelligence, and flexibility. A higher power budget supports our latest applications demands, smart capabilities enable advanced monitoring and precise control, and a modular design allows seamless customization and scalability as system needs evolve.',
         highlights: [
           'Organized signal and power paths to reduce service confusion',
           'Sensor placement planned around cameras, navigation, and task payloads',
@@ -162,12 +163,12 @@ const featureCarouselImages = {
   ],
   'Mission Planning': [
     {
-      src: '/images/robosub2026/software-subsystems/nav-rect-animation.gif',
-      caption: 'Flow built around reusable BT actions.'
-    },
-    {
       src: '/images/robosub2026/software-subsystems/bt-simple.png',
       caption: 'A typical BT for a given task.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/nav-rect-animation.gif',
+      caption: 'Flow built around reusable BT actions.'
     },
     {
       src: '/images/robosub2026/software-subsystems/spatial1.png',
@@ -184,7 +185,7 @@ const featureCarouselImages = {
       caption: 'Foxglove monitoring supported real-time localization review.'
     },
   ],
-  'Containerisation for Multi-Vehicle Deployment': [
+  'Containerization for Multi-Vehicle Deployment': [
     {
       src: '/images/robosub2026/software-subsystems/ros2.png',
       caption: 'ROS2'
@@ -226,20 +227,20 @@ function getSharedSoftwareSections(subsystem) {
       bullets: subsystem.development
     },
     {
-      title: 'Containerisation to Facilitate Multi-Vehicle Deployment',
+      title: 'Containerization to Facilitate Multi-Vehicle Deployment',
       description: '',
       subsections: [
         {
-          title: 'Docker Containerisation',
+          title: 'Docker Containerization',
           body: "To facilitate long-term development and seamless cross-platform testing, our entire software stack is containerized using Docker. This architecture abstracts dependencies away from individual host systems, ensuring a consistent environment whether code is running on a developer's laptop, a simulation machine, or the vehicle's onboard computer. Crucially, this containerized model enables simultaneous, seamless deployment across both of our physical vehicles. Because the core software stack remains completely identical, we can deploy the exact same container to either robot without modifying the underlying codebase.",
           image: {
             src: '/images/robosub2026/software-subsystems/docker-containerisation-dark.svg',
-            caption: 'Docker containerisation keeps the same software environment across machines and vehicles.'
+            caption: 'Docker containerization keeps the same software environment across machines and vehicles.'
           }
         },
         {
           title: 'Process Optimization',
-          body: 'To maximize onboard efficiency, we utilize ROS 2 Composable Nodes within our containers. By loading multiple nodes into a single process, we enable zero-copy memory sharing, which removes the CPU overhead of traditional message serialization. This reduction in computational load ensures our vehicles can run complex perception and navigation pipelines concurrently without hitting hardware bottlenecks.',
+          body: 'To maximize onboard efficiency, we utilize ROS2 Composable Nodes within our containers. By loading multiple nodes into a single process, we enable zero-copy memory sharing, which removes the CPU overhead of traditional message serialization. This reduction in computational load ensures our vehicles can run complex perception and navigation pipelines concurrently without hitting hardware bottlenecks.',
           image: {
             src: '/images/robosub2026/software-subsystems/ros2.png',
             caption: 'Composable nodes reduce overhead while running perception and navigation together.'
@@ -367,12 +368,21 @@ function getKrakenMechanicalSections() {
     },
     {
       title: 'Hydrodynamics Optimization',
-      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 20% reduction in total drag when the outer skin and airfoil profiles are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
+      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 32% reduction in total drag when the outer skin and airfoil profiles are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
       bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/competition_img_4.jpg',
-          caption: 'Kraken modular frame placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/cfd-before.png',
+          caption: 'CFD simulation without shell.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/cfd-after.jpg',
+          caption: 'CFD simulation with shell.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/cfd-results.png',
+          caption: 'CFD results table.'
         }
       ]
     },
@@ -408,35 +418,68 @@ function getKrakenMechanicalSections() {
 function getSharedElectricalSections() {
   return [
     {
-      title: 'Power Distribution',
-      description: 'This shared electrical section is reserved for power distribution notes, wiring architecture, protection choices, and validation results.',
+      title: 'Battery Management System (BMS)',
+      description: 'ReRoute is a custom BMS engineered with a multi‑layer, hardware‑first safety architecture to keep the battery permanently within its safe operating zone. It combines a physical fuse for catastrophic fault protection with a resettable soft fuse using precision current sensing and comparator‑based cutoff. Dedicated hardware overvoltage and undervoltage protection, including undervoltage lockout, continuously monitors battery limits and enforces immediate disconnection when thresholds are exceeded. All critical protections are implemented in analog hardware, delivering fast, deterministic, and fail‑safe battery protection for high‑reliability applications.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_1.jpg',
-          caption: 'Shared electrical power distribution placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/bms1.png',
+          caption: 'Render of ReRoute BMS PCB.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/bms2.png',
+          caption: 'Testing of ReRoute BMS PCB.'
+        },
+      ]
+    },
+    {
+      title: 'Power Distribution Unit (PDU)',
+      description: 'The PDUC is a modular power distribution board is designed for high‑power applications where scalability, visibility, and flexibility are critical. Supporting a higher overall power budget, it features an expandable architecture that allows power channels to be added or tailored to system needs, while integrated monitoring provides real‑time insight into system performance and health. The board can be configured for both Actuator Electrical Subsystem (AESS) and Compute Electrical Subsystem (CESS) architectures, making it adaptable across different energy storage and system designs. Built for reliability and control, it delivers a robust foundation for demanding power distribution environments.',
+      bullets: [],
+      imageLayout: 'comparison',
+      images: [
+        {
+          src: '/images/robosub2026/electrical-subsystems/pduc-archi.png',
+          caption: 'PDUC overall architecture.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/cess-render.png',
+          caption: 'Render of CESS PDUC.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/aess-render.png',
+          caption: 'Render of AESS PDUC.'
         }
       ]
     },
     {
-      title: 'Sensor Integration',
-      description: 'This shared electrical section is reserved for camera, DVL, IMU, pressure sensor, and actuator feedback integration notes.',
+      title: 'Actuator Board',
+      description: 'The actuator board is built for fast, reliable power delivery to high‑demand actuators. Powered from a 4S input, it uses MOSFET‑based switching to provide clean, high‑current on/off control with rapid response times. The design minimizes latency and losses, ensuring actuators receive immediate power exactly when commanded. Simple, robust, and purpose‑built, this board is ideal for systems requiring precise, high‑speed actuator activation.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_2.jpg',
-          caption: 'Shared electrical sensor integration placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/actuator-render.png',
+          caption: 'Render of Actuator Board.'
         }
       ]
     },
     {
-      title: 'Enclosure and Cable Routing',
-      description: 'This shared electrical section is reserved for enclosure layout, connector planning, service access, and cable routing decisions.',
+      title: 'Acoustics',
+      description: 'Our acoustics system is able to do both acoustic localization and communication using the same system. To minimize latency, the system is designed with an edge-based architecture, moving most of the data processing closer to the data source. This greatly improves accuracy of both communication and localization.',
       bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/competition_img_3.jpg',
-          caption: 'Shared electrical enclosure and routing placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/acoustics1.png',
+          caption: 'Render of acoustics module.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/acoustics2.png',
+          caption: 'Acoustics system block diagram.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/acoustics3.png',
+          caption: 'Acoustics software architecture.'
         }
       ]
     }
@@ -468,6 +511,22 @@ function isVideoMedia(media) {
 }
 
 function MediaModal({ media, onClose }) {
+  useEffect(() => {
+    if (!media) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [media, onClose]);
+
   if (!media) return null;
 
   return (
@@ -616,8 +675,9 @@ export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
           <div>
             <Link
               to="/robosub2026"
-              className="inline-flex text-sm font-semibold text-orange-300 hover:text-orange-200 transition-colors mb-8"
+              className="mb-8 inline-flex items-center gap-2 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow transition-all duration-200 hover:bg-[#d73a1a]"
             >
+              <FaChevronLeft className="text-xs" aria-hidden="true" />
               Back to RoboSub 2026
             </Link>
             <p className="text-lg text-gray-300 mb-3">{vehicle.name}</p>

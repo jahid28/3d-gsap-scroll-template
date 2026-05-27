@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronLeft, FaChevronUp } from 'react-icons/fa';
 import ImageCarousel from './components/ImageCarousel';
 import { blogPosts, tagStyles } from './teamBlogData';
 
@@ -95,8 +95,9 @@ export default function TeamBlogPostPage() {
           <div>
             <Link
               to="/blog"
-              className="inline-flex text-sm font-semibold text-orange-300 hover:text-orange-200 transition-colors mb-8"
+              className="mb-8 inline-flex items-center gap-2 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow transition-all duration-200 hover:bg-[#d73a1a]"
             >
+              <FaChevronLeft className="text-xs" aria-hidden="true" />
               Back to Team Blog
             </Link>
 
@@ -217,6 +218,57 @@ export default function TeamBlogPostPage() {
                       <div className="flex h-full items-stretch">
                         <SectionImagePanel images={getSectionImages(post, section)} hideCaption fill />
                       </div>
+                    </div>
+                  </div>
+                </section>
+              );
+            }
+
+            if (section.layout === 'versionedRows') {
+              return (
+                <section
+                  key={section.heading}
+                  className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8 shadow-xl shadow-black/20"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <h2 className="text-center text-2xl sm:text-3xl font-bold text-orange-500 mb-8">
+                      {section.heading}
+                    </h2>
+                    <div className="space-y-8">
+                      {section.versions.map((version) => (
+                        <div
+                          key={version.title}
+                          className="grid grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 lg:grid-cols-[1fr_26rem] lg:items-center"
+                        >
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-bold text-orange-200">
+                              {version.title}
+                            </h3>
+                            {version.subtitle && (
+                              <p className="mt-1 text-sm sm:text-base font-semibold text-orange-100">
+                                {version.subtitle}
+                              </p>
+                            )}
+                            <p className="mt-4 text-justify text-base sm:text-lg leading-relaxed text-gray-200">
+                              {version.body}
+                            </p>
+                            {version.details && (
+                              <div className="mt-4 space-y-2">
+                                {version.details.map((detail) => (
+                                  <p key={detail.label} className="text-justify text-sm sm:text-base leading-relaxed text-gray-200">
+                                    <span className="font-semibold text-white">{detail.label}: </span>
+                                    {detail.body}
+                                  </p>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="flex justify-center lg:justify-end">
+                            <ImageCarousel images={version.images} />
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </section>
