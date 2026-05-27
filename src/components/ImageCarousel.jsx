@@ -36,7 +36,7 @@ export default function ImageCarousel({
         <button
           type="button"
           onClick={() => onMediaClick?.(slide)}
-          className="absolute inset-0 w-full h-full cursor-zoom-in"
+          className={`absolute inset-0 w-full h-full ${onMediaClick ? "cursor-zoom-in" : "cursor-default"}`}
           aria-label={`Open slide ${idx + 1}`}
         >
           {isVideoMedia(slide) ? (

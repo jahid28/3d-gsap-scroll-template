@@ -24,6 +24,10 @@ function WeatherIcon({ weather }) {
 }
 
 function getSectionImages(post, section) {
+  if (section.hideCaption) {
+    return section.images ?? [{ src: post.image }];
+  }
+
   return section.images ?? [
     {
       src: post.image,
@@ -285,7 +289,9 @@ export default function TeamBlogPostPage() {
                       {section.versions.map((version) => (
                         <div
                           key={version.title}
-                          className="grid grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 lg:grid-cols-[1fr_26rem] lg:items-center"
+                          className={`grid grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 lg:items-center ${
+                            section.hideImages ? '' : 'lg:grid-cols-[1fr_26rem]'
+                          }`}
                         >
                           <div>
                             <h3 className="text-xl sm:text-2xl font-bold text-orange-200">
@@ -311,9 +317,11 @@ export default function TeamBlogPostPage() {
                             )}
                           </div>
 
-                          <div className="flex justify-center lg:justify-end">
-                            <ImageCarousel images={version.images} />
-                          </div>
+                          {!section.hideImages && (
+                            <div className="flex justify-center lg:justify-end">
+                              <ImageCarousel images={version.images} />
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -323,6 +331,8 @@ export default function TeamBlogPostPage() {
             }
 
             if (section.layout === 'diaryPages') {
+              const hasMultipleDiaryEntries = section.entries.length > 1;
+
               return (
                 <section
                   key={section.heading}
@@ -333,15 +343,17 @@ export default function TeamBlogPostPage() {
                       {section.heading}
                     </h2>
                     <div className="flex items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={() => moveDiaryEntry(-1, section.entries.length)}
-                        disabled={activeDiaryEntry === 0}
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
-                        aria-label="Previous diary entry"
-                      >
-                        <FaChevronLeft aria-hidden="true" />
-                      </button>
+                      {hasMultipleDiaryEntries && (
+                        <button
+                          type="button"
+                          onClick={() => moveDiaryEntry(-1, section.entries.length)}
+                          disabled={activeDiaryEntry === 0}
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-default disabled:bg-white/15 disabled:text-white/35"
+                          aria-label="Previous diary entry"
+                        >
+                          <FaChevronLeft aria-hidden="true" />
+                        </button>
+                      )}
 
                       <div
                         id="diary-pages"
@@ -380,30 +392,57 @@ export default function TeamBlogPostPage() {
                         ))}
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => moveDiaryEntry(1, section.entries.length)}
-                        disabled={activeDiaryEntry === section.entries.length - 1}
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
-                        aria-label="Next diary entry"
-                      >
-                        <FaChevronRight aria-hidden="true" />
-                      </button>
-                    </div>
-                    <div className="mt-4 flex justify-center gap-2">
-                      {section.entries.map((entry, index) => (
+                      {hasMultipleDiaryEntries && (
                         <button
-                          key={`${entry.date}-${entry.shortTitle}-indicator`}
                           type="button"
-                          onClick={() => goToDiaryEntry(index)}
-                          className={`h-1.5 rounded-full transition-all duration-200 ${
-                            activeDiaryEntry === index
-                              ? 'w-10 bg-orange-500'
-                              : 'w-7 bg-white/35 hover:bg-white/60'
-                          }`}
-                          aria-label={`Go to diary entry ${index + 1}`}
-                        />
-                      ))}
+                          onClick={() => moveDiaryEntry(1, section.entries.length)}
+                          disabled={activeDiaryEntry === section.entries.length - 1}
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition-all duration-200 hover:bg-[#d73a1a] disabled:cursor-default disabled:bg-white/15 disabled:text-white/35"
+                          aria-label="Next diary entry"
+                        >
+                          <FaChevronRight aria-hidden="true" />
+                        </button>
+                      )}
+                    </div>
+                    {hasMultipleDiaryEntries && (
+                      <div className="mt-4 flex justify-center gap-2">
+                        {section.entries.map((entry, index) => (
+                          <button
+                            key={`${entry.date}-${entry.shortTitle}-indicator`}
+                            type="button"
+                            onClick={() => goToDiaryEntry(index)}
+                            className={`h-1.5 rounded-full transition-all duration-200 ${
+                              activeDiaryEntry === index
+                                ? 'w-10 bg-orange-500'
+                                : 'w-7 bg-white/35 hover:bg-white/60'
+                            }`}
+                            aria-label={`Go to diary entry ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </section>
+              );
+            }
+
+            if (section.layout === 'centeredImageBelow') {
+              return (
+                <section
+                  key={section.heading}
+                  className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8 shadow-xl shadow-black/20"
+                >
+                  <div className="mx-auto max-w-5xl">
+                    <h2 className="text-center text-2xl sm:text-3xl font-bold text-orange-500 mb-4">
+                      {section.heading}
+                    </h2>
+                    <p className="mx-auto max-w-4xl text-justify text-base sm:text-lg leading-relaxed text-gray-200">
+                      {section.body}
+                    </p>
+                    <div className="mt-8 flex justify-center">
+                      <div className={section.imageWidth === 'text' ? 'w-full max-w-4xl [&>div]:max-w-none' : ''}>
+                        <ImageCarousel images={getSectionImages(post, section)} />
+                      </div>
                     </div>
                   </div>
                 </section>
