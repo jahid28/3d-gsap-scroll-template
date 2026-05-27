@@ -3,6 +3,30 @@ import { Link } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
 import { Optimized3DViewer } from './components/Optimized3DViewer';
 
+const sharedSoftwareFeature = {
+  title: 'Software',
+  tag: 'Software',
+  description: 'Improved mission architecture for reusable task behaviors, tighter control loops, and faster simulation-to-pool iteration.',
+  details: [
+    'UnitySim',
+    'Perception',
+    'Mission Planning',
+    'Localisation',
+    'Containerisation for Multi-Vehicle Deployment'
+  ]
+};
+
+const sharedElectricalFeature = {
+  title: 'Electrical',
+  tag: 'Electrical',
+  description: 'Cleaner electronics and sensor routing for cameras, navigation feedback, and task payloads inside a compact AUV package.',
+  details: [
+    'Dedicated routing paths for signal and power wiring',
+    'Sensor placement designed around autonomy requirements',
+    'More maintainable electronics access during testing'
+  ]
+};
+
 const vehicleTabs = {
   hydra: {
     label: 'Hydra',
@@ -12,36 +36,24 @@ const vehicleTabs = {
     image: '/competition/images/robosub2026-bots.jpg',
     features: [
       {
-        title: 'Compact Frame',
+        title: 'Mechanical',
         tag: 'Mechanical',
-        description: 'A smaller, serviceable layout designed to support rapid mechanism swaps while preserving competition-ready rigidity.',
+        description: 'Hydra 2026 is an upgraded version of Lucy 2025, with an updated thruster configuration, improved frame through topology optimization, and greater design modularity.',
         details: [
-          'Modular interfaces for dropper and gripper mechanisms',
-          'Improved access for assembly, inspection, and repairs',
-          'Packaging focused on keeping the vehicle compact'
+          '8-Thruster Configuration',
+          'Mass Optimization',
+          'Modular Frame Design',
+          'Dropper',
+          'Gripper'
         ], 
         subpage: '/hydra/mechanical',
       },
       {
-        title: 'Autonomy Refresh',
-        tag: 'Software',
-        description: 'Improved mission architecture for reusable task behaviors, tighter control loops, and faster simulation-to-pool iteration.',
-        details: [
-          'Reusable behavior modules for common mission tasks',
-          'Cleaner handoff between perception, planning, and control',
-          'Simulation workflow for testing before pool sessions'
-        ],
+        ...sharedSoftwareFeature,
         subpage: '/hydra/software',
       },
       {
-        title: 'Sensor Integration',
-        tag: 'Electrical',
-        description: 'Cleaner electronics and sensor routing for cameras, navigation feedback, and task payloads inside a compact AUV package.',
-        details: [
-          'Dedicated routing paths for signal and power wiring',
-          'Sensor placement designed around autonomy requirements',
-          'More maintainable electronics access during testing'
-        ],
+        ...sharedElectricalFeature,
         subpage: '/hydra/electrical'
       }
     ]
@@ -65,26 +77,12 @@ const vehicleTabs = {
         subpage: '/kraken/mechanical',
       },
       {
-        title: 'Torpedo Actuation Testbed',
-        tag: 'Electrical',
-        description: 'Dedicated space for validating a torpedo deployment system with clean integration into the vehicle electronics stack.',
-        details: [
-          'Electronics layout prepared for actuator control',
-          'Mechanism space reserved for torpedo deployment hardware',
-          'Designed to support repeatable bench and pool validation'
-        ],
-        subpage: '/kraken/electrical',
+        ...sharedSoftwareFeature,
+        subpage: '/kraken/software'
       },
       {
-        title: 'Mission Testing Platform',
-        tag: 'Software',
-        description: 'A focused platform for testing perception, autonomy, and control behavior under RoboSub-style task conditions.',
-        details: [
-          'Useful for isolating experimental mission behaviors',
-          'Supports repeatable validation of perception pipelines',
-          'Built to test task logic before merging into competition flow'
-        ],
-        subpage: '/kraken/software'
+        ...sharedElectricalFeature,
+        subpage: '/kraken/electrical',
       }
     ]
   }
@@ -200,7 +198,7 @@ export default function Robosub2026Page() {
             {vehicle.title}
           </h2>
           <p className="text-base sm:text-lg text-gray-300 mb-5 max-w-xl mx-auto md:mx-0">
-            Both Hydra and Kraken are .... etc Select a vehicle to preview its RoboSub 2026 improvements across mechanical, electrical, and software development.
+            Select a vehicle to preview its RoboSub 2026 improvements across mechanical, electrical, and software development.
           </p>
         </div>
 
@@ -237,16 +235,13 @@ export default function Robosub2026Page() {
             <h2 className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-4">
               Improved Features
             </h2>
-            <p className="text-base sm:text-lg text-gray-300">
-              {vehicle.title} Development Focus Areas
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             {vehicle.features.map((feature) => (
               <article
                 key={feature.title}
-                className="rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 overflow-hidden"
+                className="flex h-full flex-col rounded-lg border border-white/15 bg-white/10 backdrop-blur-md shadow-xl shadow-black/20 overflow-hidden"
               >
                 <div className="aspect-video bg-zinc-900">
                   <img
@@ -256,7 +251,7 @@ export default function Robosub2026Page() {
                   />
                 </div>
 
-                <div className="p-5 sm:p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <h3 className="text-xl sm:text-2xl font-bold text-white">
                       {feature.title}
@@ -279,7 +274,7 @@ export default function Robosub2026Page() {
                     ))}
                   </ul>
 
-                  <div className="flex justify-center mt-6">
+                  <div className="mt-auto flex justify-center pt-6">
                     <Link
                       to={feature.subpage}
                       className="bg-[#d73a1a] hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"

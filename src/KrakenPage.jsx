@@ -60,12 +60,8 @@ const krakenSpecifications = [
     bullets: ["Length: 0.61m","Width: 0.61m", "Height: 0.27m"]
   },
   {
-    title: "Mass of Vehicle",
-    bullets: ["21kg in Air"]
-  },
-  {
-    title: "Top Speed",
-    bullets: ["1 m/s"]
+    title: "Mass & Top Speed",
+    bullets: ["Mass: 21kg in Air", "Top Speed: 1 m/s"]
   },
   {
     title: "Degrees of Freedom",
@@ -416,11 +412,11 @@ function KrakenPage() {
                   {spec.title}
                 </h3>
 
-                  <ul className="space-y-2 text-sm sm:text-base text-gray-200 list-disc pl-5">
                     {spec.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                      <p key={bullet} className="text-sm sm:text-base leading-relaxed text-gray-200">
+                        {bullet}
+                      </p>
                     ))}
-                  </ul>
                 </div>
               ))}
             </div>

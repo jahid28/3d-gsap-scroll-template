@@ -27,7 +27,7 @@ const subsystemPages = {
         label: 'Mechanical',
         title: 'Mechanical Subsystems',
         summary:
-          'Hydra keeps the compact character of Lucy while making the frame easier to build, access, and adapt for RoboSub task hardware.',
+          'Hydra 2026 is an upgraded version of Lucy 2025, with an updated thruster configuration, improved frame through topology optimization, and greater design modularity.',
         highlights: [
         ],
         development: [
@@ -144,8 +144,16 @@ const navItems = ['mechanical', 'software', 'electrical'];
 const featureCarouselImages = {
   UnitySim: [
     {
-      src: '/images/robosub2026/software-subsystems/unitysim.png',
-      caption: 'UnitySim supported dry testing before vehicle assembly.'
+      src: '/images/robosub2026/software-subsystems/unity-sim-vid.gif',
+      caption: 'Video demonstration of Unity simulation.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/mds-1st-perspective.png',
+      caption: '1st Perspective Preview of the vehicle.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/mds-3rd-perspective.png',
+      caption: '3rd Perspective Preview of the vehicle.'
     },
   ],
   Perception: [
@@ -166,11 +174,11 @@ const featureCarouselImages = {
   ],
   Localisation: [
     {
-      src: '/images/robosub2026/software-subsystems/ekf.png',
+      src: '/images/robosub2026/software-subsystems/corecont.png',
       caption: 'EKF localisation fuses DVL and IMU data for stable odometry.'
     },
     {
-      src: '/images/robosub2026/software-subsystems/corecont.png',
+      src: '/images/robosub2026/software-subsystems/ekf.png',
       caption: 'Foxglove monitoring supported real-time localisation review.'
     },
   ],
@@ -190,12 +198,13 @@ const featureCarouselImages = {
   ]
 };
 
-function getContentSections(vehicle, subsystem) {
+function getSharedSoftwareSections(subsystem) {
   return [
     {
       title: 'UnitySim',
       description: `We leveraged Unity to develop a high-fidelity digital twin of the competition environment. This allowed for extensive “dry” testing of our new algorithms and mission logic before vehicle design was finalized and parts were manufactured. ROS2 packages were individually validated within the simulation environment to assess operational suitability and isolate software bugs before integration into the full autonomy stack. Upon completion of vehicle assembly, the UnityMDS simulation setup complemented semiweekly in-person pool tests, for a final systems validation of our competition vehicle within pseudo-deployment environments.`,
-      bullets: subsystem.highlights
+      bullets: subsystem.highlights,
+      imageLayout: 'comparison'
     },
     {
       title: 'Perception',
@@ -239,7 +248,198 @@ function getContentSections(vehicle, subsystem) {
     }
   ].map((section) => ({
     ...section,
-    images: featureCarouselImages[section.title] ?? vehicle.carouselImages
+    images: featureCarouselImages[section.title]
+  }));
+}
+
+function getHydraMechanicalSections() {
+  return [
+    {
+      title: '8-Thruster Configuration',
+      description: 'Hydra transitioned from the previous 6-thruster layout to a vectored 8-thruster configuration. This vectored architecture completely decouples the vertical and horizontal axes, yielding a highly stable hydrodynamic platform capable of precise, 6-degree-of-freedom (6-DOF) manoeuvring.',
+      bullets: [],
+      imageLayout: 'comparison',
+      images: [
+        {
+          src: '/images/robosub2026/mechanical-subsystems/thrusters6.png',
+          caption: 'Previous design with 6 thrusters.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/thrusters8.png',
+          caption: 'New design with 8 vectored thrusters.'
+        }
+      ]
+    },
+    {
+      title: 'Mass Optimization',
+      description: 'Building upon the mechanical foundation of Lucy 2025, this second-generation vehicle prioritized a reduction in both in-air mass and required buoyancy volume. To achieve stringent mass reduction goals without compromising structural integrity, the 3D-printed frame components underwent rigorous topology optimization; by utilizing advanced computational simulations to analyze geometric load paths, material was strategically removed from low-stress regions. This generative design approach significantly reduces the overall weight of the vehicle while simultaneously optimizing the specific stiffness and structural strength of the chassis under dynamic and hydrostatic loads. The goal is to lower manufacturing barriers, accelerate rapid prototyping cycles and streamline final assembly.',
+      bullets: [],
+      images: [
+        {
+          src: '/images/robosub2026/mechanical-subsystems/mass1.jpg',
+          caption: 'Mass optimization of Hydra.'
+        }
+      ]
+    },
+    {
+      title: 'Modular Frame Design',
+      description: 'The vehicle architecture heavily emphasizes modularity to accommodate rapid, mission-specific reconfigurations. The upper cap and leg assemblies function as interchangeable sensor bays, allowing the payload suite to be easily modified or upgraded with new attachments without altering the core chassis.',
+      bullets: [],
+      images: [
+        {
+          src: '/images/robosub2026/mechanical-subsystems/hydraframe.png',
+          caption: 'Different parts of the Hydra frame labelled.'
+        },
+      ]
+    },
+    {
+      title: 'Dropper',
+      description: 'Hydra integrates an electromagnetic marker delivery system to ensure reliable actuation. For operational safety and power efficiency, the 12V electromagnet is kept in an unpowered state. Deployment is achieved by activating the circuit to electromagnetically repel the marker. This electromagnet is housed within a custom 3D-printed encasing and directly attached to the main body of Hydra. A PVC tube is used as a casing to route the electromagnet cables to the actuator cylinder, while maintaining a strain relief system and waterproofing solution. Finally, the dropper housing is entirely filled with epoxy, providing absolute waterproofing for the electromagnet, ensuring longevity and reliability.',
+      bullets: [],
+      images: [
+        {
+          src: '/images/robosub2026/mechanical-subsystems/dropper1.png',
+          caption: 'Different iterations of dropper design.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/dropper2.png',
+          caption: 'Dropper components.'
+        }
+      ]
+    },
+    {
+      title: 'Gripper',
+      description: 'Hydra’s gripper uses a parallelogram mechanism to open and close. It uses a ROVmaker servo as the actuator. The gripper is much smaller than the previous version which uses a ball screw to actuate the gripper. The claw is made of silicon to improve grip and compliance.',
+      bullets: [],
+      images: [
+        {
+          src: '/images/robosub2026/mechanical-subsystems/gripper1.png',
+          caption: 'Gripper "activated".'
+        }
+      ]
+    }
+  ];
+}
+
+function getKrakenMechanicalSections() {
+  return [
+    {
+      title: 'Kraken Frame',
+      description: 'Kraken mechanical work explores an experimental skeleton hull concept for rapid inspection, iteration, and validation.',
+      bullets: [
+        'Airfoil-inspired frame geometry',
+        'Acrylic skeleton concept',
+        'Simple assembly layout'
+      ],
+      images: [
+        {
+          src: '/competition/images/robosub2026-bots.jpg',
+          caption: 'Kraken mechanical layout placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Skeleton Hull',
+      description: 'This section is reserved for Kraken skeleton hull content, including frame geometry, material behavior, and design tradeoffs.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_1.jpg',
+          caption: 'Kraken skeleton hull placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Hull Material Validation',
+      description: 'This section is reserved for material validation notes, handling tests, pool observations, and manufacturing constraints.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_2.jpg',
+          caption: 'Kraken material validation placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Torpedo Integration',
+      description: 'This section is reserved for Kraken torpedo mechanism layout, mounting approach, and validation plan.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_3.jpg',
+          caption: 'Kraken torpedo integration placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Mechanical Iteration',
+      description: 'This section is reserved for assembly improvements, maintenance access, and mechanical iteration notes.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_4.jpg',
+          caption: 'Kraken mechanical iteration placeholder.'
+        }
+      ]
+    }
+  ];
+}
+
+function getSharedElectricalSections() {
+  return [
+    {
+      title: 'Power Distribution',
+      description: 'This shared electrical section is reserved for power distribution notes, wiring architecture, protection choices, and validation results.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_1.jpg',
+          caption: 'Shared electrical power distribution placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Sensor Integration',
+      description: 'This shared electrical section is reserved for camera, DVL, IMU, pressure sensor, and actuator feedback integration notes.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_2.jpg',
+          caption: 'Shared electrical sensor integration placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Enclosure and Cable Routing',
+      description: 'This shared electrical section is reserved for enclosure layout, connector planning, service access, and cable routing decisions.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_3.jpg',
+          caption: 'Shared electrical enclosure and routing placeholder.'
+        }
+      ]
+    }
+  ];
+}
+
+function getContentSections(vehicle, subsystem, vehicleId, subsystemId) {
+  let sections;
+
+  if (subsystemId === 'mechanical' && vehicleId === 'hydra') {
+    sections = getHydraMechanicalSections();
+  } else if (subsystemId === 'mechanical' && vehicleId === 'kraken') {
+    sections = getKrakenMechanicalSections();
+  } else if (subsystemId === 'electrical') {
+    sections = getSharedElectricalSections();
+  } else {
+    sections = getSharedSoftwareSections(subsystem);
+  }
+
+  return sections.map((section) => ({
+    ...section,
+    bullets: section.bullets ?? [],
+    images: section.images ?? featureCarouselImages[section.title] ?? vehicle.carouselImages
   }));
 }
 
@@ -316,8 +516,10 @@ function MediaPreview({ media }) {
 }
 
 function ComparisonCaptionImages({ images, onMediaClick }) {
+  const gridClass = images.length >= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2';
+
   return (
-    <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-2">
+    <div className={`mx-auto grid w-full max-w-5xl grid-cols-1 gap-5 ${gridClass}`}>
       {images.map((image) => (
         <figure key={image.src} className="overflow-hidden rounded-xl border border-white/15 bg-black/30">
           <div className="aspect-video bg-black/30">
@@ -382,7 +584,7 @@ function SubsectionComparison({ subsections, onMediaClick }) {
 export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
   const vehicle = subsystemPages[vehicleId] ?? subsystemPages.hydra;
   const subsystem = vehicle.subsystems[subsystemId] ?? vehicle.subsystems.mechanical;
-  const contentSections = getContentSections(vehicle, subsystem);
+  const contentSections = getContentSections(vehicle, subsystem, vehicleId, subsystemId);
   const [expandedMedia, setExpandedMedia] = useState(null);
 
   return (
