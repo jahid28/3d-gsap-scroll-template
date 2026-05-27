@@ -4,14 +4,23 @@ import { blogPosts, tagStyles } from './teamBlogData';
 export default function TeamBlogPage() {
   return (
     <div className="min-h-screen bg-[#181818] text-white">
-      <section className="px-4 sm:px-8 md:px-20 pt-32 pb-16 text-center">
-        <p className="text-lg text-gray-300 mb-3">RoboSub 2026</p>
-        <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-6">
-          Team Blog
-        </h1>
-        <p className="mx-auto max-w-3xl text-base sm:text-lg text-gray-300">
-          Follow our mechanical, electrical, and software progress through reusable team blog posts.
-        </p>
+      <section className="relative overflow-hidden px-4 sm:px-8 md:px-20 pt-32 pb-16 text-center">
+        <div
+          className="absolute inset-0 scale-110 bg-cover bg-center blur-sm"
+          style={{ backgroundImage: "url('/competition/images/robosub2026-bots.jpg')" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/75" aria-hidden="true" />
+
+        <div className="relative z-10">
+          <p className="text-lg text-gray-300 mb-3">RoboSub 2026</p>
+          <h1 className="text-5xl sm:text-6xl font-bold text-orange-500 mb-6">
+            Team Blog
+          </h1>
+          <p className="mx-auto max-w-3xl text-base sm:text-lg text-gray-300">
+            Follow our mechanical, electrical, and software progress through our team blog posts.
+          </p>
+        </div>
       </section>
 
       <section className="bg-[#202020] px-4 sm:px-8 md:px-20 py-20">

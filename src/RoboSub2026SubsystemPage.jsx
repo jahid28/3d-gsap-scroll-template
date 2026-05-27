@@ -323,34 +323,42 @@ function getKrakenMechanicalSections() {
   return [
     {
       title: '8-Thruster Configuration',
-      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken thruster configuration writeup.',
+      description: 'Kraken transitioned from the previous 6-thruster layout to a vectored 8-thruster configuration. This vectored architecture completely decouples the vertical and horizontal axes, yielding a highly stable hydrodynamic platform capable of precise, 6-degree-of-freedom (6-DOF) manoeuvring.',
       bullets: [],
       imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/competition_img_1.jpg',
-          caption: 'Kraken thruster configuration placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/thrusters-render.png',
+          caption: 'Render of Kraken\'s 8-thrusters.'
         },
         {
-          src: '/competition/images/competition_img_2.jpg',
-          caption: 'Kraken thruster comparison placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/thrusters-config.png',
+          caption: 'Kraken 8-thrusters layout.'
         }
       ]
     },
     {
-      title: 'Mass Optimization',
-      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken mass optimization writeup.',
+      title: 'Acrylic Skeletal Frame',
+      description: 'Kraken utilizes a novel, fully acrylic skeletal frame to provide primary structural integrity. Compared to previous 3D-printed load-bearing structures, this CNC machined acrylic chassis offers superior structural integrity while being easily modifiable in-house for highly cost-effective and rapid prototyping cycles. To optimize hydrodynamic performance, this skeletal frame is enveloped by a streamlined, 3D-printed shell for improved hydrodynamic movement.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_3.jpg',
-          caption: 'Kraken mass optimization placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/aframe2.jpg',
+          caption: 'Mechanical members assembling the acrylic skeletal frame.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/aframe1.jpg',
+          caption: 'Waterproof testing with the frame.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/aframe3.jpg',
+          caption: 'Acrylic frame assembled!'
         }
       ]
     },
     {
-      title: 'Modular Frame Design',
-      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken modular frame design writeup.',
+      title: 'Hydrodynamics Optimization',
+      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 20% reduction in total drag when the outer skin and airfoil profiles are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
       bullets: [],
       images: [
         {
@@ -360,28 +368,28 @@ function getKrakenMechanicalSections() {
       ]
     },
     {
-      title: 'Dropper',
-      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken dropper writeup.',
+      title: 'CNC Aluminum Electronics Enclosure Box',
+      description: 'The transition from a cylindrical main hull for key electrical systems to a custom machined aluminum electrical enclosure maximized space efficiency, modularity and ease of maintenance. This reduced the weight of our vehicle by reducing buoyancy from the large volumetric displacement of a traditional cylindrical hull, thereby decreasing the mass needed to maintain neutral buoyancy. This also built the foundation of a new electrical system layout that is easy to modify and maintain, by creating swappable mounting plates that can be freely removed and worked on without space constraints.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_1.jpg',
-          caption: 'Kraken dropper placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/electbox1.png',
+          caption: 'Isometric view of Kraken electrical enclosure.'
         },
         {
-          src: '/competition/images/competition_img_2.jpg',
-          caption: 'Kraken dropper components placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/electbox2.jpg',
+          caption: 'Real-life image of custom machined aluminum box.'
         }
       ]
     },
     {
-      title: 'Gripper',
-      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken gripper writeup.',
+      title: 'Torpedo',
+      description: 'The previous friction-fit design was prone to wear-and-tear, occasionally resulting in premature launching before torpedo activation. Our new design uses a positive mechanical locking mechanism by fixing a T8 nut directly onto the propeller and a T8 lead screw onto the launcher. Upon activation, the propeller’s rotation should unscrew the nut from the stationary lead screw. This mechanism ensures a secure hold during the pre-launch phase followed by a seamless transition to forward flight once the threads are fully disengaged.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_3.jpg',
-          caption: 'Kraken gripper placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/torpedo1.png',
+          caption: 'Kraken\'s torpedo render.'
         }
       ]
     }
