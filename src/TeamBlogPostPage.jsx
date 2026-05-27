@@ -125,7 +125,7 @@ function SubsectionContent({ subsection }) {
             ) : (
               <>
                 <CaptionedImageGrid images={block.images} alignToText />
-                <TextBlock body={block.body} className={block.images?.length ? 'mx-auto mt-5 max-w-4xl' : ''} />
+                <TextBlock body={block.body} className={block.images?.length ? 'mx-auto mt-5 max-w-4xl' : 'mx-auto max-w-4xl'} />
               </>
             )}
           </div>
@@ -633,6 +633,22 @@ export default function TeamBlogPostPage() {
                         );
                       })}
                     </div>
+                  </div>
+                </section>
+              );
+            }
+
+            if (section.layout === 'blockImageStory') {
+              return (
+                <section
+                  key={section.heading}
+                  className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8 shadow-xl shadow-black/20"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <h2 className="text-center text-2xl sm:text-3xl font-bold text-orange-500 mb-8">
+                      {section.heading}
+                    </h2>
+                    <SubsectionContent subsection={section} />
                   </div>
                 </section>
               );

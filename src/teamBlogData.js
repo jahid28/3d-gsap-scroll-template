@@ -15,6 +15,47 @@ const defaultSections = (post) => [
 
 const posts = [
   {
+    slug: 'interim-vehicle',
+    title: 'Building the Interim Vehicle',
+    tag: 'Mechanical',
+    authors: 'Timothy, Akil',
+    date: 'Oct 2025 - Feb 2026',
+    image: '/images/robosub2026/mechanical-subsystems/blog0-2.jpg',
+    description: "Built and tested an interim vehicle prototype to evaluate and finalize the optimal 8-thruster configuration before final production.",
+    sections: [
+      {
+        heading: 'Interim Vehicle Build',
+        layout: 'blockImageStory',
+        blocks: [
+          {
+            body: 'We built an interim vehicle with the sole purpose of testing different thruster configurations. We used a 6 thruster configuration last year, but we were considering switching to an 8 thruster configuration this year, for greater vehicle stability and control.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-1.jpg' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-2.jpg' }
+            ],
+            body: 'The most significant advantage of developing this interim solution was that it allowed us to determine the optimal thruster configuration before the new vehicle chassis was designed, printed and assembled. The software team could test control algorithms and evaluate the 6 vs. 8-thruster setup on the interim vehicle.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-3.jpg' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-4.jpg' },
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-5.jpg' },
+            ],
+            body: 'Instead of 3D printing the entire interim vehicle frame, the vehicle was constructed with a mixture of PVC pipes, connectors and 3D printed mounts and housings. This made hardware adjustments easier, accelerating prototyping cycles.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog0-6.gif' }
+            ],
+            body: 'Based on observations of the interim vehicle both in simulation and in real-life (pool testing), we decided to move from a 6-thruster configuration to an 8-thruster configuration as well as elongate the electrical housing.'
+          },
+        ]
+      }
+    ]
+  },
+  {
     slug: 'hydra-frame',
     title: 'Hydra Frame Development',
     tag: 'Mechanical',
@@ -66,7 +107,7 @@ const posts = [
     tag: 'Mechanical',
     authors: 'Maximus, Akil',
     date: 'Nov 2025 - Mar 2026',
-    image: '/competition/images/competition_img_1.jpg',
+    image: '/images/robosub2026/mechanical-subsystems/blog3-1.jpg',
     description: 'Internal notes on the CNC electronics enclosure design, manufacturing, and fit checks.',
     sections: [
       {
