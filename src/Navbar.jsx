@@ -25,7 +25,7 @@ const sections = [
     ]
   },
   //{ id: 'research', label: 'Research', path: '/research' },
-  { id: 'blog', label: 'RoboSub Blog', path: '/blog' },
+  { id: 'blog', label: 'Team Blog', path: '/blog' },
   { id: 'outreach', label: 'Outreach', path: '/outreach',
     submenu: [
       { id: 'outreach-main', label: 'Outreach', path: '/outreach' },

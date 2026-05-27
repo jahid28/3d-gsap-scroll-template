@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft } from 'react-icons/fa';
 import ImageCarousel from './components/ImageCarousel';
 
 const subsystemPages = {
@@ -25,7 +26,7 @@ const subsystemPages = {
     subsystems: {
       mechanical: {
         label: 'Mechanical',
-        title: 'Mechanical Subsystems',
+        title: 'Mechanical Subsystem',
         summary:
           'Hydra 2026 is an upgraded version of Lucy 2025, with an updated thruster configuration, improved frame through topology optimization, and greater design modularity.',
         highlights: [
@@ -38,9 +39,9 @@ const subsystemPages = {
       },
       software: {
         label: 'Software',
-        title: 'Software Subsystems',
+        title: 'Software Subsystem',
         summary:
-          'Hydra software development focuses on reusable mission behaviors, tighter control, and faster iteration from simulation to pool testing.',
+          'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead. These optimizations, paired with new 3D spatial perception, enable advanced path planning and autonomous navigation.',
         highlights: [
         ],
         development: [
@@ -48,9 +49,9 @@ const subsystemPages = {
       },
       electrical: {
         label: 'Electrical',
-        title: 'Electrical Subsystems',
+        title: 'Electrical Subsystem',
         summary:
-          'Hydra electrical work centers on clean power distribution, sensor routing, and maintainable electronics inside a smaller vehicle envelope.',
+          'This year’s electrical power distribution is engineered to deliver more power, greater intelligence, and flexibility. A higher power budget supports our latest applications demands, smart capabilities enable advanced monitoring and precise control, and a modular design allows seamless customization and scalability as system needs evolve.',
         highlights: [
           'Organized signal and power paths to reduce service confusion',
           'Sensor placement planned around cameras, navigation, and task payloads',
@@ -87,9 +88,9 @@ const subsystemPages = {
     subsystems: {
       mechanical: {
         label: 'Mechanical',
-        title: 'Mechanical Subsystems',
+        title: 'Mechanical Subsystem',
         summary:
-          'Kraken mechanical work explores an experimental skeleton hull concept for rapid inspection, iteration, and validation.',
+          'Kraken is an experimental platform for Mecatron to develop more mature manufacturing processes. Featuring an acrylic skeleton and a metal electrical box, Kraken aims to be more durable and maneuverable than our previous vehicles.',
         highlights: [
           'Airfoil-inspired frame geometry for drag and stiffness studies',
           'Acrylic skeleton concept for direct visual inspection',
@@ -104,35 +105,29 @@ const subsystemPages = {
       },
       software: {
         label: 'Software',
-        title: 'Software Subsystems',
-        summary: '',
+        title: 'Software Subsystem',
+        summary:
+          'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead. These optimizations, paired with new 3D spatial perception, enable advanced path planning and autonomous navigation.',
         highlights: [
-          'Mission testing platform for experimental task behaviors',
-          'Perception pipeline validation before competition integration',
-          'Control behavior testing under repeatable pool conditions',
-          'Useful sandbox for testing changes before merging into Hydra flow'
         ],
         development: [
-          'Create focused test missions for each experimental feature',
-          'Compare perception results across bench, simulation, and pool data',
-          'Promote proven behavior into the shared RoboSub software stack'
         ]
       },
       electrical: {
         label: 'Electrical',
-        title: 'Electrical Subsystems',
+        title: 'Electrical Subsystem',
         summary:
-          'Kraken electrical development supports actuator validation, instrumentation, and clean integration for experimental payloads.',
+          'This year’s electrical power distribution is engineered to deliver more power, greater intelligence, and flexibility. A higher power budget supports our latest applications demands, smart capabilities enable advanced monitoring and precise control, and a modular design allows seamless customization and scalability as system needs evolve.',
         highlights: [
-          'Electronics layout prepared for actuator control experiments',
-          'Wiring access designed around repeated bench and pool tests',
-          'Power and signal planning for torpedo deployment validation',
-          'Sensor integration support for experimental mission trials'
+          'Organized signal and power paths to reduce service confusion',
+          'Sensor placement planned around cameras, navigation, and task payloads',
+          'Electronics access designed for faster debugging between pool runs',
+          'Integration support for dropper, gripper, and vehicle feedback systems'
         ],
         development: [
-          'Bench-test actuator control before in-water validation',
-          'Keep electronics access open for fast iteration',
-          'Log electrical behavior during repeated mechanism tests'
+          'Map electronics placement against mechanical access zones',
+          'Prepare wiring routes for cameras, navigation sensors, and actuators',
+          'Run bench checks before full vehicle integration'
         ]
       },
     }
@@ -149,11 +144,11 @@ const featureCarouselImages = {
     },
     {
       src: '/images/robosub2026/software-subsystems/mds-1st-perspective.png',
-      caption: '1st Perspective Preview of the vehicle.'
+      caption: 'Vehicle\'s perspective.'
     },
     {
       src: '/images/robosub2026/software-subsystems/mds-3rd-perspective.png',
-      caption: '3rd Perspective Preview of the vehicle.'
+      caption: 'Third-person\'s perspective.'
     },
   ],
   Perception: [
@@ -168,21 +163,29 @@ const featureCarouselImages = {
   ],
   'Mission Planning': [
     {
+      src: '/images/robosub2026/software-subsystems/bt-simple.png',
+      caption: 'A typical BT for a given task.'
+    },
+    {
       src: '/images/robosub2026/software-subsystems/nav-rect-animation.gif',
-      caption: 'Mission planning flow built around reusable behavior tree actions.'
+      caption: 'Flow built around reusable BT actions.'
+    },
+    {
+      src: '/images/robosub2026/software-subsystems/spatial1.png',
+      caption: 'Spatial perception and navigation.'
     },
   ],
-  Localisation: [
+  Localization: [
     {
       src: '/images/robosub2026/software-subsystems/corecont.png',
-      caption: 'EKF localisation fuses DVL and IMU data for stable odometry.'
+      caption: 'EKF localization fuses DVL and IMU data for stable odometry.'
     },
     {
       src: '/images/robosub2026/software-subsystems/ekf.png',
-      caption: 'Foxglove monitoring supported real-time localisation review.'
+      caption: 'Foxglove monitoring supported real-time localization review.'
     },
   ],
-  'Containerisation for Multi-Vehicle Deployment': [
+  'Containerization for Multi-Vehicle Deployment': [
     {
       src: '/images/robosub2026/software-subsystems/ros2.png',
       caption: 'ROS2'
@@ -215,28 +218,29 @@ function getSharedSoftwareSections(subsystem) {
     {
       title: 'Mission Planning',
       description: 'Similar to last year’s iterations, the Behavior Tree (BT) framework remains the core of our mission planning system. This year, we improved modularity by encapsulating complex tasks into higher-level actions, which simplifies debugging and results in a more intuitive monitoring interface.To translate these high-level mission goals into physical motion, we transitioned to the Nav2 stack. Nav2 leverages our new spatial perception data to handle dynamic path planning and obstacle avoidance, providing the vehicle with the agility required for complex, multi-objective maneuvers.',
-      bullets: subsystem.development
+      bullets: subsystem.development,
+      imageLayout: 'comparison'
     },
     {
-      title: 'Localisation',
+      title: 'Localization',
       description: 'To achieve greater navigation precision with reduced drift, we implemented an Extended Kalman Filter (EKF) to fuse data from our DVL and a new external IMU. Real-time monitoring via Foxglove Studio during pool tests confirmed that this results in a highly stable odometry stack, even during complex movements.',
       bullets: subsystem.development
     },
     {
-      title: 'Containerisation to Facilitate Multi-Vehicle Deployment',
+      title: 'Containerization to Facilitate Multi-Vehicle Deployment',
       description: '',
       subsections: [
         {
-          title: 'Docker Containerisation',
+          title: 'Docker Containerization',
           body: "To facilitate long-term development and seamless cross-platform testing, our entire software stack is containerized using Docker. This architecture abstracts dependencies away from individual host systems, ensuring a consistent environment whether code is running on a developer's laptop, a simulation machine, or the vehicle's onboard computer. Crucially, this containerized model enables simultaneous, seamless deployment across both of our physical vehicles. Because the core software stack remains completely identical, we can deploy the exact same container to either robot without modifying the underlying codebase.",
           image: {
             src: '/images/robosub2026/software-subsystems/docker-containerisation-dark.svg',
-            caption: 'Docker containerisation keeps the same software environment across machines and vehicles.'
+            caption: 'Docker containerization keeps the same software environment across machines and vehicles.'
           }
         },
         {
           title: 'Process Optimization',
-          body: 'To maximize onboard efficiency, we utilize ROS 2 Composable Nodes within our containers. By loading multiple nodes into a single process, we enable zero-copy memory sharing, which removes the CPU overhead of traditional message serialization. This reduction in computational load ensures our vehicles can run complex perception and navigation pipelines concurrently without hitting hardware bottlenecks.',
+          body: 'To maximize onboard efficiency, we utilize ROS2 Composable Nodes within our containers. By loading multiple nodes into a single process, we enable zero-copy memory sharing, which removes the CPU overhead of traditional message serialization. This reduction in computational load ensures our vehicles can run complex perception and navigation pipelines concurrently without hitting hardware bottlenecks.',
           image: {
             src: '/images/robosub2026/software-subsystems/ros2.png',
             caption: 'Composable nodes reduce overhead while running perception and navigation together.'
@@ -309,11 +313,15 @@ function getHydraMechanicalSections() {
     },
     {
       title: 'Gripper',
-      description: 'Hydra’s gripper uses a parallelogram mechanism to open and close. It uses a ROVmaker servo as the actuator. The gripper is much smaller than the previous version which uses a ball screw to actuate the gripper. The claw is made of silicon to improve grip and compliance.',
+      description: 'Hydra’s gripper uses a parallelogram mechanism to open and close. It uses a ROVMAKER servo as the actuator. The current version of the gripper is 35cm long, much smaller than the previous version which had used a ball screw to actuate the gripper. The gripper is controlled via a PWM signal. Further iterations will feature an improved silicon claw for increased grip and compliance. The design is highly compact, featuring ball bearings embedded within the struts as one single component.',
       bullets: [],
       images: [
         {
-          src: '/images/robosub2026/mechanical-subsystems/gripper1.png',
+          src: '/images/robosub2026/mechanical-subsystems/gripper1.jpg',
+          caption: 'Render of the gripper design.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/gripper2.png',
           caption: 'Gripper "activated".'
         }
       ]
@@ -324,61 +332,83 @@ function getHydraMechanicalSections() {
 function getKrakenMechanicalSections() {
   return [
     {
-      title: 'Kraken Frame',
-      description: 'Kraken mechanical work explores an experimental skeleton hull concept for rapid inspection, iteration, and validation.',
-      bullets: [
-        'Airfoil-inspired frame geometry',
-        'Acrylic skeleton concept',
-        'Simple assembly layout'
-      ],
+      title: '8-Thruster Configuration',
+      description: 'Kraken transitioned from the previous 6-thruster layout to a vectored 8-thruster configuration. This vectored architecture completely decouples the vertical and horizontal axes, yielding a highly stable hydrodynamic platform capable of precise, 6-degree-of-freedom (6-DOF) manoeuvring.',
+      bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/robosub2026-bots.jpg',
-          caption: 'Kraken mechanical layout placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/thrusters-render.png',
+          caption: 'Render of Kraken\'s 8-thrusters.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/thrusters-config.png',
+          caption: 'Kraken 8-thrusters layout.'
         }
       ]
     },
     {
-      title: 'Skeleton Hull',
-      description: 'This section is reserved for Kraken skeleton hull content, including frame geometry, material behavior, and design tradeoffs.',
+      title: 'Acrylic Skeletal Frame',
+      description: 'Kraken utilizes a novel, fully acrylic skeletal frame to provide primary structural integrity. Compared to previous 3D-printed load-bearing structures, this CNC machined acrylic chassis offers superior structural integrity while being easily modifiable in-house for highly cost-effective and rapid prototyping cycles. To optimize hydrodynamic performance, this skeletal frame is enveloped by a streamlined, 3D-printed shell for improved hydrodynamic movement.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_1.jpg',
-          caption: 'Kraken skeleton hull placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/aframe2.jpg',
+          caption: 'Mechanical members assembling the acrylic skeletal frame.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/aframe1.jpg',
+          caption: 'Waterproof testing with the frame.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/aframe3.jpg',
+          caption: 'Acrylic frame assembled!'
         }
       ]
     },
     {
-      title: 'Hull Material Validation',
-      description: 'This section is reserved for material validation notes, handling tests, pool observations, and manufacturing constraints.',
+      title: 'Hydrodynamics Optimization',
+      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 32% reduction in total drag when the outer skin and airfoil profiles are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
       bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/competition_img_2.jpg',
-          caption: 'Kraken material validation placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/cfd-before.png',
+          caption: 'CFD simulation without shell.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/cfd-after.jpg',
+          caption: 'CFD simulation with shell.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/cfd-results.png',
+          caption: 'CFD results table.'
         }
       ]
     },
     {
-      title: 'Torpedo Integration',
-      description: 'This section is reserved for Kraken torpedo mechanism layout, mounting approach, and validation plan.',
+      title: 'CNC Aluminum Electronics Enclosure Box',
+      description: 'The transition from a cylindrical main hull for key electrical systems to a custom machined aluminum electrical enclosure maximized space efficiency, modularity and ease of maintenance. This reduced the weight of our vehicle by reducing buoyancy from the large volumetric displacement of a traditional cylindrical hull, thereby decreasing the mass needed to maintain neutral buoyancy. This also built the foundation of a new electrical system layout that is easy to modify and maintain, by creating swappable mounting plates that can be freely removed and worked on without space constraints.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_3.jpg',
-          caption: 'Kraken torpedo integration placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/electbox1.png',
+          caption: 'Isometric view of Kraken electrical enclosure.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/electbox2.jpg',
+          caption: 'Real-life image of custom machined aluminum box.'
         }
       ]
     },
     {
-      title: 'Mechanical Iteration',
-      description: 'This section is reserved for assembly improvements, maintenance access, and mechanical iteration notes.',
+      title: 'Torpedo',
+      description: 'The previous friction-fit design was prone to wear-and-tear, occasionally resulting in premature launching before torpedo activation. Our new design uses a positive mechanical locking mechanism by fixing a T8 nut directly onto the propeller and a T8 lead screw onto the launcher. Upon activation, the propeller’s rotation should unscrew the nut from the stationary lead screw. This mechanism ensures a secure hold during the pre-launch phase followed by a seamless transition to forward flight once the threads are fully disengaged.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_4.jpg',
-          caption: 'Kraken mechanical iteration placeholder.'
+          src: '/images/robosub2026/mechanical-subsystems/torpedo1.png',
+          caption: 'Kraken\'s torpedo render.'
         }
       ]
     }
@@ -388,35 +418,68 @@ function getKrakenMechanicalSections() {
 function getSharedElectricalSections() {
   return [
     {
-      title: 'Power Distribution',
-      description: 'This shared electrical section is reserved for power distribution notes, wiring architecture, protection choices, and validation results.',
+      title: 'Battery Management System (BMS)',
+      description: 'ReRoute is a custom BMS engineered with a multi‑layer, hardware‑first safety architecture to keep the battery permanently within its safe operating zone. It combines a physical fuse for catastrophic fault protection with a resettable soft fuse using precision current sensing and comparator‑based cutoff. Dedicated hardware overvoltage and undervoltage protection, including undervoltage lockout, continuously monitors battery limits and enforces immediate disconnection when thresholds are exceeded. All critical protections are implemented in analog hardware, delivering fast, deterministic, and fail‑safe battery protection for high‑reliability applications.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_1.jpg',
-          caption: 'Shared electrical power distribution placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/bms1.png',
+          caption: 'Render of ReRoute BMS PCB.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/bms2.png',
+          caption: 'Testing of ReRoute BMS PCB.'
+        },
+      ]
+    },
+    {
+      title: 'Power Distribution Unit (PDU)',
+      description: 'The PDUC is a modular power distribution board is designed for high‑power applications where scalability, visibility, and flexibility are critical. Supporting a higher overall power budget, it features an expandable architecture that allows power channels to be added or tailored to system needs, while integrated monitoring provides real‑time insight into system performance and health. The board can be configured for both Actuator Electrical Subsystem (AESS) and Compute Electrical Subsystem (CESS) architectures, making it adaptable across different energy storage and system designs. Built for reliability and control, it delivers a robust foundation for demanding power distribution environments.',
+      bullets: [],
+      imageLayout: 'comparison',
+      images: [
+        {
+          src: '/images/robosub2026/electrical-subsystems/pduc-archi.png',
+          caption: 'PDUC overall architecture.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/cess-render.png',
+          caption: 'Render of CESS PDUC.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/aess-render.png',
+          caption: 'Render of AESS PDUC.'
         }
       ]
     },
     {
-      title: 'Sensor Integration',
-      description: 'This shared electrical section is reserved for camera, DVL, IMU, pressure sensor, and actuator feedback integration notes.',
+      title: 'Actuator Board',
+      description: 'The actuator board is built for fast, reliable power delivery to high‑demand actuators. Powered from a 4S input, it uses MOSFET‑based switching to provide clean, high‑current on/off control with rapid response times. The design minimizes latency and losses, ensuring actuators receive immediate power exactly when commanded. Simple, robust, and purpose‑built, this board is ideal for systems requiring precise, high‑speed actuator activation.',
       bullets: [],
       images: [
         {
-          src: '/competition/images/competition_img_2.jpg',
-          caption: 'Shared electrical sensor integration placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/actuator-render.png',
+          caption: 'Render of Actuator Board.'
         }
       ]
     },
     {
-      title: 'Enclosure and Cable Routing',
-      description: 'This shared electrical section is reserved for enclosure layout, connector planning, service access, and cable routing decisions.',
+      title: 'Acoustics',
+      description: 'Our acoustics system is able to do both acoustic localization and communication using the same system. To minimize latency, the system is designed with an edge-based architecture, moving most of the data processing closer to the data source. This greatly improves accuracy of both communication and localization.',
       bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
-          src: '/competition/images/competition_img_3.jpg',
-          caption: 'Shared electrical enclosure and routing placeholder.'
+          src: '/images/robosub2026/electrical-subsystems/acoustics1.png',
+          caption: 'Render of acoustics module.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/acoustics2.png',
+          caption: 'Acoustics system block diagram.'
+        },
+        {
+          src: '/images/robosub2026/electrical-subsystems/acoustics3.png',
+          caption: 'Acoustics software architecture.'
         }
       ]
     }
@@ -448,6 +511,22 @@ function isVideoMedia(media) {
 }
 
 function MediaModal({ media, onClose }) {
+  useEffect(() => {
+    if (!media) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [media, onClose]);
+
   if (!media) return null;
 
   return (
@@ -596,8 +675,9 @@ export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
           <div>
             <Link
               to="/robosub2026"
-              className="inline-flex text-sm font-semibold text-orange-300 hover:text-orange-200 transition-colors mb-8"
+              className="mb-8 inline-flex items-center gap-2 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow transition-all duration-200 hover:bg-[#d73a1a]"
             >
+              <FaChevronLeft className="text-xs" aria-hidden="true" />
               Back to RoboSub 2026
             </Link>
             <p className="text-lg text-gray-300 mb-3">{vehicle.name}</p>

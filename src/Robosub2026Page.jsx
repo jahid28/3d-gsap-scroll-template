@@ -6,24 +6,25 @@ import { Optimized3DViewer } from './components/Optimized3DViewer';
 const sharedSoftwareFeature = {
   title: 'Software',
   tag: 'Software',
-  description: 'Improved mission architecture for reusable task behaviors, tighter control loops, and faster simulation-to-pool iteration.',
+  description: 'To manage dual-AUV complexity, we utilized cross-platform Docker containerization for streamlined development and ROS2 composition to minimize latency and CPU overhead.',
   details: [
     'UnitySim',
     'Perception',
     'Mission Planning',
     'Localisation',
-    'Containerisation for Multi-Vehicle Deployment'
+    'Containerization for Multi-Vehicle Deployment'
   ]
 };
 
 const sharedElectricalFeature = {
   title: 'Electrical',
   tag: 'Electrical',
-  description: 'Cleaner electronics and sensor routing for cameras, navigation feedback, and task payloads inside a compact AUV package.',
+  description: 'This year’s electrical power distribution is engineered to deliver more power, greater intelligence, and flexibility.',
   details: [
-    'Dedicated routing paths for signal and power wiring',
-    'Sensor placement designed around autonomy requirements',
-    'More maintainable electronics access during testing'
+    'Battery Management System (BMS)',
+    'Power Distribution Unit (PDU)',
+    'Actuator Board',
+    'Acoustics',
   ]
 };
 
@@ -66,13 +67,15 @@ const vehicleTabs = {
     image: '/competition/images/robosub2026-bots.jpg',
     features: [
       {
-        title: 'Experimental Skeleton Hull',
+        title: 'Mechanical',
         tag: 'Mechanical',
-        description: 'An airfoil-inspired frame concept used to validate new hull geometry, materials, and assembly approaches.',
+        description: 'Kraken is an experimental platform for Mecatron to develop more mature manufacturing processes. Featuring an acrylic skeleton and a metal electrical box, Kraken aims to be more durable and maneuverable than our previous vehicles.',
         details: [
-          'Acrylic skeleton concept for rapid visual inspection',
-          'Frame geometry used to study drag and stiffness tradeoffs',
-          'Mechanically simple structure for iteration and testing'
+          '8-Thruster Configuration',
+          'Acrylic Skeletal Frame',
+          'Hydrodynamics Optimization',
+          'CNC Aluminum Electronics Enclosure Box',
+          'Torpedo'
         ],
         subpage: '/kraken/mechanical',
       },
