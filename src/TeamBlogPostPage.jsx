@@ -367,11 +367,11 @@ export default function TeamBlogPostPage() {
                       {section.versions.map((version) => (
                         <div
                           key={version.title}
-                          className={`grid grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 lg:items-center ${
-                            section.hideImages ? '' : 'lg:grid-cols-[1fr_26rem]'
+                          className={`grid grid-cols-1 gap-8 rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6 ${
+                            !section.hideImages && version.images?.length === 1 ? 'lg:grid-cols-[1fr_26rem] lg:items-center' : ''
                           }`}
                         >
-                          <div>
+                          <div className={!section.hideImages && version.images?.length > 1 ? 'mx-auto w-full max-w-4xl' : ''}>
                             <h3 className="text-xl sm:text-2xl font-bold text-orange-200">
                               {version.title}
                             </h3>
@@ -395,10 +395,14 @@ export default function TeamBlogPostPage() {
                             )}
                           </div>
 
-                          {!section.hideImages && (
+                          {!section.hideImages && version.images?.length === 1 && (
                             <div className="flex justify-center lg:justify-end">
                               <ImageCarousel images={version.images} />
                             </div>
+                          )}
+
+                          {!section.hideImages && version.images?.length > 1 && (
+                            <CaptionedImageGrid images={version.images} alignToText />
                           )}
                         </div>
                       ))}

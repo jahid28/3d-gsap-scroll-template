@@ -659,6 +659,73 @@ const posts = [
     ]
   },
   {
+    slug: 'power-line-communication',
+    title: 'Validation of Power Line Communication Module for Tether Communication',
+    tag: 'Software',
+    authors: 'Luc',
+    date: 'Dec 2025',
+    image: '/images/robosub2026/software-subsystems/blog9a-1.jpg',
+    description: 'Validation notes for upgrading tether communication from raw Ethernet to Power Line Communication.',
+    sections: [
+      {
+        heading: 'Power Line Communication Validation',
+        layout: 'versionedRows',
+        versions: [
+          {
+            title: 'Upgrading Our Tether Connection: From Raw Ethernet to PLC',
+            subtitle: 'Motivation',
+            body: 'Standard baseband Ethernet architectures suffer from severe attenuation and substantial bitrate degradation over extended transmission distances. To mitigate this signal loss, we evaluated a Power Line Communication (PLC) module. By utilizing active voltage modulation, the PLC protocol enables robust high-frequency signal propagation over long-distance tethers.',
+            details: [],
+            images: [
+              {
+                src: '/images/robosub2026/software-subsystems/blog9a-1.jpg',
+              }
+            ]
+          },
+          {
+            title: 'The Testing Set-Up',
+            subtitle: 'Validation method',
+            body: 'The test setup was designed to evaluate whether PLC could reliably support real-time video transmission across the tether.',
+            details: [
+              {
+                label: 'Hardware',
+                body: 'Direct tethered connection between the Jetson Orin NX and a host computer.'
+              },
+              {
+                label: 'Payload',
+                body: 'Real-time camera video stream.'
+              },
+              {
+                label: 'Metrics',
+                body: 'Quantitative bitrate (Mbps) and qualitative visual lag/smoothness of the camera feed observable from the host computer screen.'
+              }
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/software-subsystems/blog9a-2.jpg',
+              }
+            ]
+          },
+          {
+            title: 'Key Findings',
+            subtitle: 'Bandwidth and performance',
+            body: 'Transitioning to the PLC protocol yielded an approximately 10-fold increase in available bandwidth, elevating sustained bitrate from ~10 Mbps to ~100 Mbps.',
+            images: [
+              {
+                src: '/images/robosub2026/software-subsystems/blog9a-3.gif',
+                caption: 'At maximum bandwidth utilization, the system successfully sustained a smooth 1920 x 1080 Full HD video stream at 15 fps without transport-layer degradation or observable frame drops.'
+              },
+              {
+                src: '/images/robosub2026/software-subsystems/blog9a-4.gif',
+                caption: 'At a resolution of 640 x 480 VGA, the system demonstrated highly stable, low-latency performance while maintaining a standard fluid frame rate of 30 frames per second.'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     slug: 'software-different-stack-experiment',
     title: 'Experimenting with Different Navigation Stacks',
     tag: 'Software',
