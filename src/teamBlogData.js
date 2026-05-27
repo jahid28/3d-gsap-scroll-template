@@ -16,12 +16,12 @@ const defaultSections = (post) => [
 const posts = [
   {
     slug: 'hydra-frame',
-    title: 'Hydra Frame',
+    title: 'Hydra Frame Development',
     tag: 'Mechanical',
-    authors: 'Tim',
-    date: 'Jan 2026',
+    authors: 'Timothy',
+    date: 'Sep 2025 - Apr 2026',
     image: '/competition/images/robosub2026-bots.jpg',
-    description: "Design and build notes for Hydra's frame, packaging, and structural layout.",
+    description: "Design and build notes for Hydra's structural layout.",
     sections: [
       {
         heading: 'Overview',
@@ -39,7 +39,7 @@ const posts = [
   },
   {
     slug: 'kraken-frame',
-    title: 'Kraken Frame',
+    title: 'Kraken Frame Iterations',
     tag: 'Mechanical',
     authors: 'Isaac',
     date: 'Jan 2026',
@@ -64,7 +64,7 @@ const posts = [
     slug: 'electronics-enclosure-cnc-box',
     title: 'Electronics Enclosure CNC Box',
     tag: 'Mechanical',
-    authors: 'Max, Akil',
+    authors: 'Maximus, Akil',
     date: 'Jan 2026',
     image: '/competition/images/competition_img_1.jpg',
     description: 'Internal notes on the CNC electronics enclosure design, manufacturing, and fit checks.',
@@ -85,24 +85,29 @@ const posts = [
   },
   {
     slug: 'gripper',
-    title: 'Gripper',
+    title: 'In-House CNC Aluminum Anodization Attempt',
     tag: 'Mechanical',
     authors: 'Arthur',
-    date: 'Jan 2026',
-    image: '/competition/images/competition_img_2.jpg',
-    description: 'Design notes for the gripper mechanism and its vehicle integration.',
+    date: 'Mar 2026',
+    image: '/images/robosub2026/mechanical-subsystems/cnc.png',
+    description: 'A diary note on our attempt to anodize Hydra electrical enclosure endplate material in-house.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Gripper overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Gripper development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Gripper next steps here.'
+        heading: 'Anodization Diary',
+        layout: 'diaryPages',
+        entries: [
+          {
+            date: '1 Mar 2026',
+            weather: 'Cloudy',
+            shortTitle: 'In-House Aluminum Anodization Attempt',
+            body: 'Today we attempted to anodize our own aluminum plate, which would be used as an endplate for Hydra’s electrical enclosure. This was done by creating an acidic electrolyte solution using vinegar as the acid and aluminum foil on the cathode. Initially, the anodized layer formed very smoothly on the component surface, but after 30 minutes the surface roughness became extremely high, compromising sealing. This is likely due to vinegar being an inadequate electrolyte. After this experiment, we concluded that we will likely get an external company to handle anodization.',
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/cnc.png',
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -214,7 +219,6 @@ const posts = [
         images: [
           {
             src: '/images/robosub2026/mechanical-subsystems/dropper1.png',
-            caption: 'Six dropper iterations placeholder.'
           }
         ],
         items: [
@@ -438,7 +442,7 @@ const posts = [
   },
   {
     slug: 'pdu-pcb',
-    title: 'Elec PCB1: PDU',
+    title: 'Electrical PCB1: PDU',
     tag: 'Electrical',
     authors: 'Scott',
     date: 'Jan 2026',
@@ -461,7 +465,7 @@ const posts = [
   },
   {
     slug: 'acoustics-pcb',
-    title: 'Elec PCB2: Acoustics',
+    title: 'Electrical PCB2: Acoustics',
     tag: 'Electrical',
     authors: 'Scott',
     date: 'Jan 2026',
@@ -484,48 +488,74 @@ const posts = [
   },
   {
     slug: 'software-different-stack-experiment',
-    title: 'SW Experiment With Different Stack',
+    title: 'Experimenting with Different Navigation Stacks',
     tag: 'Software',
-    authors: 'Bao',
+    authors: 'Poh Hian',
     date: 'Jan 2026',
-    image: '/competition/images/competition_img_2.jpg',
-    description: 'Software experiment notes comparing stack choices and development tradeoffs.',
+    image: '/images/robosub2026/software-subsystems/spatial-perception.png',
+    description: 'The team evaluated three navigation stacks: Aerostack2, a custom in-house implementation, and Nav2.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'SW Experiment With Different Stack overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'SW Experiment With Different Stack development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'SW Experiment With Different Stack next steps here.'
+        heading: 'Stack Comparison',
+        layout: 'versionedRows',
+        hideImages: true,
+        versions: [
+          {
+            title: 'Aerostack2',
+            subtitle: 'Autonomous aerial robotics stack',
+            body: 'Aerostack2 provides software components for autonomous aerial robotics, including state estimation and motion control. Its native six degrees of freedom (6-DOF) align with Autonomous Underwater Vehicle (AUV) kinematics, facilitating potential application.',
+            details: [
+              {
+                label: 'Limitation',
+                body: 'The stack remains in early-stage development, features limited planners and controllers, lacks robust community support, and requires significant modification for system integration.'
+              }
+            ],
+            images: []
+          },
+          {
+            title: 'Custom In-House Stack',
+            subtitle: 'Full system ownership',
+            body: 'Developing a custom in-house stack ensures complete system compatibility.',
+            details: [
+              {
+                label: 'Tradeoff',
+                body: 'Engineering a comprehensive navigation architecture from scratch requires prohibitive resource allocation.'
+              }
+            ],
+            images: []
+          },
+          {
+            title: 'Nav2',
+            subtitle: 'Selected navigation framework',
+            body: 'Nav2 is an optimized successor to the ROS Navigation Stack designed for mobile and surface robotics. Although natively restricted to two-dimensional (2D) navigation, its operational maturity and extensive library of baseline planners and controllers present a definitive advantage.',
+            details: [
+              {
+                label: 'Decision',
+                body: 'The team selected Nav2 and is currently extending its framework to support 3D navigation via its plugin architecture.'
+              }
+            ],
+            images: []
+          }
+        ]
       }
     ]
   },
   {
     slug: 'software-operator-pov',
-    title: 'SW Operator POV Screens',
+    title: 'Pool Testing: Operator POV',
     tag: 'Software',
-    authors: 'PH',
+    authors: 'Poh Hian',
     date: 'Jan 2026',
-    image: '/competition/images/competition_img_4.jpg',
+    image: '/images/robosub2026/software-subsystems/simulation-11.png',
     description: 'Annotated operator POV screenshots showing the software interface and runtime context.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'SW Operator POV Screens overview text here.'
+        heading: 'Pool Test POV',
+        layout: 'centeredImageBelow',
+        hideCaption: true,
+        imageWidth: 'text',
+        body: 'During every pool test, each vehicle is monitored by two operators. The primary operator manages main systems, including behaviour tree tuning and navigation control on Screen 1, while overseeing system health via Foxglove on Screen 2. The secondary operator acts as a second brain to the primary, assisting with tuning and handling immediate post-run rosbag review on another dedicated laptop. A rosbag is recorded after each mission run for this purpose.'
       },
-      {
-        heading: 'Development Notes',
-        body: 'SW Operator POV Screens development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'SW Operator POV Screens next steps here.'
-      }
     ]
   }
 ];
