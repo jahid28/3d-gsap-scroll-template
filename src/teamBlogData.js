@@ -62,24 +62,128 @@ const posts = [
   },
   {
     slug: 'electronics-enclosure-cnc-box',
-    title: 'Electronics Enclosure CNC Box',
+    title: 'Custom Machined Box Enclosure & Pseudo-Hotswappable Electronics Enclosure',
     tag: 'Mechanical',
     authors: 'Maximus, Akil',
-    date: 'Jan 2026',
+    date: 'Nov 2025 - Mar 2026',
     image: '/competition/images/competition_img_1.jpg',
     description: 'Internal notes on the CNC electronics enclosure design, manufacturing, and fit checks.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Electronics Enclosure CNC Box overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Electronics Enclosure CNC Box development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Electronics Enclosure CNC Box next steps here.'
+        heading: 'CNC Electronics Enclosure Development',
+        layout: 'subsectionImageGrid',
+        subsections: [
+          {
+            title: 'Motivations for Designing a Custom Machined Aluminum Main Hull',
+            period: 'Nov 2025',
+            body: 'The transition from a cylindrical main hull for key electrical systems to a custom machined aluminum electrical enclosure was a conscious engineering decision made with the purpose of maximising space efficiency, modularity and ease of maintenance. We set out to achieve this for two reasons.',
+            highlights: [
+              {
+                label: 'Reduce Vehicle Weight',
+                body: 'To reduce the weight of our vehicle by reducing buoyancy brought forth from the large volumetric displacement of a traditional cylindrical hull, in turn cutting the mass needed to maintain neutral buoyancy.'
+              },
+              {
+                label: 'Improve Electrical Maintainability',
+                body: 'To build the foundation of an electrical system layout that is easy to modify and maintain by creating swappable mounting plates that can be freely removed and worked on without space constraints.'
+              }
+            ],
+            images: [
+            ]
+          },
+          {
+            title: 'Developing the First Version of the Custom Enclosure',
+            period: 'Dec 2025',
+            collapsible: true,
+            blocks: [
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-1.jpg' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-2.jpg' }
+                ],
+                body: 'First iterations of the CAD design for the custom enclosure involved rough estimations of the required dimensional space for electrical assembly of our core components. To improve space efficiency and utilisation, vertical mounting layout of components was experimented with to evaluate the feasibility of a layered electrical layout. To maintain a compact hull, a 250 x 150 x 150mm aluminium enclosure was designed with 10mm thick walls to enclose mission critical equipment.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-3.png' }
+                ],
+                body: 'Combining the use of a face and axial o-ring seal to create the essential waterproof seal to protect internal components was first considered as a compromise between the reliability of a double axial seal enclosure and the convenience of installation using a face seal. By maintaining 2 types of o-ring seals, a safety net can be maintained when one seal fails.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-4.jpg' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-5.png' }
+                ],
+                body: 'Testing of the seal using a 3D printed mockup of the box enclosure however proved that the clamp system meant to secure the enclosure was unable to provide enough force to maintain a viable face seal with the enclosure. A quick mockup also allowed us to verify the viability of the space allowance for our electrical components.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-6.jpg' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-7.png' }
+                ],
+                body: 'The electronics enclosure is developed in parallel to provide a platform for our electrical team to build and maintain our electrical subsystems with complete freedom.Electronic “plates” are designed to be pulled out of a rail mount that can be freely worked on.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-8.jpg' }
+                ],
+                body: 'A mockup featuring a 3D-printed partial prototype of the proposed box enclosure and electronics bay gave a brief insight into the assembly process.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-9.png' }
+                ],
+                body: 'The o-ring groove design was revised to feature 2 axial seal o-rings, maximizing the pressure rating the enclosure is able to withstand.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3-10.png' }
+                ],
+                body: 'Finite Element Analysis (FEA) was carried out to verify that the new enclosure is able to handle hydrostatic pressure demands expected of mission requirements.'
+              }
+            ],
+          },
+          {
+            title: 'Fabricating the Custom Enclosure - First Version',
+            period: 'Jan 2026',
+            collapsible: true,
+            blocks: [
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3b-1.jpg' }
+                ],
+                body: 'The first iteration of the new custom enclosure approach was fabricated to verify the effectiveness of the current design approach we have chosen to adopt and identify problems with assembly and implementation into Kraken’s mainframe.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3b-2.jpg' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3b-3.jpg' }
+                ],
+                body: 'Integrating the electronics bay with the new custom aluminium chassis required highly intentional wire routing to ensure good cable management. It proved to be incredibly helpful to our electrical engineers for clear cable routing that is easy to maintain and troubleshoot.'
+              },
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3b-4.png' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3b-5.png' }
+                ],
+                body: 'Initially we developed a flat stand to hold the electronics bay on top of the aluminium enclosure, but after feedback from our hardware engineers, we designed an adjustable stand which can either be laid flat or rotated at an angle to provide easier access to the components and penetrators underneath.'
+              },
+            ]
+          },
+          {
+            title: 'Upgrades for the Next Version of the Custom Enclosure',
+            period: 'Mar 2026',
+            collapsible: true,
+            blocks: [
+              {
+                images: [
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3c-1.png' },
+                  { src: '/images/robosub2026/mechanical-subsystems/blog3c-2.png' }
+                ],
+                body: 'Other feedback received while working with this new platform included the lack of visibility of internal systems to verify hardware system integrity and status, active maintenance was also a challenge with the box enclosure design as it involved extensive manpower and effort to open and close the box enclosure. So to streamline the maintenance process, the o-ring groove lid design was reengineered to utilise minimal tools and manpower by taking advantage of a o-ring face seals and a new windowed lid to alleviate the challenges faced by the team.'
+              },
+            ]
+          }
+        ]
       }
     ]
   },

@@ -59,6 +59,84 @@ function SectionImagePanel({ images, hideCaption = false, fill = false }) {
   );
 }
 
+function CaptionedImageGrid({ images = [], alignToText = false }) {
+  if (!images.length) return null;
+
+  const columnClass = images.length === 1
+    ? 'grid-cols-1'
+    : images.length === 2
+      ? 'grid-cols-1 md:grid-cols-2'
+      : 'grid-cols-1 md:grid-cols-3';
+  const widthClass = alignToText
+    ? 'max-w-4xl'
+    : images.length === 1
+      ? 'max-w-3xl'
+      : images.length === 2
+        ? 'max-w-5xl'
+        : 'max-w-6xl';
+
+  return (
+    <div className={`mx-auto grid w-full gap-5 ${columnClass} ${widthClass}`}>
+      {images.map((image) => (
+        <figure key={`${image.src}-${image.caption}`} className="overflow-hidden rounded-xl border border-white/15 bg-black/30">
+          <div className="aspect-video bg-black/30">
+            <img
+              src={image.src}
+              alt={image.alt ?? image.caption}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          {image.caption && (
+            <figcaption className="bg-black/65 px-4 py-3 text-center text-sm sm:text-base text-white">
+              {image.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+function TextBlock({ body, className = '' }) {
+  const paragraphs = Array.isArray(body) ? body : [body];
+
+  return (
+    <div className={`space-y-4 ${className}`}>
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph} className="text-justify text-base sm:text-lg leading-relaxed text-gray-200">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function SubsectionContent({ subsection }) {
+  if (subsection.blocks) {
+    return (
+      <div className="space-y-10">
+        {subsection.blocks.map((block, index) => (
+          <div key={`${subsection.title}-block-${index}`}>
+            {block.images?.length === 1 ? (
+              <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 lg:grid-cols-[1fr_20rem] lg:items-center">
+                <TextBlock body={block.body} />
+                <CaptionedImageGrid images={block.images} />
+              </div>
+            ) : (
+              <>
+                <CaptionedImageGrid images={block.images} alignToText />
+                <TextBlock body={block.body} className={block.images?.length ? 'mx-auto mt-5 max-w-4xl' : ''} />
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return <TextBlock body={subsection.body} />;
+}
+
 export default function TeamBlogPostPage() {
   const { slug } = useParams();
   const post = blogPosts.find((item) => item.slug === slug) ?? blogPosts[0];
@@ -443,6 +521,117 @@ export default function TeamBlogPostPage() {
                       <div className={section.imageWidth === 'text' ? 'w-full max-w-4xl [&>div]:max-w-none' : ''}>
                         <ImageCarousel images={getSectionImages(post, section)} />
                       </div>
+                    </div>
+                  </div>
+                </section>
+              );
+            }
+
+            if (section.layout === 'subsectionImageGrid') {
+              return (
+                <section
+                  key={section.heading}
+                  className="rounded-lg border border-white/15 bg-white/10 p-5 sm:p-8 shadow-xl shadow-black/20"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <h2 className="text-center text-2xl sm:text-3xl font-bold text-orange-500 mb-8">
+                      {section.heading}
+                    </h2>
+                    <div className="space-y-8">
+                      {section.subsections.map((subsection) => {
+                        const subsectionKey = `${section.heading}-${subsection.title}`;
+                        const isOpen = !subsection.collapsible || Boolean(openPanels[subsectionKey]);
+                        const content = subsection.images?.length === 1 ? (
+                          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_26rem] lg:items-center">
+                            <div>
+                              <SubsectionContent subsection={subsection} />
+                              {subsection.highlights && (
+                                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                  {subsection.highlights.map((highlight) => (
+                                    <div key={highlight.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
+                                      <h4 className="text-base font-bold text-orange-200">
+                                        {highlight.label}
+                                      </h4>
+                                      <p className="mt-2 text-justify text-sm sm:text-base leading-relaxed text-gray-200">
+                                        {highlight.body}
+                                      </p>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                            <CaptionedImageGrid images={subsection.images} />
+                          </div>
+                        ) : (
+                          <>
+                            <div className="mb-6">
+                              <SubsectionContent subsection={subsection} />
+                            </div>
+                            {subsection.highlights && (
+                              <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                {subsection.highlights.map((highlight) => (
+                                  <div key={highlight.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
+                                    <h4 className="text-base font-bold text-orange-200">
+                                      {highlight.label}
+                                    </h4>
+                                    <p className="mt-2 text-justify text-sm sm:text-base leading-relaxed text-gray-200">
+                                      {highlight.body}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            <CaptionedImageGrid images={subsection.images} />
+                          </>
+                        );
+
+                        return (
+                          <section
+                            key={subsection.title}
+                            className="rounded-lg border border-white/10 bg-black/20 p-5 sm:p-6"
+                          >
+                            {subsection.collapsible ? (
+                              <button
+                                type="button"
+                                onClick={() => togglePanel(subsectionKey)}
+                                className="flex w-full items-center justify-between gap-4 text-left"
+                                aria-expanded={isOpen}
+                              >
+                                <div>
+                                  <h3 className="text-xl sm:text-2xl font-bold text-orange-200">
+                                    {subsection.title}
+                                  </h3>
+                                  {subsection.period && (
+                                    <p className="mt-2 text-sm sm:text-base font-semibold text-orange-100">
+                                      {subsection.period}
+                                    </p>
+                                  )}
+                                </div>
+                                <span className="shrink-0 text-sm text-orange-200" aria-hidden="true">
+                                  {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+                                </span>
+                              </button>
+                            ) : (
+                              <>
+                                <h3 className="text-xl sm:text-2xl font-bold text-orange-200 mb-3">
+                                  {subsection.title}
+                                </h3>
+                                {subsection.period && (
+                                  <p className="mb-3 text-sm sm:text-base font-semibold text-orange-100">
+                                    {subsection.period}
+                                  </p>
+                                )}
+                              </>
+                            )}
+
+                            {isOpen && (
+                              <div className={subsection.collapsible ? 'mt-6 border-t border-white/10 pt-5' : ''}>
+                                {content}
+                              </div>
+                            )}
+                          </section>
+                        );
+                      })}
                     </div>
                   </div>
                 </section>
