@@ -112,20 +112,69 @@ const posts = [
     tag: 'Electrical',
     authors: 'Arthur',
     date: 'Feb 2026 - May 2026',
-    image: '/competition/images/competition_img_3.jpg',
-    description: 'Acoustics subsystem notes covering sensing, signal flow, and integration plans.',
+    image: '/images/robosub2026/electrical-subsystems/acoustics-blog-1.jpg',
+    description: 'Developed and validated the vehicle’s acoustic subsystem through hydrophone testing, underwater transmission experiments, full-system integration, and pool-based acoustic profiling.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Acoustics overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Acoustics development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Acoustics next steps here.'
+        heading: 'Acoustics Development Diary',
+        layout: 'diaryPages',
+        entries: [
+          {
+            date: '19 Feb 2026',
+            weather: 'Sunny',
+            shortTitle: 'Setting up hydrophone and pre-amplifier circuits',
+            body: 'Today I started work on hooking up a circuit to analyze the output of the hydrophones. It comprises a hydrophone, pre-amplifier and a 9-volt power supply. The amplified output signal was then sampled by our lab oscilloscope which is also able to do Fast Fourier Transform (FFT) to display the frequencies detected by the hydrophone. In this test, we used the pinger at 20-45kHz in 5kHz increments as the signal source. The hydrophone was able to pick up these frequencies easily.',
+            images: [
+              {
+                src: '/images/robosub2026/electrical-subsystems/acoustics-blog-1.jpg',
+              }
+            ]
+          },
+          {
+            date: '25 Feb 2026',
+            weather: 'Cloudy',
+            shortTitle: 'Testing of buzzer as acoustic transmitter',
+            body: 'Today I tested the piezo-tranducer buzzers which we believe were most suitable for transmitting acoustic waves underwater. We generated an acoustic signal by generating a square wave signal with a teensy which translated to vibrations on the buzzer, generating a tone. The test was successful and we were able to detect a very strong signal from the hydrophone even without an amplifier. We did notice that upon initial submersion, air bubbles in the buzzer generated many stray frequencies and harmonics but these mostly cleared up with prolonged submersion. We tried to generate waves in the water to mimic those seen in the pool and they seem to have minimal impact on the performance of the system.',
+            images: [
+              {
+                src: '/images/robosub2026/electrical-subsystems/acoustics-blog-2.gif',
+              }
+            ]
+          },
+          {
+            date: '12 Mar 2026',
+            weather: 'Rainy',
+            shortTitle: 'Pool validation',
+            body: 'Today we did pool test validation of the acoustic system. I have hooked up a prototype system on the receiver end including a teensy for data acquisition. Initial tests in the lab pool showed that this setup was able to detect the pinger signal very strongly. I brought the set up to the pool to see the range of the system. The test showed that the system is able to receive the pinger signal from up to 20m away.',
+            images: [
+              {
+                src: '/images/robosub2026/electrical-subsystems/acoustics-blog-3.png',
+              }
+            ]
+          },
+          {
+            date: '23 Apr 2026',
+            weather: 'Sunny',
+            shortTitle: 'Cylinder and Vehicle integration',
+            body: 'Today I completed the final electrical setup for the acoustic system which was integrated into a cylinder. Power was provided by the main vehicle power distribution unit. I also tested serial communication with the Jetson computer in the main vehicle cylinder. Tests were all successful.',
+            images: [
+              {
+                src: '/images/robosub2026/electrical-subsystems/acoustics-blog-4.jpg',
+              }
+            ]
+          },
+          {
+            date: '2 May 2026',
+            weather: 'Cloudy',
+            shortTitle: 'Acoustic profiling of pool environment',
+            body: 'Today I completed acoustic profiling of the pool environment with the vehicle running. The tests showed that the pool environment has a lot of acoustic noise below 5kHz and the thrusters generated a lot of noise between 20-25kHz depending on the rotation speed. Hence these channels must be avoided when I implement acoustic communication.',
+            images: [
+              {
+                src: '/images/robosub2026/electrical-subsystems/acoustics-blog-5.jpg',
+              }
+            ]
+          }
+        ]
       }
     ]
   },
