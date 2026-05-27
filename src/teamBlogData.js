@@ -587,47 +587,74 @@ const posts = [
   },
   {
     slug: 'pdu-pcb',
-    title: 'Electrical PCB1: PDU',
+    title: 'Design and Testing of Power Systems',
     tag: 'Electrical',
     authors: 'Scott',
     date: 'Jan 2026',
-    image: '/competition/images/competition_img_1.jpg',
+    image: '/images/robosub2026/electrical-subsystems/blog8-2.png',
     description: 'Power distribution unit PCB notes, including design intent, bring-up, and testing.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Elec PCB1: PDU overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Elec PCB1: PDU development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Elec PCB1: PDU next steps here.'
+        heading: 'Power System Design',
+        layout: 'blockImageStory',
+        blocks: [
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog8-1.png' },
+              { src: '/images/robosub2026/electrical-subsystems/blog8-2.png' }
+            ],
+            body: 'In early iterations of our Power Distribution Units (PDUs), each electrical subsystem, then LV and HV, now CESS and AESS, used custom-designed boards tailored to specific needs such as voltage regulation or high-power thruster outputs. To reduce complexity and improve modularity, we introduced a shared, monitored PDU in December 2025, alongside a dedicated actuator board capable of delivering power to actuators on command.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog8-3.png' },
+              { src: '/images/robosub2026/electrical-subsystems/blog8-4.gif' }
+            ],
+            body: 'These prototypes informed the development of our final modular base PDU (PDUC) in February 2026, which features on-board power monitoring, modular daughterboards for regulation and actuation, breakout power outputs, and an increased power bandwidth from 30A to 50A.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog8-5.png' }
+            ],
+            body: 'We also upgraded battery protection by replacing a simple inline fuse with a dedicated BMS board, ReRoute, providing layered overcurrent, overvoltage, and undervoltage protection. This improvement was driven by real-world faults encountered during RoboSub 2025.'
+          }
+        ]
       }
     ]
   },
   {
     slug: 'acoustics-pcb',
-    title: 'Electrical PCB2: Acoustics',
+    title: 'In-House Development of Acoustics Systems',
     tag: 'Electrical',
     authors: 'Scott',
     date: 'Jan 2026',
-    image: '/competition/images/competition_img_3.jpg',
-    description: 'Acoustics PCB notes covering board design, signal handling, and subsystem testing.',
+    image: '/images/robosub2026/electrical-subsystems/blog9-4.png',
+    description: 'Developed the acoustics system from a COTS-based prototype into a compact integrated platform with onboard MCU processing.',
     sections: [
       {
-        heading: 'Overview',
-        body: 'Elec PCB2: Acoustics overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Elec PCB2: Acoustics development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Elec PCB2: Acoustics next steps here.'
+        heading: 'Acoustics System Design',
+        layout: 'blockImageStory',
+        blocks: [
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog9-1.png' },
+            ],
+            body: 'In the initial iteration of our acoustics system, we leveraged a commercial off-the-shelf (COTS) preamplifier paired with a custom-designed power amplifier. The amplified signal was fed into a Teensy MCU for data acquisition, while a separate single-board computer (SBC) handled time-difference-of-arrival (TDoA) processing.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog9-2.png' },
+            ],
+            body: 'As the system matured, we re-architected the software to shift all signal processing and calculations onto the MCU itself. This edge-based approach significantly reduced both computational load and data transmission overhead, resulting in a more efficient and streamlined system.'
+          },
+          {
+            images: [
+              { src: '/images/robosub2026/electrical-subsystems/blog9-3.png' },
+              { src: '/images/robosub2026/electrical-subsystems/blog9-4.png' },
+            ],
+            body: 'To support this transition, we designed multiple development boards that integrated the acoustic power stage, preamplifier, and tone decoder. These development kits were designed to interface with different microcontroller platforms, including Teensy and ESP32, resulting in three distinct devkit variants. The final production design builds upon these development platforms, consolidating the full system into a compact, self-enclosed cylindrical form factor.'
+          }
+        ]
       }
     ]
   },
