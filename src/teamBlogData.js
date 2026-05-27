@@ -111,7 +111,7 @@ const posts = [
     title: 'Acoustics',
     tag: 'Electrical',
     authors: 'Arthur',
-    date: 'Jan 2026',
+    date: 'Feb 2026 - May 2026',
     image: '/competition/images/competition_img_3.jpg',
     description: 'Acoustics subsystem notes covering sensing, signal flow, and integration plans.',
     sections: [

@@ -60,8 +60,8 @@ const krakenSpecifications = [
     bullets: ["Length: 0.61m","Width: 0.61m", "Height: 0.27m"]
   },
   {
-    title: "Mass & Top Speed",
-    bullets: ["Mass: 21kg in Air", "Top Speed: 1 m/s"]
+    title: "Mass",
+    bullets: ["Mass: 21kg in Air"]
   },
   {
     title: "Degrees of Freedom",
