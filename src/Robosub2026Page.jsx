@@ -66,13 +66,15 @@ const vehicleTabs = {
     image: '/competition/images/robosub2026-bots.jpg',
     features: [
       {
-        title: 'Experimental Skeleton Hull',
+        title: 'Mechanical',
         tag: 'Mechanical',
-        description: 'An airfoil-inspired frame concept used to validate new hull geometry, materials, and assembly approaches.',
+        description: '12345 An airfoil-inspired frame concept used to validate new hull geometry, materials, and assembly approaches.',
         details: [
-          'Acrylic skeleton concept for rapid visual inspection',
-          'Frame geometry used to study drag and stiffness tradeoffs',
-          'Mechanically simple structure for iteration and testing'
+          '8-Thruster Configuration',
+          'Acrylic Skeletal Frame',
+          'Hydrodynamics Optimization',
+          'CNC Aluminum Electronics Enclosure Box',
+          'Torpedo'
         ],
         subpage: '/kraken/mechanical',
       },

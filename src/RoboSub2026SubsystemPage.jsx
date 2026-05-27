@@ -105,34 +105,28 @@ const subsystemPages = {
       software: {
         label: 'Software',
         title: 'Software Subsystems',
-        summary: '',
+        summary:
+          'Hydra software development focuses on reusable mission behaviors, tighter control, and faster iteration from simulation to pool testing.',
         highlights: [
-          'Mission testing platform for experimental task behaviors',
-          'Perception pipeline validation before competition integration',
-          'Control behavior testing under repeatable pool conditions',
-          'Useful sandbox for testing changes before merging into Hydra flow'
         ],
         development: [
-          'Create focused test missions for each experimental feature',
-          'Compare perception results across bench, simulation, and pool data',
-          'Promote proven behavior into the shared RoboSub software stack'
         ]
       },
       electrical: {
         label: 'Electrical',
         title: 'Electrical Subsystems',
         summary:
-          'Kraken electrical development supports actuator validation, instrumentation, and clean integration for experimental payloads.',
+          'Hydra electrical work centers on clean power distribution, sensor routing, and maintainable electronics inside a smaller vehicle envelope.',
         highlights: [
-          'Electronics layout prepared for actuator control experiments',
-          'Wiring access designed around repeated bench and pool tests',
-          'Power and signal planning for torpedo deployment validation',
-          'Sensor integration support for experimental mission trials'
+          'Organized signal and power paths to reduce service confusion',
+          'Sensor placement planned around cameras, navigation, and task payloads',
+          'Electronics access designed for faster debugging between pool runs',
+          'Integration support for dropper, gripper, and vehicle feedback systems'
         ],
         development: [
-          'Bench-test actuator control before in-water validation',
-          'Keep electronics access open for fast iteration',
-          'Log electrical behavior during repeated mechanism tests'
+          'Map electronics placement against mechanical access zones',
+          'Prepare wiring routes for cameras, navigation sensors, and actuators',
+          'Run bench checks before full vehicle integration'
         ]
       },
     }
@@ -309,11 +303,15 @@ function getHydraMechanicalSections() {
     },
     {
       title: 'Gripper',
-      description: 'Hydra’s gripper uses a parallelogram mechanism to open and close. It uses a ROVmaker servo as the actuator. The gripper is much smaller than the previous version which uses a ball screw to actuate the gripper. The claw is made of silicon to improve grip and compliance.',
+      description: 'Hydra’s gripper uses a parallelogram mechanism to open and close. It uses a ROVMAKER servo as the actuator. The current version of the gripper is 35cm long, much smaller than the previous version which had used a ball screw to actuate the gripper. The gripper is controlled via a PWM signal. Further iterations will feature an improved silicon claw for increased grip and compliance. The design is highly compact, featuring ball bearings embedded within the struts as one single component.',
       bullets: [],
       images: [
         {
-          src: '/images/robosub2026/mechanical-subsystems/gripper1.png',
+          src: '/images/robosub2026/mechanical-subsystems/gripper1.jpg',
+          caption: 'Render of the gripper design.'
+        },
+        {
+          src: '/images/robosub2026/mechanical-subsystems/gripper2.png',
           caption: 'Gripper "activated".'
         }
       ]
@@ -324,61 +322,66 @@ function getHydraMechanicalSections() {
 function getKrakenMechanicalSections() {
   return [
     {
-      title: 'Kraken Frame',
-      description: 'Kraken mechanical work explores an experimental skeleton hull concept for rapid inspection, iteration, and validation.',
-      bullets: [
-        'Airfoil-inspired frame geometry',
-        'Acrylic skeleton concept',
-        'Simple assembly layout'
-      ],
-      images: [
-        {
-          src: '/competition/images/robosub2026-bots.jpg',
-          caption: 'Kraken mechanical layout placeholder.'
-        }
-      ]
-    },
-    {
-      title: 'Skeleton Hull',
-      description: 'This section is reserved for Kraken skeleton hull content, including frame geometry, material behavior, and design tradeoffs.',
+      title: '8-Thruster Configuration',
+      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken thruster configuration writeup.',
       bullets: [],
+      imageLayout: 'comparison',
       images: [
         {
           src: '/competition/images/competition_img_1.jpg',
-          caption: 'Kraken skeleton hull placeholder.'
-        }
-      ]
-    },
-    {
-      title: 'Hull Material Validation',
-      description: 'This section is reserved for material validation notes, handling tests, pool observations, and manufacturing constraints.',
-      bullets: [],
-      images: [
+          caption: 'Kraken thruster configuration placeholder.'
+        },
         {
           src: '/competition/images/competition_img_2.jpg',
-          caption: 'Kraken material validation placeholder.'
+          caption: 'Kraken thruster comparison placeholder.'
         }
       ]
     },
     {
-      title: 'Torpedo Integration',
-      description: 'This section is reserved for Kraken torpedo mechanism layout, mounting approach, and validation plan.',
+      title: 'Mass Optimization',
+      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken mass optimization writeup.',
       bullets: [],
       images: [
         {
           src: '/competition/images/competition_img_3.jpg',
-          caption: 'Kraken torpedo integration placeholder.'
+          caption: 'Kraken mass optimization placeholder.'
         }
       ]
     },
     {
-      title: 'Mechanical Iteration',
-      description: 'This section is reserved for assembly improvements, maintenance access, and mechanical iteration notes.',
+      title: 'Modular Frame Design',
+      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken modular frame design writeup.',
       bullets: [],
       images: [
         {
           src: '/competition/images/competition_img_4.jpg',
-          caption: 'Kraken mechanical iteration placeholder.'
+          caption: 'Kraken modular frame placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Dropper',
+      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken dropper writeup.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_1.jpg',
+          caption: 'Kraken dropper placeholder.'
+        },
+        {
+          src: '/competition/images/competition_img_2.jpg',
+          caption: 'Kraken dropper components placeholder.'
+        }
+      ]
+    },
+    {
+      title: 'Gripper',
+      description: 'Kraken mechanical section placeholder. Replace this text with the Kraken gripper writeup.',
+      bullets: [],
+      images: [
+        {
+          src: '/competition/images/competition_img_3.jpg',
+          caption: 'Kraken gripper placeholder.'
         }
       ]
     }
