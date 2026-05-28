@@ -116,6 +116,18 @@ function TextBlock({ body, className = '' }) {
 }
 
 function SubsectionContent({ subsection }) {
+  if (subsection.bullets) {
+    return (
+      <ul className="list-disc space-y-3 pl-5 text-base sm:text-lg leading-relaxed text-gray-200">
+        {subsection.bullets.map((bullet) => (
+          <li key={bullet} className="text-justify">
+            {bullet}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   if (subsection.blocks) {
     return (
       <div className="space-y-10">
@@ -563,7 +575,21 @@ export default function TeamBlogPostPage() {
                             ))}
                           </div>
                         );
-                        const content = subsection.images?.length === 1 ? (
+                        const content = subsection.imageDisplay === 'carousel' ? (
+                          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_26rem] lg:items-center">
+                            <div>
+                              <SubsectionContent subsection={subsection} />
+                              {highlights && (
+                                <div className="mt-5">
+                                  {highlights}
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex justify-center lg:justify-end">
+                              <ImageCarousel images={subsection.images} />
+                            </div>
+                          </div>
+                        ) : subsection.images?.length === 1 ? (
                           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_26rem] lg:items-center">
                             <div>
                               <SubsectionContent subsection={subsection} />
