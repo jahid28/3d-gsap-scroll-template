@@ -87,7 +87,7 @@ const teamData = {
         role: "Hardware Member",
         image: "/website_member_photos/fangzhou-2.jpg",
         backImage: "/website_member_photos/fangzhou-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
+        schoolYear: "Year 4 Mechanical Engineering Student",
         linkedin: "https://www.linkedin.com/in/fangzhou-liu-83887b28b/",
       },
       {

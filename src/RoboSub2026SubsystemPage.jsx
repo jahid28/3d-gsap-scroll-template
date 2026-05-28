@@ -368,7 +368,7 @@ function getKrakenMechanicalSections() {
     },
     {
       title: 'Hydrodynamics Optimization',
-      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 32% reduction in total drag when the outer skin and airfoil profiles are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
+      description: 'The vehicle\'s lateral wings are explicitly modeled after aircraft airfoils to delay flow separation and minimize wake. Computational fluid dynamics (CFD) analysis validates this design, demonstrating a 32% reduction in total drag when the shells are fully integrated. Additionally, the frame is engineered with a detachable front nose cone to facilitate rapid internal access and streamline assembly during RoboSub deployments.',
       bullets: [],
       imageLayout: 'comparison',
       images: [
