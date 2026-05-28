@@ -170,12 +170,12 @@ const sponsorProfiles = {
 
 const sponsorYears = {
   2026: {
-    tierImage: '/images/tiered_sponsors.png',
+    tierImage: '/images/tiered-sponsors-2026.png',
     sponsors: ['fstd', 'smf', 'dso', 'vectornav', 'waterlinked', 'espressif', 'zen4blue', 'aquarian', 'dwe'],
     supporters: ['coe', 'jdf']
   },
   2025: {
-    tierImage: '/images/tiered_sponsors.png',
+    tierImage: '/images/tiered-sponsors-2025.png',
     sponsors: ['fstd', 'smf', 'waterlinked', 'sonardyne', 'zen4blue', 'aquarian', 'dwe', 'rovmaker'],
     supporters: ['coe', 'jdf']
   }
@@ -237,43 +237,46 @@ export default function SponsorsPage() {
       </section>
 
       <section className="w-full bg-[#1a1a1a] py-12">
-        <div className="max-w-screen-xl mx-auto px-8 flex flex-col items-center text-center">
+        <div className="max-w-screen-xl mx-auto px-8">
           <h2 className="text-4xl font-extrabold text-white text-center mb-14">
             Our Sponsors and Supporters
           </h2>
 
-          <img
-            src={yearData.tierImage}
-            alt={`${activeYear} sponsors by tier`}
-            className="w-full max-w-3xl object-contain bg-white/60 rounded-lg shadow-lg"
-          />
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="text-left">
+              <p className="text-justify text-white sm:text-xl leading-relaxed">
+                Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you're interested in sponsoring us, you may contact us within a click!
+              </p>
 
-          <p className="max-w-4xl text-justify text-white sm:text-xl leading-relaxed pt-14 pb-20">Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you’re interested in sponsoring us, you may contact us within a click!</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-5">
+                <a
+                  href="/sponsorship_deck/Mecatron-Sponsorship-Deck-2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-lg bg-orange-500 px-8 py-2 text-center font-semibold text-white shadow transition-all duration-200 hover:bg-orange-600"
+                >
+                  View Sponsorship Deck
+                </a>
 
-        <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-8">
-        <a
-          href="/sponsorship_deck/Mecatron-Sponsorship-Deck-2026.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+                <a
+                  href="/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-lg bg-orange-500 px-8 py-2 text-center font-semibold text-white shadow transition-all duration-200 hover:bg-orange-600"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </div>
 
-        >
-          View Sponsorship Deck
-        </a>
-
-        <a
-          href="/contact"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
-        >
-          Contact Us
-        </a>
-        
-      </div>
+            <img
+              src={yearData.tierImage}
+              alt={`${activeYear} sponsors by tier`}
+              className="w-full object-contain rounded-lg bg-white/60 shadow-lg"
+            />
+          </div>
         </div>
       </section>
-
       <YearSection
         title={`${activeYear} Sponsors`}
         yearSelector={(
