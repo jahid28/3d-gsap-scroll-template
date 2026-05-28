@@ -87,7 +87,7 @@ const teamData = {
         role: "Hardware Member",
         image: "/website_member_photos/fangzhou-2.jpg",
         backImage: "/website_member_photos/fangzhou-1.jpg",
-        schoolYear: "Year 3 Mechanical Engineering Student",
+        schoolYear: "Year 4 Mechanical Engineering Student",
         linkedin: "https://www.linkedin.com/in/fangzhou-liu-83887b28b/",
       },
       {
@@ -579,14 +579,12 @@ const teamData = {
   'AY25/26': {
       leads : [
           {
-        name: "Wong Wei Ming",
+        name: "Arthur Lim",
         role: "CEO",
-        image: "/website_member_photos/weiming-2.jpeg",
-        backImage: "/website_member_photos/weiming-1.webp",
-        schoolYear: "Year 3 Computer Engineering Student",
-        linkedin: "https://www.linkedin.com/in/wongweiming/",
-        github: "https://github.com/Alvin0523",  
-
+        image: "/website_member_photos/arthur-1.jpg",
+        backImage: "/website_member_photos/arthur-2.jpg",
+        schoolYear: "Year 4 Mechanical Engineering Student",
+        linkedin: "https://www.linkedin.com/in/lim-han-zhou-arthur-94215115a/"
       },
       {
         name: "Luc Vu Tien",
@@ -607,16 +605,8 @@ const teamData = {
         github: "https://github.com/scott-cjx",  
       },
       {
-        name: "Arthur Lim",
-        role: "CFO, Mechanical Lead",
-        image: "/website_member_photos/arthur-1.jpg",
-        backImage: "/website_member_photos/arthur-2.jpg",
-        schoolYear: "Year 4 Mechanical Engineering Student",
-        linkedin: "https://www.linkedin.com/in/lim-han-zhou-arthur-94215115a/",
-      },
-      {
         name: "Jennifer Goh",
-        role: "COO, CHRO, Business Lead",
+        role: "COO, CFO",
         image: "/website_member_photos/jen-1.jpg",
         backImage: "/website_member_photos/jen-2.jpg",
         schoolYear: "Year 4 Biological Sciences Student",
@@ -641,7 +631,7 @@ const teamData = {
       },
       {
         name: "Tan Zi Xuan",
-        role: "Web&App Lead",
+        role: "CWO, Brand Design Manager",
         image: "/website_member_photos/zixuan-2.jpg",
         backImage: "/website_member_photos/zixuan-1.jpeg",
         schoolYear: "Year 2 Computer Science Student",
@@ -652,7 +642,7 @@ const teamData = {
       mechanical : [
         {
         name: "Arthur Lim",
-        role: "CFO, Mechanical Lead",
+        role: "CEO, Mechanical Lead",
         image: "/website_member_photos/arthur-1.jpg",
         backImage: "/website_member_photos/arthur-2.jpg",
         schoolYear: "Year 4 Mechanical Engineering Student",
@@ -810,7 +800,7 @@ const teamData = {
       software : [
         {
         name: "Wong Wei Ming",
-        role: "CEO, Software Division",
+        role: "Software Division",
         image: "/website_member_photos/weiming-2.jpeg",
         backImage: "/website_member_photos/weiming-1.webp",
         schoolYear: "Year 3 Computer Engineering Student",

@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import { Optimized3DViewer } from './components/Optimized3DViewer';
 import ImageCarousel from "./components/ImageCarousel"; //import two carousels for the different sections
 import ContentCarousel from "./components/ContentCarousel";
 
@@ -38,12 +37,10 @@ export default function Home() {
         <div className="w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(19rem,0.9fr)_minmax(0,1fr)] items-center gap-4 md:gap-8">
           <div className="flex items-center justify-center w-full order-2 lg:order-1">
             <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] rounded-full flex items-center justify-center overflow-hidden relative bg-transparent">
-              <Optimized3DViewer
-                showModel={true}
-                scale={[4.5, 4.5, 4.5]}
-                enableTouchControls={true}
-                modelType="hydra"
-                modelRotation={[0, 0.35, 0]}
+              <img
+                src="/images/logos/hydra-home.png"
+                alt="Hydra 2026"
+                className="h-full w-full object-contain"
               />
             </div>
           </div>
@@ -71,12 +68,10 @@ export default function Home() {
 
           <div className="flex items-center justify-center w-full order-3">
             <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] lg:w-[34rem] lg:h-[34rem] xl:w-[40rem] xl:h-[40rem] flex items-center justify-center overflow-hidden relative bg-transparent">
-              <Optimized3DViewer
-                showModel={true}
-                scale={[3.5, 3.5, 3.5]}
-                enableTouchControls={true}
-                modelType="kraken"
-                modelRotation={[0, -0.35, 0]}
+              <img
+                src="/images/logos/kraken-home.png"
+                alt="Kraken 2026"
+                className="h-full w-full object-contain"
               />
             </div>
           </div>
