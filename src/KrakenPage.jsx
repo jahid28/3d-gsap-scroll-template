@@ -139,11 +139,11 @@ function KrakenPage() {
   // Define sections for navigation
   const sections = [
     { id: 'intro', title: 'Intro' },
-    { id: 'manoeuvrability', title: 'Manoeuvrability' },
-    { id: 'energy', title: 'Energy Efficiency' },
-    { id: 'simulation', title: 'Unity Simulation' },
-    { id: 'mission', title: 'Mission Planner' },
-    { id: 'controller', title: 'Ardusub Controller' }
+    { id: 'manoeuvrability', title: 'Hydrodynamically Optimized' },
+    { id: 'energy', title: 'Durable' },
+    { id: 'simulation', title: 'Ease of Manufacturability' },
+    { id: 'mission', title: 'BT-Based Mission Planning' },
+    { id: 'controller', title: 'Upgraded Perception' }
   ];
 
   // Function to scroll to section
@@ -351,17 +351,17 @@ function KrakenPage() {
         <section className="relative flex items-center justify-evenly h-[100vh]">
           <p className="w-[50%] border-0 border-red-700"></p>
           <div className="text-white w-[50%] text-center px-2 sm:px-4">
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Manoeuvrability</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Hydrodynamically Optimized</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              Using only 6 thrusters, we are able to achieve 6-DOF control and stable depth hold for any missions.
+              Kraken has been optimized to be low drag featuring a outer shell which helps to guide the flow of water around the vehicle
             </p>
           </div>
         </section>
         <section className="relative flex items-center justify-evenly h-[100vh]">
           <div className="text-white order-1 w-[50%] text-center px-2 sm:px-4">
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Energy Efficiency</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Durable</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              From fully optimised 3D-printed body to computationally-cheap software approach, we focus on maximising the runtime on any given battery payload.
+              Kraken is designed to be highly durable, featuring a strong acrylic skeleton which can withstand high loads
             </p>
           </div>
           <p className="w-[50%] order-2"></p>
@@ -369,17 +369,17 @@ function KrakenPage() {
         <section className="relative flex items-center justify-evenly h-[100vh]">
           <p className="w-[50%] border-0 border-red-700"></p>
           <div className="text-white w-[50%] text-center px-2 sm:px-4">
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Unity simulation</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Ease of Manufacturability</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              Full-fledged digital twin of Kevin enables fast software iterations and testing.
+              Kraken features very minimal number components that are easy to assemble making the vehicle very easy to construct
             </p>
           </div>
         </section>
         <section className="relative flex items-center justify-evenly h-[100vh]">
           <div className="text-white order-1 w-[50%] text-center px-2 sm:px-4">
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">BT-based mission planner</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">BT-Based Mission Planning</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              Fully reusable and customisable behavior trees to make mission planning a breeze.
+              Fully reusable and customisable behavior trees to make mission planning a breeze
             </p>
           </div>
           <p className="w-[50%] order-2"></p>
@@ -387,9 +387,9 @@ function KrakenPage() {
         <section className="relative flex items-center justify-evenly h-[100vh]">
           <p className="w-[50%] border-0 border-red-700"></p>
           <div className="text-white w-[50%] text-center px-2 sm:px-4">
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Ardusub Controller Stack</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Upgraded Perception</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              An extension of the traditional quadcopter controller, Ardusub allows us to control our custom thruster design and integrate additional sensors with ease and reliability.
+              Kraken features an upgraded perception algorithm that uses depth segmentation to improve 3D pose estimation
             </p>
           </div>
         </section>
