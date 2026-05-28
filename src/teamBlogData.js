@@ -61,20 +61,145 @@ const posts = [
     tag: 'Mechanical',
     authors: 'Timothy',
     date: 'Sep 2025 - Apr 2026',
-    image: '/competition/images/robosub2026-bots.jpg',
+    image: '/images/robosub2026/mechanical-subsystems/blog1-1.png',
     description: "Design and build notes for Hydra's structural layout.",
     sections: [
       {
-        heading: 'Overview',
-        body: 'Hydra Frame overview text here.'
-      },
-      {
-        heading: 'Development Notes',
-        body: 'Hydra Frame development notes here.'
-      },
-      {
-        heading: 'Next Steps',
-        body: 'Hydra Frame next steps here.'
+        heading: 'Hydra Frame Development',
+        layout: 'subsectionImageGrid',
+        subsections: [
+          {
+            title: 'Early Sketch of Upgraded Lucy 2025 Vehicle',
+            period: 'Sep 2025 - Dec 2025',
+            collapsible: true,
+            body: 'Sketch indicating an adjustable electric housing within the vehicle body, to adjust centre of gravity and centre of buoyancy.',
+            images: [
+              { src: '/images/robosub2026/mechanical-subsystems/blog1-1.png' },
+            ]
+          },
+          {
+            title: 'First draft of Lucy Version 2 - Pufferfish',
+            period: '',
+            collapsible: true,
+            bullets: [
+              'Designed to accommodate a draft box enclosure of 250 x 150 x 150mm that will replace the cylinder hull in Lucy 2025',
+              'A proposed custom battery pack (juicepack)',
+              'Showcase of the 3D Render of Pufferfish'
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-2.png'
+              },           
+            ]
+          },
+          {
+            title: 'Multiple Iterations to the Final Bot Design',
+            period: 'Dec 2025 - Apr 2026',
+            collapsible: true,
+            body: ['Despite the pufferfish-inspired design, the project was eventually archived due to several engineering and development concerns. Interim vehicle testing revealed limitations with the 6-thruster configuration, while the adjustable battery position concept proved impractical and introduced more drawbacks than benefits.', 'Additionally, tight development timelines and the risks associated with porting two in-development vehicles onto a completely new mechanical and electrical platform led the team to pivot towards a new frame design capable of housing a single electronics cylinder alongside two dedicated batteries — one for LV and one for HV systems.', 'We decided to move on with a 3-cylinder bot (1 electric housing, 2 battery cylinders).', 'The bot is ultra compact for ease of assembly and manufacturing, and its modular design makes mechanical adjustments easier and quicker.'],
+          },
+          {
+            title: 'First draft of Hydra',
+            period: '',
+            collapsible: true,
+            imageGrid: 'twoByTwo',
+            body: [
+              'Below is the first draft of Hydra.',
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-3.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-4.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-5.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-6.png'
+              },
+            ]
+          },
+          {
+            title: 'Thrusters configuration iterations',
+            period: '',
+            collapsible: true,
+            imageGrid: 'comparison',
+            body: [
+              'Based on observations of the interim vehicle both in simulation and in real-life (pool testing), we decided to move from a 6-thruster config to an 8-thruster config as well as elongate the electrical housing.',
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-7.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-8.png'
+              },
+            ]
+          },
+          {
+            title: 'Modular Frame Design',
+            period: '',
+            collapsible: true,
+            imageGrid: 'comparison',
+            body: [
+              'Further mechanical iterations focused on simplifying the vehicle frame and improving adjustability. The main body structure was redesigned into a lightweight two-part assembly consisting primarily of a cap and leg structure.',
+              'Thruster mounts were designed to be fully modular, enabling quick repositioning and configuration adjustments without requiring major frame redesigns.',
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-9.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-10.png'
+              },
+            ]
+          },
+          {
+            title: 'Buoyancy and Payload Integration',
+            period: '',
+            collapsible: true,
+            imageGrid: 'twoByTwo',
+            body: [
+              'During this phase, the team conducted multiple buoyancy-control iterations to optimize vehicle balance and underwater handling characteristics. Additional payload systems including the Doppler Velocity Log (DVL) dropper mechanism and manipulator gripper were integrated into the vehicle platform.',
+              'Initial gripper prototypes were found to be oversized for the vehicle’s operational requirements, prompting a redesign into a more compact and efficient manipulator system.',
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-11.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-12.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-13.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-14.png'
+              },
+            ]
+          },
+          {
+            title: 'Final Vehicle Design',
+            period: '',
+            collapsible: true,
+            body: [
+              'The completed Hydra platform represented the culmination of multiple archived concepts, iterative subsystem testing, and extensive pool validation, resulting in a compact, modular, and competition-ready autonomous underwater vehicle.',
+            ],
+            images: [
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-15.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-16.png'
+              },
+              {
+                src: '/images/robosub2026/mechanical-subsystems/blog1-17.png'
+              },
+            ]
+          },
+        ]
       }
     ]
   },
