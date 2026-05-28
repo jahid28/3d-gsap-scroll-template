@@ -215,7 +215,7 @@ export default function Robosub2026Page() {
             View {vehicle.label}
           </Link>
         <a
-          href="/robosub_2025/Technical-Documentation.pdf"
+          href="/robosub_2026/Mecatron-Technical-Design-Report-2026.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
