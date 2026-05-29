@@ -373,7 +373,7 @@ function HydraPage() {
           <div className="text-white w-[50%] text-center px-2 sm:px-4">
             <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Unity Simulation</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              Full-fledged digital twin of Kevin enables fast software iterations and testing
+              Full-fledged digital twin of Hydra enables fast software iterations and testing
             </p>
           </div>
         </section>
