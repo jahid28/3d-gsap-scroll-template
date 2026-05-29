@@ -363,7 +363,7 @@ function HydraPage() {
           <div className="text-white order-1 w-[50%] text-center px-2 sm:px-4">
             <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-6">Longer Range</h2>
             <p className="text-xs sm:text-sm md:text-lg lg:text-2xl xl:text-4xl font-semibold">
-              Hydra features dual battery cylinders, doubling its power capacity and allowing the vehicle to run twice the distance
+              Hydra features dual battery cylinders, doubling its storage capacity and allowing the vehicle to run twice the distance
             </p>
           </div>
           <p className="w-[50%] order-2"></p>
