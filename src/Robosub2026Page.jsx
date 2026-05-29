@@ -13,7 +13,8 @@ const sharedSoftwareFeature = {
     'Mission Planning',
     'Localization',
     'Containerization'
-  ]
+  ],
+  image: '/robosub_2026/software-header.png',
 };
 
 const sharedElectricalFeature = {
@@ -25,7 +26,8 @@ const sharedElectricalFeature = {
     'Power Distribution Unit (PDU)',
     'Actuator Board',
     'Acoustics',
-  ]
+  ],
+  image: '/robosub_2026/electrical-header.png',
 };
 
 const vehicleTabs = {
@@ -48,15 +50,16 @@ const vehicleTabs = {
           'Gripper'
         ], 
         subpage: '/hydra/mechanical',
+        image: '/robosub_2026/mechanical-hydra-header.png',
+      },
+      {
+        ...sharedElectricalFeature,
+        subpage: '/hydra/electrical'
       },
       {
         ...sharedSoftwareFeature,
         subpage: '/hydra/software',
       },
-      {
-        ...sharedElectricalFeature,
-        subpage: '/hydra/electrical'
-      }
     ]
   },
   kraken: {
@@ -64,7 +67,7 @@ const vehicleTabs = {
     title: 'Kraken 2026',
     modelType: 'kraken',
     linkTo: '/kraken',
-    image: '/competition/images/robosub2026-bots.jpg',
+    image: '/robosub_2026/mechanical-header.png',
     features: [
       {
         title: 'Mechanical',
@@ -78,15 +81,16 @@ const vehicleTabs = {
           'Torpedo'
         ],
         subpage: '/kraken/mechanical',
+        image: '/robosub_2026/mechanical-header.png'
+      },
+      {
+        ...sharedElectricalFeature,
+        subpage: '/kraken/electrical',
       },
       {
         ...sharedSoftwareFeature,
         subpage: '/kraken/software'
       },
-      {
-        ...sharedElectricalFeature,
-        subpage: '/kraken/electrical',
-      }
     ]
   }
 };
@@ -210,7 +214,7 @@ export default function Robosub2026Page() {
       <div className="flex flex-col gap-3 px-5 md:flex-row md:gap-5 justify-center -mt-2 md:-mt-8 pb-10">
         <Link
             to={vehicle.linkTo}
-            className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow transition-all duration-200"
+            className="inline-block bg-orange-600 hover:bg-[#d73a1a] text-white font-semibold px-8 py-2 rounded-lg shadow"
           >
             View {vehicle.label}
           </Link>
@@ -248,7 +252,7 @@ export default function Robosub2026Page() {
               >
                 <div className="aspect-video bg-zinc-900">
                   <img
-                    src={vehicle.image}
+                    src={feature.image}
                     alt={`${feature.title} placeholder`}
                     className="w-full h-full object-cover opacity-80"
                   />

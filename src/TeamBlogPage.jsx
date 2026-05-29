@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts, tagStyles } from './teamBlogData';
 
-const categoryFilters = ['All', 'Mechanical', 'Software', 'Electrical'];
+const categoryFilters = ['All', 'Mechanical', 'Electrical', 'Software'];
 
 export default function TeamBlogPage() {
   const [activeCategory, setActiveCategory] = useState('All');
