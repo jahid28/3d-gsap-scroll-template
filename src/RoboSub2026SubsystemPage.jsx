@@ -32,10 +32,8 @@ const subsystemPages = {
         highlights: [
         ],
         development: [
-          'Refine frame geometry around the new payload envelope',
-          'Validate mechanism mounting points with quick assembly checks',
-          'Document maintenance access for competition pit work'
-        ]
+        ],
+        image: '/robosub_2026/mechanical-hydra-header.png',
       },
       software: {
         label: 'Software',
@@ -45,7 +43,8 @@ const subsystemPages = {
         highlights: [
         ],
         development: [
-        ]
+        ],
+        image: '/robosub_2026/software-header.png',
       },
       electrical: {
         label: 'Electrical',
@@ -59,10 +58,8 @@ const subsystemPages = {
           'Integration support for dropper, gripper, and vehicle feedback systems'
         ],
         development: [
-          'Map electronics placement against mechanical access zones',
-          'Prepare wiring routes for cameras, navigation sensors, and actuators',
-          'Run bench checks before full vehicle integration'
-        ]
+        ],
+        image: '/robosub_2026/electrical-header.png',
       },
     }
   },
@@ -101,7 +98,8 @@ const subsystemPages = {
           'Prototype frame sections and compare assembly approaches',
           'Evaluate hull material behavior during handling and pool testing',
           'Iterate mechanism mounting around torpedo deployment needs'
-        ]
+        ],
+        image: '/robosub_2026/mechanical-header.png',
       },
       software: {
         label: 'Software',
@@ -111,7 +109,8 @@ const subsystemPages = {
         highlights: [
         ],
         development: [
-        ]
+        ],
+        image: '/robosub_2026/software-header.png',
       },
       electrical: {
         label: 'Electrical',
@@ -128,13 +127,14 @@ const subsystemPages = {
           'Map electronics placement against mechanical access zones',
           'Prepare wiring routes for cameras, navigation sensors, and actuators',
           'Run bench checks before full vehicle integration'
-        ]
+        ],
+        image: '/robosub_2026/electrical-header.png',
       },
     }
   }
 };
 
-const navItems = ['mechanical', 'software', 'electrical'];
+const navItems = ['mechanical', 'electrical', 'software'];
 
 const featureCarouselImages = {
   UnitySim: [
@@ -691,7 +691,7 @@ export default function RoboSub2026SubsystemPage({ vehicleId, subsystemId }) {
 
           <div className="rounded-lg overflow-hidden border border-white/15 bg-white/10 shadow-xl shadow-black/20">
             <img
-              src={vehicle.image}
+              src={subsystem.image}
               alt={`${vehicle.name} ${subsystem.label} development`}
               className="w-full aspect-video object-cover"
             />
