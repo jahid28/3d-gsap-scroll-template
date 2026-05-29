@@ -99,7 +99,7 @@ const subsystemPages = {
           'Evaluate hull material behavior during handling and pool testing',
           'Iterate mechanism mounting around torpedo deployment needs'
         ],
-        image: '/robosub_2026/mechanical-header.png',
+        image: '/images/robosub2026/mechanical-subsystems/blog2-11.jpg',
       },
       software: {
         label: 'Software',

@@ -67,7 +67,7 @@ const vehicleTabs = {
     title: 'Kraken 2026',
     modelType: 'kraken',
     linkTo: '/kraken',
-    image: '/robosub_2026/mechanical-header.png',
+    image: '/images/robosub2026/mechanical-subsystems/blog2-11.jpg',
     features: [
       {
         title: 'Mechanical',
@@ -81,7 +81,7 @@ const vehicleTabs = {
           'Torpedo'
         ],
         subpage: '/kraken/mechanical',
-        image: '/robosub_2026/mechanical-header.png'
+        image: '/images/robosub2026/mechanical-subsystems/blog2-11.jpg'
       },
       {
         ...sharedElectricalFeature,
