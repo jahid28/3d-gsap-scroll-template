@@ -139,8 +139,7 @@ const sponsorProfiles = {
     text: 'text-black',
     imageClass: 'max-w-2xl rounded-xl object-contain',
     description: [
-        'ROV Maker combines underwater technology with scientific research and education practice, creating a diverse community of subsea explorers, hobbyists, and professional users. We are grateful to ROV Maker for supporting our team by assisting with troubleshooting and equipment testing.',
-
+        'ROVMAKER aims to combine underwater technologies with scientific research and education, creating a diverse community of subsea explorers, hobbyists, and professional users. We consistently use ROVMAKER products for our vehicle development and we are also grateful for their assistance with equipment testing.',
         'ROVMAKER致力于将水下技术与科学研究和教育实践相结合，创建一个由水下探险家、爱好者和专业用户组成的多元化社区。感谢ROVMAKER对于我们团队的支持，协助我们进行故障排除和设备测试。'
       ]
   },
@@ -177,6 +176,10 @@ const sponsorYears = {
   2025: {
     tierImage: '/images/tiered-sponsors-2025.png',
     sponsors: ['fstd', 'smf', 'waterlinked', 'sonardyne', 'zen4blue', 'aquarian', 'dwe', 'rovmaker'],
+    supporters: ['coe', 'jdf']
+  },
+  2024: {
+    sponsors: ['rovmaker', 'zen4blue', 'dwe', 'waterlinked', 'aquarian'],
     supporters: ['coe', 'jdf']
   }
 };
@@ -242,7 +245,7 @@ export default function SponsorsPage() {
             Our Sponsors and Supporters
           </h2>
 
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className={`grid grid-cols-1 items-center gap-10 ${yearData.tierImage ? 'lg:grid-cols-[0.9fr_1.1fr]' : ''}`}>
             <div className="text-left">
               <p className="text-justify text-white sm:text-xl leading-relaxed">
                 Interested in sponsoring our team? Mecatron provides organizations with the opportunity to inspire and support the development of future engineers and connect with NTU students. If you're interested in sponsoring us, you may contact us within a click!
@@ -269,11 +272,13 @@ export default function SponsorsPage() {
               </div>
             </div>
 
-            <img
-              src={yearData.tierImage}
-              alt={`${activeYear} sponsors by tier`}
-              className="w-full object-contain rounded-lg bg-white/60 shadow-lg"
-            />
+            {yearData.tierImage && (
+              <img
+                src={yearData.tierImage}
+                alt={`${activeYear} sponsors by tier`}
+                className="w-full object-contain rounded-lg bg-white/60 shadow-lg"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -301,25 +306,39 @@ export default function SponsorsPage() {
           </div>
         )}
       >
-        {sponsorsByTier.map(({ tier, sponsorIds }) => (
-          <div key={tier} className="mb-12 last:mb-0">
-            <h3 className={`mb-5 text-2xl sm:text-3xl font-extrabold ${tierStyles[tier].heading}`}>
-              {tier}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {sponsorIds.map((id) => (
-                <PartnerCard
-                  key={id}
-                  id={`sponsor-${activeYear}-${id}`}
-                  partner={sponsorProfiles[id]}
-                  isOpen={openCard === `sponsor-${activeYear}-${id}`}
-                  onToggle={toggleCard}
-                  showTier
-                />
-              ))}
+        {yearData.tierImage ? (
+          sponsorsByTier.map(({ tier, sponsorIds }) => (
+            <div key={tier} className="mb-12 last:mb-0">
+              <h3 className={`mb-5 text-2xl sm:text-3xl font-extrabold ${tierStyles[tier].heading}`}>
+                {tier}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {sponsorIds.map((id) => (
+                  <PartnerCard
+                    key={id}
+                    id={`sponsor-${activeYear}-${id}`}
+                    partner={sponsorProfiles[id]}
+                    isOpen={openCard === `sponsor-${activeYear}-${id}`}
+                    onToggle={toggleCard}
+                    showTier
+                  />
+                ))}
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {yearData.sponsors.map((id) => (
+              <PartnerCard
+                key={id}
+                id={`sponsor-${activeYear}-${id}`}
+                partner={sponsorProfiles[id]}
+                isOpen={openCard === `sponsor-${activeYear}-${id}`}
+                onToggle={toggleCard}
+              />
+            ))}
           </div>
-        ))}
+        )}
       </YearSection>
 
       <section className="w-full bg-[#1a1a1a] px-4 sm:px-8 py-16">
@@ -385,7 +404,7 @@ function SupportersCard({ supporterIds }) {
 
 function PartnerCard({ id, partner, isOpen, onToggle, showTier = false }) {
   const tierStyle = tierStyles[partner.tier];
-  const frameClass = showTier ? tierStyle.border : 'border-white/15';
+  const frameClass = showTier ? tierStyle.border : 'border-white';
   const backgroundStyle = partner.bgImage
     ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('${partner.bgImage}')` }
     : { backgroundColor: partner.bg ?? '#ffffff' };
