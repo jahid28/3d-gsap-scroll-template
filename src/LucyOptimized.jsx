@@ -1,0 +1,440 @@
+ 
+import React, { useRef, useState, useEffect } from 'react'
+import { useGLTF } from '@react-three/drei'
+
+export function LucyOptimized(props) {
+  const [scale, setScale] = useState([4, 4, 4]);
+  const [modelLoaded, setModelLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const groupRef = useRef();
+
+  // Simple loading - start loading immediately
+  useEffect(() => {
+    setIsVisible(true);
+    setModelLoaded(true);
+  }, []);
+
+  // Throttled resize handler
+  useEffect(() => {
+    let timeoutId;
+    
+    function handleResize() {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const isMobile = window.innerWidth < 768;
+        const base = Math.min(window.innerWidth, window.innerHeight);
+        
+        if (isMobile) {
+          const s = Math.max(1.5, Math.min(2.8, base / 300));
+          setScale([s, s, s]);
+        } else {
+          const s = Math.max(2.5, Math.min(4.0, base / 350));
+          setScale([s, s, s]);
+        }
+      }, 100);
+    }
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // Always load the model, but control rendering based on visibility
+  const { nodes, materials } = useGLTF('/lucysmalloutput.glb', true);
+
+  // Loading placeholder - use Three.js objects only
+  if (!isVisible || !modelLoaded || !nodes || !materials) {
+    return (
+      <group ref={groupRef} scale={scale} {...props}>
+        <mesh>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial color="#666666" transparent opacity={0.3} />
+        </mesh>
+      </group>
+    );
+  }
+
+  return (
+    <group ref={groupRef} scale={scale} {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh130.geometry}
+        material={materials.PaletteMaterial001}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2229.geometry}
+        material={materials['Clear Rough Plastic Black #2.017']}
+        position={[0.104, 0.154, -0.054]}
+        rotation={[-Math.PI / 2, -0.65, -0.013]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2227.geometry}
+        material={materials['Clear Rough Plastic Black #1.012']}
+        position={[0.098, 0.15, -0.054]}
+        rotation={[-Math.PI / 2, -0.65, -0.013]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2228.geometry}
+        material={materials.PaletteMaterial001}
+        position={[0.098, 0.15, -0.054]}
+        rotation={[-Math.PI / 2, -0.65, -0.013]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2220.geometry}
+        material={materials['Clear Rough Plastic Black #2.016']}
+        position={[0.103, 0.154, 0.04]}
+        rotation={[Math.PI / 2, 0.65, -0.013]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2221.geometry}
+        material={materials['Clear Rough Plastic Black #1.009']}
+        position={[0.105, 0.155, 0.04]}
+        rotation={[Math.PI / 2, 0.65, -0.013]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2211.geometry}
+        material={materials['Clear Rough Plastic Black  #3.003']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2213.geometry}
+        material={materials['Clear Rough Plastic Black  #3.004']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2214.geometry}
+        material={materials['Clear Rough Plastic Black  #3.005']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2204.geometry}
+        material={materials['Clear Rough Plastic Black #1.005']}
+        position={[0.257, 0.053, -0.086]}
+        rotation={[-Math.PI, 1.496, -1.172]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2210.geometry}
+        material={materials['Clear Rough Plastic Black  #3.002']}
+        position={[-0.265, 0.04, -0.007]}
+        rotation={[-Math.PI, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2212.geometry}
+        material={materials['Clear Rough Plastic Black #2.014']}
+        position={[0.025, 0.143, -0.007]}
+        rotation={[-Math.PI, 0, 3.141]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh020.geometry}
+        material={materials['Clear Rough Plastic Black #2.001']}
+        position={[-0.265, 0.04, -0.006]}
+        rotation={[-3.141, -0.005, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2215.geometry}
+        material={materials['Clear Rough Plastic Black #2.015']}
+        position={[-0.265, 0.04, -0.007]}
+        rotation={[-Math.PI, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh007.geometry}
+        material={materials['Clear Rough Plastic Black #1.001']}
+        position={[-0.265, 0.04, -0.007]}
+        rotation={[-Math.PI, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh.geometry}
+        material={materials['Clear Rough Plastic Black #1']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh001.geometry}
+        material={materials['color-393']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2217.geometry}
+        material={materials['Clear Rough Plastic Black #1.007']}
+        position={[-0.103, -0.071, -0.007]}
+        rotation={[-3.141, -0.376, 0.001]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2218.geometry}
+        material={materials['color-415']}
+        position={[-0.103, -0.071, -0.007]}
+        rotation={[-3.141, -0.376, 0.001]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2219.geometry}
+        material={materials['Clear Rough Plastic Black #1.008']}
+        position={[-0.103, -0.032, -0.007]}
+        rotation={[3.141, 1.002, 0.001]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2224.geometry}
+        material={materials['Clear Rough Plastic Black #1.010']}
+        position={[-0.034, -0.07, -0.007]}
+        rotation={[-3.127, -0.406, 0.036]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2225.geometry}
+        material={materials['color-415.001']}
+        position={[-0.034, -0.07, -0.007]}
+        rotation={[-3.127, -0.406, 0.036]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2226.geometry}
+        material={materials['Clear Rough Plastic Black #1.011']}
+        position={[-0.032, -0.031, -0.007]}
+        rotation={[3.094, 0.972, 0.058]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2203.geometry}
+        material={materials['Clear Rough Plastic Black #2.009']}
+        position={[0.106, 0.04, -0.007]}
+        rotation={[0, -1.548, Math.PI]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2205.geometry}
+        material={materials['Clear Rough Plastic Black #2.010']}
+        position={[0.106, 0.04, -0.006]}
+        rotation={[Math.PI, -1.548, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2199.geometry}
+        material={materials['Clear Rough Plastic Black #2.005']}
+        position={[0.106, 0.04, -0.007]}
+        rotation={[-0.002, -1.548, -0.001]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh009.geometry}
+        material={materials['Clear Rough Plastic Black #2']}
+        position={[-0.09, 0.04, 0.128]}
+        rotation={[1.579, -0.033, 0.262]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2200.geometry}
+        material={materials['Clear Rough Plastic Black #2.006']}
+        position={[-0.117, 0.04, -0.246]}
+        rotation={[1.563, -0.033, -0.262]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2201.geometry}
+        material={materials['Clear Rough Plastic Black #2.007']}
+        position={[-0.117, 0.04, -0.246]}
+        rotation={[1.563, -0.033, -0.262]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_0.geometry}
+        material={materials.PaletteMaterial002}
+        position={[-0.09, 0.04, 0.128]}
+        rotation={[1.579, -0.033, 0.262]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_0003.geometry}
+        material={materials['Clear Rough Plastic Black #1.004']}
+        position={[0.186, 0.04, -0.007]}
+        rotation={[1.584, 0, -Math.PI / 2]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_0004.geometry}
+        material={materials['Clear Rough Plastic Black #1.006']}
+        position={[-0.09, 0.04, -0.141]}
+        rotation={[1.563, -0.033, 2.88]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_0001.geometry}
+        material={materials['Clear Rough Plastic Black #1.002']}
+        position={[0.106, 0.04, 0.113]}
+        rotation={[0, -1.548, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_0002.geometry}
+        material={materials['Clear Rough Plastic Black #1.003']}
+        position={[0.106, 0.04, -0.126]}
+        rotation={[Math.PI, -1.548, -3.14]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh033.geometry}
+        material={materials['clear glass']}
+        position={[0.078, 0, -0.006]}
+        rotation={[0, 0, -Math.PI / 2]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh201.geometry}
+        material={materials['Clear Rough Plastic Black #2.003']}
+        position={[-0.212, 0.032, 0.043]}
+        rotation={[0, -Math.PI / 2, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh202.geometry}
+        material={materials['Clear Rough Plastic Black #2.004']}
+        position={[-0.25, 0.04, -0.006]}
+        rotation={[Math.PI / 2, 0.032, -Math.PI]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh203.geometry}
+        material={materials['color-429']}
+        position={[-0.25, 0.04, -0.006]}
+        rotation={[Math.PI / 2, 0.032, -Math.PI]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh204.geometry}
+        material={materials['Aluminum Textured #1.002']}
+        position={[-0.25, 0.04, -0.006]}
+        rotation={[Math.PI / 2, 0.032, -Math.PI]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh200.geometry}
+        material={materials['Clear Rough Plastic Black #2.002']}
+        position={[-0.238, 0.064, -0.006]}
+        rotation={[Math.PI / 2, -1.372, Math.PI / 2]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh025.geometry}
+        material={materials['color-390']}
+        position={[0.073, 0.04, -0.006]}
+        rotation={[-1.643, -Math.PI / 2, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh027.geometry}
+        material={materials['Aluminum Textured #1.001']}
+        position={[-0.24, 0.04, -0.006]}
+        rotation={[-3.141, Math.PI / 2, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2209.geometry}
+        material={materials['Clear Rough Plastic Black #2.013']}
+        position={[-0.265, 0.04, -0.007]}
+        rotation={[-Math.PI, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2206.geometry}
+        material={materials['Clear Rough Plastic Black #2.011']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2207.geometry}
+        material={materials['Clear Rough Plastic Black #2.012']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2208.geometry}
+        material={materials['color-395']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2197.geometry}
+        material={materials['Clear Rough Plastic Black  #3']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh2198.geometry}
+        material={materials['Clear Rough Plastic Black  #3.001']}
+        position={[-0.265, 0.04, -0.007]}
+      />
+    </group>
+  );
+}
+
+// Preload
+useGLTF.preload('/lucysmalloutput.glb'); 
