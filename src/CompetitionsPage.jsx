@@ -16,8 +16,8 @@ export default function CompetitionsPage() {
       title: "SAUVC 2026",
       date: "MAY 2026",
       description: "Hydra is ready for action!",
-      image: "/competition/images/sauvc2026-bot.jpg",
-      status: "upcoming",
+      image: "/competition/images/hydra_bot_pic.jpg",
+      status: "completed",
       link:"/sauvc2026"
     },
     {
